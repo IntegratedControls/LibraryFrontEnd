@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- <script>
+  document.addEventListener('WebComponentsReady', function() {
+    System.import('aurelia-bootstrapper');
+  });
+</script> -->
+<html>
+  <head>
+    <title><%- htmlWebpackPlugin.options.metadata.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
+
+    <!-- <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>  -->
+    <!-- <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/iron-image/iron-image.html">
+    <link rel="import" href="bower_components/paper-material/paper-material.html">
+      <link rel="import" href="bower_components/paper-card/paper-card.html"> -->
+      <link rel="import" href="includes.html">
+    <!-- imported CSS are concatenated and added automatically -->
+  </head>
+  <body aurelia-app="main">
+    <div class="splash">
+      <div class="message"><%- htmlWebpackPlugin.options.metadata.title %></div>
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+    <% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
+  </body>
+</html>

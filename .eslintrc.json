@@ -1,0 +1,6 @@
+{
+  "rules": {
+      "space-before-function-paren": [0, "never"],
+      "space-before-blocks": [ 0, "never"]
+  }
+}

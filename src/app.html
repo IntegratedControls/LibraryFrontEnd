@@ -1,0 +1,60 @@
+<template>
+
+  <div class="page-host">
+    <paper-drawer-panel right-drawer>
+      <paper-header-panel drawer>
+        <paper-material class="material-header" elevation="0">
+          <a style="display:block;color:white" href="tel:5404948035">
+            <h3 style="text-align:center; margin-right:250px; color:white; margin-top:0px; padding-top:15px; padding-bottom: 68px; font-size:22pt">
+              <!-- Call For<br>More Info: -->
+              <br>540-494-8035
+            </h3>
+          </a>
+        </paper-material>
+        <div>
+          <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+            <a  paper-drawer-toggle style="display:block" href.bind="row.href">
+              ${row.title}
+            </a>
+          </paper-item>
+          <paper-item if.bind="authenticated">
+            <a href="#/dashboard">Dashboard</a></paper-item>
+            <paper-item if.bind="!authenticated">
+              <a href="#/login">Login</a></paper-item>
+              <paper-item if.bind="authenticated">
+                <a click.delegate="logout()">
+                  Logout</a></paper-item>
+                </div>
+              </paper-header-panel>
+
+                  <paper-header-panel main class="main-panel">
+                    <paper-material class="material-header" elevation="0">
+                      <paper-card alt="Charity Logo" image="../styles/imgs/charitylogo.png" style="margin-top:10px;background-color: #496067;width:110px">
+                      </paper-card>
+
+                      <paper-card  style="background-color:#496067;top:-15px;left:5px;">
+                        <a style="display:block;color:white" href="tel:5404948035">
+                          <h3 class="material-header-h3-call">Contact Us
+                          </h3></a>
+
+                          <!-- <h3 style="color:white" repeat.for="row of router.navigation" class="${row.isActive ? '' : 'hidden'}">
+                          <a  paper-drawer-toggle style="display:block;color:white" href.bind="row.href">
+                          ${row.title}
+                        </a></h3> -->
+                      </paper-card >
+                    </paper-material>
+
+                    <i class="fa fa-bars pull-right fa-3x" paper-drawer-toggle aria-hidden="true" style="position:absolute; top:70px;right:25px;"></i>
+                    <router-view></router-view>
+
+
+                  </paper-header-panel>
+                </paper-drawer-panel>
+
+
+                <nav-bar router.bind="router"></nav-bar>
+
+
+
+              </div>
+            </template>
