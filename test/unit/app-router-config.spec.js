@@ -39,7 +39,7 @@ describe('the app.router.config module', () => {
   });
 
   it('configures the router title', () => {
-    expect(sut.router.title).toEqual('Our Hands and Feet');
+    expect(sut.router.title).toEqual('CST Library');
   });
 
   it('should have an About route', () => {

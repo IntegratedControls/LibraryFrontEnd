@@ -11,7 +11,7 @@ export class AppRouterConfig{
 	configure(config,router){
 		var theAppRouterConfig = function(config){
 			console.log(config);
-      config.title = 'Our Hands and Feet';
+      config.title = 'CST Library';
       config.addPipelineStep('authorize', AuthorizeStep);//Is the actually Authorization. Prevents users from certain sites when not authorized.
       config.map([
         { route: ['', 'home'], name: 'home',      moduleId: './home',      nav: true, title: 'About' },
