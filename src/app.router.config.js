@@ -14,17 +14,14 @@ export class AppRouterConfig{
       config.title = 'CST Library';
       config.addPipelineStep('authorize', AuthorizeStep);//Is the actually Authorization. Prevents users from certain sites when not authorized.
       config.map([
-        { route: ['', 'home'], name: 'home',      moduleId: './home',      nav: true, title: 'About' },
-        { route: 'news',         name: 'news',        moduleId: './news',        nav: true, title: 'News' },
-          { route: 'bookshelf',         name: 'bookshelf',        moduleId: './bookshelf',        nav: true, title: 'Book Shelf'},
-				{ route: 'login',         name: 'login',        moduleId: './login',        nav: false, title: 'Login'},
-				{ route: 'dashboard',         name: 'dashboard-router',        moduleId: './dashboard-router', nav: false, title: 'Dashboard', auth:true}
-
-        // { route: 'jobs',  name: 'jobs', moduleId: './jobs', nav: true, title: 'Jobs' }
+        { route: ['', 'home'], name: 'home',      moduleId: './home',      nav: true,  title: 'About' },
+        { route: 'news',       name: 'news',      moduleId: './news',      nav: true,  title: 'News' },
+        { route: 'bookshelf',  name: 'bookshelf', moduleId: './bookshelf', nav: true,  title: 'Book Shelf'},
+				{ route: 'login',      name: 'login',     moduleId: './login',     nav: false, title: 'Login'},
+				{ route: 'dashboard',  name: 'dashboard-router',  moduleId: './dashboard-router', nav: false, title: 'Dashboard', auth:true}
       ]);
     };
 
 		this.router.configure(theAppRouterConfig);
 	}
-
 }

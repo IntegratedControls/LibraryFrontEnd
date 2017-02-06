@@ -206,7 +206,7 @@ div.au-stagger {
 
 /*Custom CSS Starts here*/
 .navbar-custom{
-  background-color:#496067;
+  background-color:#1b2a33;
   color:white;
   position: relative;
   min-height: 50px;
@@ -253,7 +253,7 @@ div.au-stagger {
 
 .material-content-h1{
   font-size:34px;
-  color:green;
+  color:#3e87e8;
 }
 .material-content-p{
   /*max-width: 400px;*/
@@ -282,7 +282,7 @@ div.au-stagger {
   /*overflow-x: hidden;
   overflow-y: auto;
   min-height:120px;*/
-  background-color:#496067;
+  background-color:#1b2a33;
   margin-bottom: auto;
   /*width: 1000px;*/
 }
