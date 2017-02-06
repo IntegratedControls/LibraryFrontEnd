@@ -23,7 +23,6 @@ th, td {
   text-align: left;
 }
 
-
 .splash {
   text-align: center;
   margin: 10% 0 0 0;
@@ -317,6 +316,7 @@ div.au-stagger {
 {
   text-align: center;
 }
+
 .search-table-outer {
   overflow-x: auto;
 }
