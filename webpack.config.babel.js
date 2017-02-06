@@ -28,7 +28,7 @@ process.env.BABEL_ENV = 'webpack'
 const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development')
 
 // basic configuration:
-const title = 'Our Hands and Feet'
+const title = 'CST Library'
 const baseUrl = '/'
 const rootDir = path.resolve()
 const srcDir = path.resolve('src')

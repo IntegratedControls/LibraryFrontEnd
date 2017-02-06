@@ -5,8 +5,8 @@
   "main": "dist/main.js",
   "productName": "ourhandsandfeet",
   "engines": {
-    "node": "7.4.0",
-    "npm": "4.0.5"
+    "node": "7.5.0",
+    "npm": "4.1.2"
   },
   "scripts": {
     "pretest": "del-cli \"coverage/*\"",
