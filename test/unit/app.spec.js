@@ -1,14 +1,6 @@
-import Counter from 'assertions-counter'
-import {App} from '../../src/app';
 
-//
-// class AppStub{
-//   constructor(){
-//     var authenticated=true;
-//     var email='it@it.com';
-//     var password='password';
-//   }
-// }
+const Counter = require('assertions-counter');
+import {App} from '../../src/app';
 
 class AuthStub {
   setToken(token) {
@@ -69,17 +61,16 @@ class AuthStub2 {
 
 class RouterStub {
   configure() {
-
   }
 }
 
 class HttpStub {
   configure(fn) {
-    this.__configureCallback = fn
+    this.__configureCallback = fn;
     return this.__configureReturns;
   }
   fetch(fn) {
-    this.__fetchCallback = fn
+    this.__fetchCallback = fn;
     return Promise.resolve(this.__fetchResolves);
   }
 }
@@ -91,32 +82,29 @@ describe('the App module', () => {
     app1 = new App(null, null, new AuthStub(), new RouterStub(), new HttpStub());
     app1.auth.setToken('No token');
     app2 = new App(null, null, new AuthStub2(), new RouterStub(), new HttpStub());
-  
   });
   it('the user id should be undefined from getUser function when not authenticated', ()=> {
     app2.getUser();
     expect(app2.uid).toBe(undefined);
-
   });
 
   it('tests configHttpClient', (done) => {
     const { add: ok } = new Counter(2, done);
-    app1.auth.tokenInterceptor = 'tokenInterceptor'
+    app1.auth.tokenInterceptor = 'tokenInterceptor';
     app1.configHttpClient();
     app1.httpClient.__configureCallback(new(class {
       withDefaults(opts) {
-        expect(opts.mode).toBe('cors')
-        ok()
-        return this
-       }
+        expect(opts.mode).toBe('cors');
+        ok();
+        return this;
+      }
       withInterceptor(token) {
-        expect(token).toBe(app1.auth.tokenInterceptor)
-        ok()
-        return this
-       }
-    })())
+        expect(token).toBe(app1.auth.tokenInterceptor);
+        ok();
+        return this;
+      }
+    })());
   });
-
 
   it('tests logout', () => {
     //console.log(app1);
@@ -124,6 +112,4 @@ describe('the App module', () => {
     app1.logout();
     expect(app1.authenticated).toBe(false);
   });
-
-
 });

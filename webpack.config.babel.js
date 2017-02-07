@@ -22,15 +22,16 @@ import copyFiles from '@easy-webpack/config-copy-files'
 import uglify from '@easy-webpack/config-uglify'
 import generateCoverage from '@easy-webpack/config-test-coverage-istanbul'
 import webpack from 'webpack'
+import dotenv from 'dotenv'
 
-
+dotenv.config({path:'.env'})
 process.env.BABEL_ENV = 'webpack'
 const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development')
 
 // basic configuration:
 const title = 'CST Library'
 const baseUrl = '/'
-const rootDir = path.resolve()
+const rootDir = path.resolve();
 const srcDir = path.resolve('src')
 const outDir = path.resolve('dist')
 
@@ -44,9 +45,8 @@ const coreBundles = {
     'bluebird',
     'aurelia-polymer',
     'aurelia-auth',
-    'aurelia-environment',
-    'au-table'
-    //'aurelia-files'
+    'au-table',
+    'aurelia-environment'
   ],
   // these will be included in the 'aurelia' bundle (except for the above bootstrap packages)
   aurelia: [
@@ -75,8 +75,8 @@ const coreBundles = {
     'aurelia-templating-resources',
     'aurelia-polymer',
     'aurelia-auth',
-    'aurelia-environment',
-    'au-table'
+    'au-table',
+    'aurelia-environment'
     // 'aurelia-files'
   ]
 }
@@ -121,6 +121,7 @@ let config = generateConfig(
   globalJquery(),
   globalRegenerator(),
   generateIndexHtml({minify: ENV === 'production'}),
+  copyFiles({patterns: [{ from: '.env', to: './'}]}),
   {
     plugins: [
       new webpack.ProvidePlugin({
@@ -133,15 +134,28 @@ let config = generateConfig(
 
   ...(ENV === 'production' || ENV === 'development' ? [
     commonChunksOptimize({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
-    copyFiles({patterns: [{ from: 'favicon.ico', to: 'favicon.ico' },
-    { from: 'aurelia.env', to: 'aurelia.env'}]})
+    copyFiles({patterns: [{ from: 'favicon.ico', to: 'favicon.ico' }
+    ]})
   ] : [
     /* ENV === 'test' */
     generateCoverage({ options: { 'force-sourcemap': true, esModules: true }})
   ]),
 
+  // ENV != 'production' ? [
+  //   copyFiles({patterns: [
+  //   { from: '.env', to: './'}]})
+  // ]:
+
   ENV === 'production' ?
     uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
+
+    ,{plugins: [new webpack.EnvironmentPlugin(['NODE_ENV', 'AuthProductionBaseURL', 'PORT', 'BackendUrl', 'GoogleClientId'])]}
+    ,{plugins: [new webpack.DefinePlugin({'process.env': Object.keys(process.env).reduce((o, k) => {
+      o[k] = JSON.stringify(process.env[k]);
+      return o;
+    }, {})})]}
+
+    ,{devServer: {port: parseInt(process.env.PORT)}}
 )
 
 module.exports = stripMetadata(config)

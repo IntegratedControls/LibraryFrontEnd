@@ -1,7 +1,7 @@
 // import {inject} from 'aurelia-framework';
- import {AppRouterConfig} from '../../src/app.router.config';
- import {AuthorizeStep} from 'aurelia-auth';
- import {Router} from 'aurelia-router';
+import {AppRouterConfig} from '../../src/app.router.config';
+import {AuthorizeStep} from 'aurelia-auth';
+import {Router} from 'aurelia-router';
 //
 // import {Router} from 'aurelia-router';
 // import AppRouterConfig from "../../src/app.router.config";
@@ -39,7 +39,7 @@ describe('the app.router.config module', () => {
   });
 
   it('configures the router title', () => {
-    expect(sut.router.title).toEqual('CST Library');
+    expect(sut.router.title).toEqual('Our Hands and Feet');
   });
 
   it('should have an About route', () => {
@@ -52,6 +52,10 @@ describe('the app.router.config module', () => {
 
   it('should have a login route', () => {
     expect(sut.router.routes).toContain({ route: 'login', name: 'login', moduleId: './login', nav: false, title: 'Login' });
+  });
+
+  it('should have a dashboard route', () => {
+    expect(sut.router.routes).toContain({ route: 'dashboard', name: 'dashboard-router', moduleId: './dashboard-router', nav: false, title: 'Dashboard', auth:true });
   });
 
   // it('should have a login route', () => {

@@ -1,49 +1,40 @@
 <template>
-  <h1 class="material-content-h1" style="margin-bottom: 10px;">Our Bookshelf</h1>
-  <paper-material elevation="0" style="text-align: center;">
-    <div class="search-table-outer">
-      <table aurelia-table="data.bind: books; display-data.bind: $displayData" class="bookshelf">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Author</th>
-            <th>Number of Pages</th>
-            <th>Date of Publication</th>
-            <th>URL</th>
-            <th>ISBN</th>
-            <th>Site Location</th>
-            <th>Number of Copies</th>
-            <th>Comments</th>
-
-
-            <!-- <th>Second Genre</th>
-            <th>Third Genre</th> -->
-            <!-- <th>Band Manager</th>
-            <th>Manager's Email</th>
-            <th>Manager's Phone #</th> -->
-          </tr>
-        </thead>
-        <tbody>
-
-          <tr repeat.for="book of $displayData">
-
-            <td>${book.title}</td>
-            <td>${book.type}</td>
-            <td>${book.author}</td>
-            <td>${book.numberPages}</td>
-            <td>${book.dateOfPub}</td>
-            <td>${book.url}</td>
-            <td>${book.isbn}</td>
-            <td>${book.siteLocation}</td>
-            <td>${book.numberOfCopies}</td>
-            <td>${book.comments}</td>
-
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-
-  </paper-material>
+  <div class="page-content">
+    <h1 class="material-content-h1" style="margin-bottom: 10px;">Our Book Shelf</h1>
+    <paper-material elevation="2" style="text-align: center;">
+      <div class="search-table-outer">
+        <table aurelia-table="data.bind: books; display-data.bind: $displayData" class="bookshelf">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Author</th>
+              <th>Number of Pages</th>
+              <th>Date of Publication</th>
+              <th>URL</th>
+              <th>ISBN</th>
+              <th>Site Location</th>
+              <th>Number of Copies</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr repeat.for="book of $displayData">
+              <td>${book.title}</td>
+              <td>${book.type}</td>
+              <td>${book.author}</td>
+              <td>${book.numberPages}</td>
+              <td>${book.dateOfPub}</td>
+              <td>${book.url}</td>
+              <td>${book.isbn}</td>
+              <td>${book.siteLocation}</td>
+              <td>${book.numberOfCopies}</td>
+              <td>${book.comments}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>&nbsp;</p>
+      </div>
+    </paper-material>
+  <div>
 </template>
