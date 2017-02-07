@@ -1,31 +1,32 @@
 import {Bookshelf} from '../../src/bookshelf';
 
-import Counter from 'assertions-counter'
-
-
 class HttpStub {
-
   fetch(fn) {
+    var response = this.itemStub;
     this.__fetchCallback = fn
-    return Promise.resolve(this.__fetchResolves);
+    return new Promise((resolve) => {
+      resolve({ json: () => response });
+    });
   }
 }
 
 describe('the bookshelf module', () => {
-  var bookshelf1;
-  //var app2;
-  beforeEach(() => {
-    bookshelf1 = new Bookshelf(new HttpStub());
-
-  });
 
 
   it('gets all books', () => {
-    //console.log(app1);
-    bookshelf1.getBooks();
-    //app1.logout();
-    expect(bookshelf1.books).toBe(null);
+
+    var itemStubs = [1];
+    var itemFake = [2];
+    var http = new HttpStub();
+    http.itemStub = itemStubs;
+
+    var bookshelf1 = new Bookshelf(http);
+
+    bookshelf1.activate().then(() => {
+      expect(bookshelf1.books).toBe(itemStubs);
+      expect(bookshelf1.books).not.toBe(itemFake);
+      done();
+    });
   });
-
-
 });
+
