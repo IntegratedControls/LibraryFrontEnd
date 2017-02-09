@@ -1,6 +1,7 @@
 {
 "extends": "../../node_modules/aurelia-tools/.eslintrc.json",
   "rules": {
-    "no-var": 0
+    "no-var": [0, "never"],
+    "no-trailing-spaces": [ 1, {"skipBlankLines" : true}]
   }
 }

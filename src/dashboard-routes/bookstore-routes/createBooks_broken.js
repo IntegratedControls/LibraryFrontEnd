@@ -2,11 +2,12 @@ import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
 
-@inject(HttpClient, Router)
+@inject(HttpClient, Router, FileReader)
 export class CreateBookDashboard {
-  constructor(httpClient, router){
+  constructor(httpClient, router, reader){
     this.httpClient = httpClient;
     this.router = router;
+    this.reader = reader;
     this.newBook = {
       'title': '',
       'type': 'book',
@@ -24,14 +25,14 @@ export class CreateBookDashboard {
   newBook = null;
   CSVFilePath = {files: ['']};
   fileList = '';
-  
+
   createBook(){
     if (this.newBook.type !== 0){
       this.newBook.type = this.types[this.newBook.type - 1];
     } else {
       this.newBook.type = 'book';
     }
-    
+
     this.httpClient.fetch(process.env.BackendUrl + '/book/', {
       method: 'post',
       body: json(this.newBook)
@@ -42,7 +43,7 @@ export class CreateBookDashboard {
       this.router.navigate('/bookshelf');
     });
   }
-  
+
   createBooksFromCSV(){
     let jsonObj;
     const httpClient = this.httpClient;
@@ -68,13 +69,12 @@ export class CreateBookDashboard {
         router.navigate('/bookshelf');
       });
     }
-    if (CSVFilePath.files[0] !== ''){
+    if (this.CSVFilePath.files[0] !== ''){
       // TODO: Parse all csv files
       // TODO: add check for browser support of FileReader
-      let reader = new FileReader();
-      reader.readAsText(CSVFilePath.files[0]);
-      reader.onload = loaded;
-      reader.onerror = errorHandler;
+      this.reader.onload = loaded;
+      this.reader.onerror = errorHandler;
+      this.reader.readAsText(this.CSVFilePath.files[0]);
     }
   }
 }

@@ -25,7 +25,7 @@ require('aurelia-bootstrapper-webpack');
  * any file that ends with spec.js and get its path. By passing in true
  * we say do this recursively
  */
-var testContext = require.context('./unit', true, /\.spec\.(ts|js)/);
+let testContext = require.context('./unit', true, /\.spec\.(ts|js)/);
 
 /*
  * get all the files, for each file, call the context function
@@ -37,4 +37,4 @@ function requireAll(requireContext) {
 }
 
 // requires and returns all modules that match
-var modules = requireAll(testContext);
+modules = requireAll(testContext);
