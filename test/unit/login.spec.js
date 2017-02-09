@@ -1,9 +1,9 @@
 import {Login} from '../../src/login';
-import {AuthService} from 'aurelia-auth';
-import{App} from "../../src/app";
+//import {AuthService} from 'aurelia-auth';
+import {App} from '../../src/app';
 
 class AuthStub {
-
+  
   authenticate() {
     var response = 'user is authenticated';
     return new Promise((resolve)=>{
@@ -38,20 +38,16 @@ class AuthStub {
   }
 }
 
-
-
-
-
 describe('the Login module', () => {
   var sut;
   var app1;
   //var http;
-
+  
   beforeEach(() => {
     app1 = new App(null, null, new AuthStub(), null, null);
     sut = new Login(new AuthStub(), app1);
   });
-
+  
   it('runs the authenticate function', (done) => {
     // let itemStubs = [1];
     // //let itemFake = [2];

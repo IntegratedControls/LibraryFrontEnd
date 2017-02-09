@@ -83,7 +83,7 @@ describe('the App module', () => {
     app1.auth.setToken('No token');
     app2 = new App(null, null, new AuthStub2(), new RouterStub(), new HttpStub());
   });
-  it('the user id should be undefined from getUser function when not authenticated', ()=> {
+  it('should set user id as undefined from getUser function when not authenticated', ()=> {
     app2.getUser();
     expect(app2.uid).toBe(undefined);
   });

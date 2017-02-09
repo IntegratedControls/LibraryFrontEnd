@@ -10,6 +10,8 @@
   },
   "scripts": {
     "pretest": "del-cli \"coverage/*\"",
+    "installtest": "npm install && npm test",
+    "cleaninstall": "rm -rf node_modules && npm cache clean && npm install",
     "postinstall": "bower install && npm run build:prod",
     "test": "cross-env BABEL_ENV=node NODE_ENV=test ./node_modules/karma/bin/karma start test/karma.conf.js",
     "test:debug": "npm test -- --single-run=false --auto-watch=true --debug",
@@ -47,14 +49,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/IntegratedControls/LibraryFrontEnd.git"
+    "url": "git+ssh://git@github.com/IntergatedControls/LibraryFrontEnd.git"
   },
   "keywords": [
     "aurelia",
     "webpack"
   ],
   "license": "MIT",
-  "author": "Librarians<>",
+  "author": "Librarians",
   "contributors": [
     {
       "name": ""
@@ -66,7 +68,7 @@
   "bugs": {
     "url": ""
   },
-  "homepage": "",
+  "homepage": "www.ourhandsandfeet.org",
   "aurelia": {
     "build": {
       "resources": [
@@ -75,10 +77,10 @@
         "aurelia-auth",
         "aurelia-auth/auth-filter",
         "au-table/dist/amd",
-        "au-table/dist/amd/au-table-pagination",
-        "aurelia-environment"
+        "au-table/dist/amd/au-table-pagination"
       ],
       "includeDependencies": [
+        "!aurelia-files",
         "!http-server",
         "!bower",
         "!vulcanize",
@@ -106,7 +108,6 @@
         "!aurelia-polymer",
         "!aurelia-protractor-plugin",
         "!aurelia-tools",
-        "!aurelia-environment",
         "!babel-eslint",
         "!babel-plugin-istanbul",
         "!babel-plugin-transform-class-properties",
@@ -139,9 +140,9 @@
     "au-table": "^0.1.12",
     "aurelia-auth": "^3.0.5",
     "aurelia-bootstrapper-webpack": "^1.1.0",
-    "aurelia-environment": "^0.1.7",
     "aurelia-event-aggregator": "^1.0.1",
     "aurelia-fetch-client": "^1.1.0",
+    "aurelia-files": "^0.1.3",
     "aurelia-framework": "^1.0.8",
     "aurelia-history-browser": "^1.0.0",
     "aurelia-loader-webpack": "^2.0.0",
