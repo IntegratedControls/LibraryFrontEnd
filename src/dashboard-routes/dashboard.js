@@ -16,7 +16,7 @@ export class Dashboard {
 
   authenticated=false;
   firstTimeInfo = false;
-  types=['Charity', 'Volunteer'];
+  //types=['Charity', 'Volunteer'];
 
   getUser(){
     this.authenticated = this.auth.isAuthenticated();
