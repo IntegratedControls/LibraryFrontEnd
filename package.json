@@ -114,7 +114,9 @@
         "!babel-plugin-transform-decorators-legacy",
         "!babel-preset-env",
         "!babel-register",
-        "!dotenv"
+        "!dotenv",
+        "!aurelia-bootstrapper",
+        "!aurelia-testing"
       ]
     }
   },
@@ -176,7 +178,9 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.1",
     "vulcanize": "^1.15.3",
-    "webpack": "2.2.0"
+    "webpack": "2.2.0",
+    "aurelia-bootstrapper": "^2.0.1",
+    "aurelia-testing": "^1.0.0-beta.2.0.1"
   },
   "devDependencies": {
     "assertions-counter": "^0.0.1",
