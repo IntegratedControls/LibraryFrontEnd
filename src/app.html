@@ -19,8 +19,8 @@
           </paper-item>
           <paper-item if.bind="authenticated">
             <a href="#/dashboard">Dashboard</a></paper-item>
-            <!--<paper-item if.bind="!authenticated">
-              <a href="#/login">Login</a></paper-item> -->
+            <paper-item if.bind="!authenticated">
+              <a href="#/login">Login</a></paper-item>
               <paper-item if.bind="authenticated">
                 <a click.delegate="logout()">
                   Logout</a></paper-item>
