@@ -26,15 +26,15 @@ export class Dashboard {
     .then(data => {
       this.user = data;
       // this.firstTimeInfo = this.configured();
-      if (this.user.userType === 'Librarian'){
-        this.user.userType = 1;
-        this.router.navigate('librarian');
-      }
-      // } else if (this.user.userType === 'Volunteer'){
+      // if (this.user.userType === 'Librarian'){
+      //   this.user.userType = 1;
+      //   this.router.navigate('librarian');
+      // }
+    });
+      // else if (this.user.userType === 'Volunteer'){
       //   this.user.userType = 2;
       //   this.router.navigate('volunteer');
       // }
-    });
   }
 
   // updateUser(){
