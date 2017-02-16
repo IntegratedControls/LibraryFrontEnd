@@ -10,10 +10,11 @@ export class Login {
   }
 
   authenticate(name){
-    return this.auth.authenticate(name, false, null)
-    .then((response)=>{
-      this.auth.setToken(response.token);
+    let ret = this.auth.authenticate(name, false, null);
+    ret.then(data => {
+      this.auth.setToken(data.token);
       this.app.authenticated = this.auth.isAuthenticated();
-    });
+    }, undefined);
+    return ret;
   }
 }
