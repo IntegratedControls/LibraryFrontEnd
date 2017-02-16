@@ -1,69 +1,50 @@
 import {Login} from '../../src/login';
-//import {AuthService} from 'aurelia-auth';
-import {App} from '../../src/app';
 
 class AuthStub {
-  
-  authenticate() {
-    var response = 'user is authenticated';
-    return new Promise((resolve)=>{
-      resolve({json: ()=>response});
+  authenticated = false;
+  authenticate(name, f = false, o = null) {
+    return Promise.resolve({
+      name: name,
+      token: 'heyvgyuv38t327rvuiqt78b934ujwehgyq89ery8t'
     });
   }
   setToken(token) {
     this.token = token;
-  }
-  logout(data) {
-    //Logout
-    var response = 'user logged out';
-    return new Promise((resolve)=>{
-      resolve({json: ()=>response});
-    });
-  }
-  getMe() {
-    var response = 'This is user data';
-    return new Promise((resolve)=>{
-      resolve({json: ()=>response});
-    });
-  }
-  getTokenPayload() {
-    var response = this.token;
-    return new Promise((resolve)=>{
-      resolve({json: ()=>response});
-    });
+    this.authenticated = true;
   }
   isAuthenticated() {
-    this.authenticated = true;
     return this.authenticated;
   }
+}
+
+class AppStub {
+  authenticated = false;
 }
 
 describe('the Login module', () => {
   var sut;
   var app1;
-  //var http;
-  
+  var auth;
+
   beforeEach(() => {
-    app1 = new App(null, null, new AuthStub(), null, null);
-    sut = new Login(new AuthStub(), app1);
+    app1 = new AppStub();
+    auth = new AuthStub();
+    sut = new Login(auth, app1);
   });
-  
+
+  it('should expect authentication to function as rewritten.', done => {
+    sut.authenticate('google').then((data) => {
+      console.log(data); // disable this if you want to.
+      done();
+    }, null);
+  });
+
   it('runs the authenticate function', (done) => {
-    // let itemStubs = [1];
-    // //let itemFake = [2];
-    // let getHttp = () => {
-    //   http = new HttpStub();
-    //   http.itemStub = itemStubs;
-    //   return http;
-    // };
-    // var app = new AppStub();
-    //   // console.log(getHttp);
-    // sut = new Login(getHttp(), app);
-    // console.log(sut.auth.isAuthenticated());
-    // console.log(sut);
     sut.authenticate('google');
-    //expect is authenticated to be called
-    expect(sut.app.authenticated).toBe(true);
-    done();
+    //expect isAuthenticated to be called after the sut.authenticate is done calling to register change in authentication.
+    setTimeout(function() {
+      expect(sut.app.authenticated).toBe(true);
+      done();
+    }, 5);
   });
 });

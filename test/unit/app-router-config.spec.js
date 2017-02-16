@@ -16,7 +16,7 @@ class RouterStub {
     this.routes = routes;
   }
 
-  addPipelineStep(param1, param2){
+  addPipelineStep(param1, param2) {
     //do nothing
   }
 }
