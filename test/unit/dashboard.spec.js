@@ -79,80 +79,80 @@ describe('the Dashboard Module', () => {
       }).catch((e) => {
         expect(e).toThrow();
       });
-            done();
-        });
-
-        it("should check if the user is authenticated", done => {
-            expect(dashboard.auth.isAuthenticated()).toBeTruthy();
-            done();
-        });
-
-        it("should fetch some json data after api call", done => {
-            dashboard.httpClient.fetch('/some/data').then(data => {
-                expect(data).toBeDefined(); // check if the data is defined.
-            }, o => {
-                // else catch the reject.
-                expect(o).toBeUndefined();
-            });
-            done();
-        });
-
-        it("should expect change in http status after getUser call", done => {
-            dashboard.getUser();
-            expect(http.status).toBe(200);
-            done();
-        });
-
-        // it ("should confirm 200 http status after updateUser call", done => {
-        //     dashboard.getUser();
-        //     setTimeout(function () {
-        //         dashboard.updateUser();
-        //         expect(http.status).toBe(200);
-        //         done();
-        //     }, 5);
-        // });
-
-        // it("should return false for configured", done => {
-        //     dashboard.getUser();
-        //     setTimeout(function () {
-        //         expect(dashboard.configured()).toBeFalsy();
-        //         done();
-        //     }, 5);
-        // })
-
-        it("should expect change in http status after activate call", done => {
-            http = new HttpMock({name: "Iddris Elba", age: 22, userType: "Volunteer"});
-            auth = new AuthServiceMock();
-            dashboard = new Dashboard(auth, http, null, new RouterMock);
-            auth.setToken(token);
-            dashboard.activate();
-            setTimeout(function () {
-                expect(http.status).toBe(200);
-                done();
-            }, 10);
-        });
-
-        // it("should confirm route by returning the currently navigated route", done => {
-        //     expect(dashboard.router.navigate(dashboard.types[0])).toBe("Charity");
-        //     expect(dashboard.router.navigate(dashboard.types[1])).toBe("Volunteer");
-        //     done();
-        // });
+      done();
     });
 
-    describe("Staging Dashboard", () => {
-        beforeEach(() => {
-            dashboard = StageComponent
-                .withResources("src/dashboard")
-                .inView("<dashboard></dashboard>")
-                .boundTo({user: {name: "John Fitzgerald"}})
-        });
-        it("staging the dashboard", done => {
-            // let strap = dashboard.create(bootstrap)
-            // custom element incorporated. must be pure elements.
-            // dashboard.create(bootstrap).then(() => {
-                // console.log(document);
-            // }).catch(e => { console.log(e.toString()); } )
-            done();
-        });
+    it("should check if the user is authenticated", done => {
+      expect(dashboard.auth.isAuthenticated()).toBeTruthy();
+      done();
     });
+
+    it("should fetch some json data after api call", done => {
+      dashboard.httpClient.fetch('/some/data').then(data => {
+        expect(data).toBeDefined(); // check if the data is defined.
+      }, o => {
+        // else catch the reject.
+        expect(o).toBeUndefined();
+      });
+      done();
+    });
+
+    it("should expect change in http status after getUser call", done => {
+      dashboard.getUser();
+      expect(http.status).toBe(200);
+      done();
+    });
+
+    // it ("should confirm 200 http status after updateUser call", done => {
+    //     dashboard.getUser();
+    //     setTimeout(function () {
+    //         dashboard.updateUser();
+    //         expect(http.status).toBe(200);
+    //         done();
+    //     }, 5);
+    // });
+
+    // it("should return false for configured", done => {
+    //     dashboard.getUser();
+    //     setTimeout(function () {
+    //         expect(dashboard.configured()).toBeFalsy();
+    //         done();
+    //     }, 5);
+    // })
+
+    it("should expect change in http status after activate call", done => {
+      http = new HttpMock({name: "Iddris Elba", age: 22, userType: "Volunteer"});
+      auth = new AuthServiceMock();
+      dashboard = new Dashboard(auth, http, null, new RouterMock);
+      auth.setToken(token);
+      dashboard.activate();
+      setTimeout(function () {
+        expect(http.status).toBe(200);
+        done();
+      }, 10);
+    });
+
+    // it("should confirm route by returning the currently navigated route", done => {
+    //     expect(dashboard.router.navigate(dashboard.types[0])).toBe("Charity");
+    //     expect(dashboard.router.navigate(dashboard.types[1])).toBe("Volunteer");
+    //     done();
+    // });
+  });
+
+  describe("Staging Dashboard", () => {
+    beforeEach(() => {
+      dashboard = StageComponent
+      .withResources("src/dashboard")
+      .inView("<dashboard></dashboard>")
+      .boundTo({user: {name: "John Fitzgerald"}})
+    });
+    it("staging the dashboard", done => {
+      // let strap = dashboard.create(bootstrap)
+      // custom element incorporated. must be pure elements.
+      // dashboard.create(bootstrap).then(() => {
+      // console.log(document);
+      // }).catch(e => { console.log(e.toString()); } )
+      done();
+    });
+  });
 });

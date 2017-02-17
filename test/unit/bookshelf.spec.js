@@ -15,9 +15,9 @@ describe('the bookshelf module', () => {
     var itemFake = [2];
     var http = new HttpStub();
     http.itemStub = itemStubs;
-    
+
     let bookshelf1 = new Bookshelf(http);
-    
+
     bookshelf1.activate().then(() => {
       expect(bookshelf1.books).toBe(itemStubs);
       expect(bookshelf1.books).not.toBe(itemFake);

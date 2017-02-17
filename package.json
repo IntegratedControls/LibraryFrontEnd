@@ -38,7 +38,7 @@
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "cross-env NODE_ENV=development npm run webpack -- --progress --profile",
     "prebuild:prod": "npm run clean:dist",
-    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -r styles/imgs/ dist/styles/",
+    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -r styles/imgs/ dist/styles/;mkdir dist/bower_components;cp -r bower_components/webcomponentsjs/ dist/bower_components/",
     "start": "npm run server:dev",
     "server": "npm run server:dev",
     "server:dev": "cross-env NODE_ENV=development npm run webpack-dev-server -- --inline --progress --profile --watch",
@@ -141,6 +141,7 @@
     "@easy-webpack/core": "^2.0.1",
     "au-table": "^0.1.12",
     "aurelia-auth": "^3.0.5",
+    "aurelia-bootstrapper": "^2.0.1",
     "aurelia-bootstrapper-webpack": "^1.1.0",
     "aurelia-event-aggregator": "^1.0.1",
     "aurelia-fetch-client": "^1.1.0",
@@ -158,6 +159,7 @@
     "aurelia-templating-binding": "^1.2.0",
     "aurelia-templating-resources": "^1.2.0",
     "aurelia-templating-router": "^1.0.1",
+    "aurelia-testing": "^1.0.0-beta.2.0.1",
     "aurelia-tools": "^1.0.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-istanbul": "^3.1.2",
@@ -178,9 +180,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.1",
     "vulcanize": "^1.15.3",
-    "webpack": "2.2.0",
-    "aurelia-bootstrapper": "^2.0.1",
-    "aurelia-testing": "^1.0.0-beta.2.0.1"
+    "webpack": "2.2.0"
   },
   "devDependencies": {
     "assertions-counter": "^0.0.1",
