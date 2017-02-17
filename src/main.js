@@ -9,7 +9,6 @@ import config from '../authConfig';
 
 import * as Bluebird from 'bluebird';
 Bluebird.config({ warnings: false });
-
 export async function configure(aurelia) {
   if (process.env.NODE_ENV !== 'production'){
     aurelia.use
