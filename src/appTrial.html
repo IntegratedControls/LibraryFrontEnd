@@ -1,52 +1,52 @@
-<template>
-  <!--<px-app-nav nav-items='[{"path":"tab1","icon":"fa-home","label":"Home"},
+<!-- <template>
+  <px-app-nav nav-items='[{"path":"tab1","icon":"fa-home","label":"Home"},
   {"path":"tab2","icon":"fa-book","label":"Book Shelf"},
   {"path":"tab3","icon":"fa-sign-in","label":"Login"},
   {"path":"tab4","icon":"fa-desktop","label":"Dashboard"},
   {"path":"tab5","icon:"fa-sign-out","label":"Logout"}]'>
-  </px-app-nav> -->
+</px-app-nav> 
 
-  <div class="page-host">
-
-
-<div>
-                    <paper-material class="material-header" elevation="0">
-                      <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:100px">
-                      </paper-card>
-
-                      <paper-card  elevation="0" style="background-color:#1b2a33;top:-35px;left:5px;">
-                        <a style="display:block;color:white">
-                          <h3 class="material-header-h3-call">CST Library
-                          </h3></a>
-                      </paper-card >
-                    </paper-material>
-
-</div>
-<div>
-                  <paper-drawer-panel left-drawer>
-                      <router-view></router-view>
-                    <paper-header-panel drawer>
-                      <div>
-                        <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                          <a  paper-drawer-toggle style="display:block" href.bind="row.href">
-                            ${row.title}
-                          </a>
-                        </paper-item>
-                        <paper-item if.bind="authenticated">
-                          <a href="#/dashboard">Dashboard</a></paper-item>
-                          <paper-item if.bind="!authenticated">
-                            <a href="#/login">Login</a></paper-item>
-                            <paper-item if.bind="authenticated">
-                              <a click.delegate="logout()">
-                                Logout</a></paper-item>
-                              </div>
-                              <i class="fa fa-bars pull-right fa-3x" paper-drawer-toggle aria-hidden="true" style="position:absolute; top:70px;left:25px;"></i>
-
-                            </paper-header-panel>
-                </paper-drawer-panel>
-
-</div>
-                <nav-bar router.bind="router"></nav-bar>
-</div>
-
-            </template>
+<div class="page-host">
+  
+  
+  <div>
+    <paper-material class="material-header" elevation="0">
+      <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:100px">
+      </paper-card>
+      
+      <paper-card  elevation="0" style="background-color:#1b2a33;top:-35px;left:5px;">
+        <a style="display:block;color:white">
+          <h3 class="material-header-h3-call">CST Library
+          </h3></a>
+        </paper-card >
+      </paper-material>
+      
+    </div>
+    <div>
+      <paper-drawer-panel left-drawer>
+        <router-view></router-view>
+        <paper-header-panel drawer>
+          <div>
+            <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+              <a  paper-drawer-toggle style="display:block" href.bind="row.href">
+                ${row.title}
+              </a>
+            </paper-item>
+            <paper-item if.bind="authenticated">
+              <a href="#/dashboard">Dashboard</a></paper-item>
+              <paper-item if.bind="!authenticated">
+                <a href="#/login">Login</a></paper-item>
+                <paper-item if.bind="authenticated">
+                  <a click.delegate="logout()">
+                    Logout</a></paper-item>
+                  </div>
+                  <i class="fa fa-bars pull-right fa-3x" paper-drawer-toggle aria-hidden="true" style="position:absolute; top:70px;left:25px;"></i>
+                  
+                </paper-header-panel>
+              </paper-drawer-panel>
+              
+            </div>
+            <nav-bar router.bind="router"></nav-bar>
+          </div>
+          
+        </template> -->
