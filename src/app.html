@@ -3,58 +3,44 @@
   <div class="page-host">
     <paper-drawer-panel right-drawer>
       <paper-header-panel drawer>
-      <!--  <paper-material class="material-header" elevation="0">
-          <a style="display:block;color:white" href="tel:5404948035">
-            <h3 style="text-align:center; margin-right:250px; color:white; margin-top:0px; padding-top:15px; padding-bottom: 68px; font-size:22pt">
-              Call For<br>More Info:
-              <br>540-494-8035
-            </h3> -->
+      </paper-material>
+      <div>
+        <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a  paper-drawer-toggle style="display:block" href.bind="row.href">
+            ${row.title}
           </a>
-        </paper-material>
-        <div>
-          <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-            <a  paper-drawer-toggle style="display:block" href.bind="row.href">
-              ${row.title}
-            </a>
-          </paper-item>
-          <paper-item if.bind="authenticated">
-            <a href="#/dashboard">Dashboard</a></paper-item>
-            <paper-item if.bind="!authenticated">
-              <a href="#/login">Login</a></paper-item>
-              <paper-item if.bind="authenticated">
-                <a click.delegate="logout()">
-                  Logout</a></paper-item>
-                </div>
-              </paper-header-panel>
+        </paper-item>
+        <paper-item if.bind="authenticated">
+          <a href="#/dashboard">Dashboard</a></paper-item>
+          <paper-item if.bind="!authenticated">
+            <a href="#/login">Login</a></paper-item>
+            <paper-item if.bind="authenticated">
+              <a click.delegate="logout()">Logout</a></paper-item>
+            </div>
+          </paper-header-panel>
 
-                  <paper-header-panel main class="main-panel">
-                    <paper-material class="material-header" elevation="0">
-                      <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:100px">
-                      </paper-card>
+          <paper-header-panel main class="main-panel">
+            <paper-material class="material-header" elevation="0">
+              <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:100px">
+              </paper-card>
 
-                      <paper-card  elevation="0" style="background-color:#1b2a33;top:-35px;left:5px;">
-                        <a style="display:block;color:white">
-                          <h3 class="material-header-h3-call">CST Library
-                          </h3></a>
+              <paper-card elevation="0" style="background-color:#1b2a33;top:-35px;left:5px;">
+                <a style="display:block;color:white">
+                  <h3 class="material-header-h3-call">CST Library</h3></a>
+                  <!-- <h3 style="color:white" repeat.for="row of router.navigation" class="${row.isActive ? '' : 'hidden'}">
+                  <a  paper-drawer-toggle style="display:block;color:white" href.bind="row.href">
+                  ${row.title}
+                </a></h3> -->
+              </paper-card >
+            </paper-material>
 
-                          <!-- <h3 style="color:white" repeat.for="row of router.navigation" class="${row.isActive ? '' : 'hidden'}">
-                          <a  paper-drawer-toggle style="display:block;color:white" href.bind="row.href">
-                          ${row.title}
-                        </a></h3> -->
-                      </paper-card >
-                    </paper-material>
+            <i class="fa fa-bars pull-right fa-3x whiteicon" paper-drawer-toggle aria-hidden="true" style="position:absolute; top:70px;right:25px;"></i>
+            <router-view></router-view>
 
-                    <i class="fa fa-bars pull-right fa-3x whiteicon" paper-drawer-toggle aria-hidden="true" style="position:absolute; top:70px;right:25px;"></i>
-                    <router-view></router-view>
+          </paper-header-panel>
+        </paper-drawer-panel>
 
+        <nav-bar router.bind="router"></nav-bar>
 
-                  </paper-header-panel>
-                </paper-drawer-panel>
-
-
-                <nav-bar router.bind="router"></nav-bar>
-
-
-
-              </div>
-            </template>
+      </div>
+    </template>
