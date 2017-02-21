@@ -43,6 +43,12 @@ td {
   border-left:1px solid black; */
 }
 
+.paper-drawer-panel {
+  --paper-drawer-panel-left-drawer-container: {
+    background-color: #1b2a33;
+  };
+}
+
 .splash .fa-spinner {
   text-align: center;
   display: inline-block;
@@ -51,7 +57,8 @@ td {
 }
 
 #page-content {
-  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 10px;
 }
 
 .page-host {
@@ -252,10 +259,6 @@ div.au-stagger {
 .material-content-h2 {
   text-align: center;
   font-size: 30px;
-}
-
-.material-content-button {
-
 }
 
 .material-content-p {
