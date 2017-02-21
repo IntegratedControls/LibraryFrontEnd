@@ -14,22 +14,22 @@
         </div>
         <div class="fit divmargin">
           <paper-drawer-panel>
-            <div drawer>
+            <div drawer class="left-drawer">
               <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                 <!--TODO syntax for working icons ${row.icon} -->
-                <a  paper-drawer-toggle style="display:block" href.bind="row.href">
+                <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
                   ${row.title}
                 </a>
               </paper-item>
               <paper-item if.bind="authenticated">
                 <a href="#/dashboard">Dashboard</a></paper-item>
                 <paper-item if.bind="!authenticated">
-                  <a href="#/login">Login</a></paper-item>
+                  <a href="#/login" style="color: white">Login</a></paper-item>
                   <paper-item if.bind="authenticated">
-                    <a click.delegate="logout()">Logout</a></paper-item>
+                    <a click.delegate="logout()" style="color: white">Logout</a></paper-item>
                   </div>
                   <div main>
-                    <i class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
+                    <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
                     <router-view></router-view>
                   </div>
                 </paper-drawer-panel>
