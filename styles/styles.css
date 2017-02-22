@@ -43,11 +43,11 @@ td {
   border-left:1px solid black; */
 }
 
-.paper-drawer-panel {
+/*.paper-drawer-panel {
   --paper-drawer-panel-left-drawer-container: {
     background-color: #1b2a33;
   };
-}
+}*/
 
 .splash .fa-spinner {
   text-align: center;
@@ -57,7 +57,7 @@ td {
 }
 
 #page-content {
-  border-left: 1px solid black;
+  /*border-left: 1px solid black;*/
   padding-left: 10px;
 }
 
@@ -244,16 +244,15 @@ div.au-stagger {
   /* max-width:1000px;
   margin-left:auto;
   margin-right:auto; */
-  padding-bottom: 10px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
 }
 
 .material-content-h1 {
   text-align: left;
   font-size: 34px;
   color: #3e87e8;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .material-content-h2 {
