@@ -50,9 +50,9 @@ describe('the app.router.config module', () => {
     expect(sut.router.routes).toContain({ route: 'bookshelf', name: 'bookshelf', moduleId: './bookshelf', nav: true, title: 'Book Shelf', settings: 'fa fa-book'});
   });
 
-  it('should have a Create Books route', () => {
-    expect(sut.router.routes).toContain({ route: 'createbooks', name: 'createbooks', moduleId: './createBooks', nav: false, title: 'Create Books', settings: 'fa fa-plus'});
-  });
+  // it('should have a Create Books route', () => {
+  //   expect(sut.router.routes).toContain({ route: 'createbooks', name: 'createbooks', moduleId: './createBooks', nav: false, title: 'Create Books', settings: 'fa fa-plus'});
+  // });
 
   it('should have a login route', () => {
     expect(sut.router.routes).toContain({ route: 'login', name: 'login', moduleId: './login', nav: false, title: 'Login', settings: 'fa fa-sign-in'});
@@ -63,6 +63,6 @@ describe('the app.router.config module', () => {
   });
 
   it('should have a news route', () => {
-    expect(sut.router.routes).toContain({ route: 'news', name: 'news', moduleId: './news', nav: true, title: 'Release Notes', settings: 'fa fa-file-text-o' });
+    expect(sut.router.routes).toContain({ route: 'releasenotes', name: 'releasenotes', moduleId: './releasenotes', nav: true, title: 'Release Notes', settings: 'fa fa-file-text-o' });
   });
 });
