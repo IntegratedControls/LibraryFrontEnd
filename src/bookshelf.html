@@ -9,27 +9,24 @@
               <th>Title</th>
               <th>Type</th>
               <th>Author</th>
-              <th>Number of Pages</th>
-              <th>Date of Publication</th>
-              <th>URL</th>
-              <th>ISBN</th>
-              <th>Site Location</th>
-              <th>Number of Copies</th>
-              <th>Comments</th>
+              <th>Pages</th>
+              <th>Year</th>
+              <th>Site</th>
+              <th>Copies</th>
+              <!-- <th>Comments</th> -->
             </tr>
           </thead>
           <tbody>
             <tr repeat.for="book of $displayData">
-              <td>${book.title}</td>
+              <td><a show.bind="book.url" href="${book.url}">
+                ${book.title}</a><span if.bind="!book.url">${book.title}</span></td>
               <td>${book.type}</td>
               <td>${book.author}</td>
               <td>${book.numberPages}</td>
               <td>${book.dateOfPub}</td>
-              <td>${book.url}</td>
-              <td>${book.isbn}</td>
               <td>${book.siteLocation}</td>
               <td>${book.numberOfCopies}</td>
-              <td>${book.comments}</td>
+              <!-- <td>${book.comments}</td> -->
             </tr>
           </tbody>
         </table>
