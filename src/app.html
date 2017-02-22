@@ -12,7 +12,7 @@
             </paper-card >
           </paper-material>
         </div>
-        <div class="fit divmargin">
+        <!-- <div class="fit divmargin"> -->
           <paper-drawer-panel>
             <div drawer class="left-drawer">
               <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
@@ -30,12 +30,12 @@
                   <paper-item if.bind="authenticated">
                     <a click.delegate="logout()" style="color: white; font-size: 18px" class="fa fa-sign-out">&nbsp;&nbsp;Logout</a></paper-item>
                   </div>
-                  <div main>
+                  <div main class="main-content">
                     <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
                     <router-view></router-view>
                   </div>
                 </paper-drawer-panel>
-              </div>
+              <!-- </div> -->
             </paper-header-panel>
           </div>
         </template>

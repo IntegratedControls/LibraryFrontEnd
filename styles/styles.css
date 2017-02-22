@@ -336,6 +336,8 @@ div.au-stagger {
 .left-drawer {
   background-color: #1b2a33;
 }
-
+ .main-content {
+   overflow-y: auto;
+ }
 
 /* .search-table{table-layout: fixed; margin:40px auto;} */
