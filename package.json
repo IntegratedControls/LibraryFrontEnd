@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "productName": "CSTLibrary",
   "engines": {
-    "node": "7.5.0",
+    "node": "7.6.0",
     "npm": "4.1.2"
   },
   "scripts": {
