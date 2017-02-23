@@ -13,6 +13,7 @@
               <th>Year</th>
               <th>Site</th>
               <th>Copies</th>
+              <th>Access</th>
               <!-- <th>Comments</th> -->
             </tr>
           </thead>
@@ -20,18 +21,19 @@
             <tr repeat.for="book of $displayData">
               <td><a show.bind="book.url" href="${book.url}">
                 ${book.title}</a><span if.bind="!book.url">${book.title}</span></td>
-              <td>${book.type}</td>
-              <td>${book.author}</td>
-              <td>${book.numberPages}</td>
-              <td>${book.dateOfPub}</td>
-              <td>${book.siteLocation}</td>
-              <td>${book.numberOfCopies}</td>
-              <!-- <td>${book.comments}</td> -->
-            </tr>
-          </tbody>
-        </table>
-        <p>&nbsp;</p>
-      </div>
-    </paper-material>
-  </div>
-</template>
+                <td>${book.type}</td>
+                <td>${book.author}</td>
+                <td>${book.numberPages}</td>
+                <td>${book.dateOfPub}</td>
+                <td>${book.siteLocation}</td>
+                <td>${book.numberOfCopies}</td>
+                <td>${book.access}</td>
+                <!-- <td>${book.comments}</td> -->
+              </tr>
+            </tbody>
+          </table>
+          <p>&nbsp;</p>
+        </div>
+      </paper-material>
+    </div>
+  </template>
