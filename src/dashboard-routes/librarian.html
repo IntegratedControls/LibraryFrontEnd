@@ -25,6 +25,14 @@
         <paper-input  value.two-way="newBook.isbn" label="Catalog Number" ></paper-input>
         <paper-input  value.two-way="newBook.siteLocation" label="Site Location (if physical book)" ></paper-input>
         <paper-input  value.two-way="newBook.numberOfCopies" label="# of Copies (if physical book)" ></paper-input>
+        <paper-dropdown-menu  label="Access">
+          <paper-listbox  required  selected.two-way="newBook.access" class="dropdown-content">
+            <paper-item value=""></paper-item>
+            <template is="dom-repeat" items.two-way="accessArray">
+              <paper-item model="{{item}}">{{item}}</paper-item>
+            </template>
+          </paper-listbox>
+        </paper-dropdown-menu>
         <paper-input  value.two-way="newBook.comments" label="Additional Instructions" ></paper-input>
         <paper-button style="margin:20px 3.5cm 0; background-color:#d8ecf3" raised click.trigger="createBook()">
           Create a Book</paper-button>

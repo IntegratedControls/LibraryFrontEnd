@@ -18,10 +18,12 @@ export class CreateBookDashboard {
       'isbn': '',
       'siteLocation': '',
       'numberOfCopies': 0,
+      'access': '',
       'comments': ''
     };
   }
   types = ['hardback', 'paperback', 'pdf', 'webpage', 'audiobook', 'gdoc'];
+  accessArray = ['GE Internal', 'Public'];
   newBook = null;
   CSVFilePath = {files: ['']};
   fileList = '';
@@ -32,7 +34,11 @@ export class CreateBookDashboard {
     } else {
       this.newBook.type = 'book';
     }
-
+    if (this.newBook.access !== 0){
+      this.newBook.access = this.accessArray[this.newBook.access - 1];
+    } else {
+      this.newBook.access = 'Public';
+    }
     this.httpClient.fetch(process.env.BackendUrl + '/book/', {
       method: 'post',
       body: json(this.newBook)
