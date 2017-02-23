@@ -34,10 +34,8 @@ describe('the dashboard-router module', () => {
   const config1 = new ConfigStub;
   config1.map([
     { route: '', name: 'dashboard', moduleId: './dashboard-routes/dashboard', nav: false, title: 'Dashboard', auth: true},
-    { route: 'volunteer', name: 'volunteer', moduleId: './dashboard-routes/volunteer-dashboard', nav: false, title: 'Volunteer', auth: true},
-    { route: 'charity', name: 'charity', moduleId: './dashboard-routes/charity-dashboard', nav: false, title: 'Charity', auth: true},
-    { route: 'library', name: 'library', moduleId: './dashboard-routes/store-manager-dashboard-router', nav: false, title: 'Store', auth: true}
-    //{ route: "info", name: 'info',       moduleId: './dashboard-routes/info',       nav: true, title: 'Information', auth:true }
+    { route: 'librarian', name: 'librarian', moduleId: './dashboard-routes/librarian', nav: false, title: 'Librarian', auth: true},
+    { route: 'reader', name: 'reader', moduleId: './dashboard-routes/reader', nav: false, title: 'Reader', auth: true}
   ]);
   sut = new DashboardRouter(mockedRouter);
   //sut.router = Router;

@@ -3,7 +3,7 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
 
 @inject(HttpClient, Router, FileReader)
-export class CreateBookDashboard {
+export class LibrarianDashboard {
   constructor(httpClient, router, reader){
     this.httpClient = httpClient;
     this.router = router;
