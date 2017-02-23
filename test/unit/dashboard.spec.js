@@ -8,7 +8,7 @@ class HttpMock {
   // this one catches the ajax and then resolves a custom json data.
   // real api calls will have more methods.
   constructor(data) {
-    this.user = data || {name: 'John Fitzgerald', age: 20, userType: 'Charity'};
+    this.user = data || {name: 'John Fitzgerald', userType: 'Reader'};
   }
   status = 500;
   headers = {accept: 'application/json', method: '', url: ''}
@@ -82,12 +82,12 @@ describe('the Dashboard Module', () => {
       done();
     });
 
-    it("should check if the user is authenticated", done => {
+    it('should check if the user is authenticated', done => {
       expect(dashboard.auth.isAuthenticated()).toBeTruthy();
       done();
     });
 
-    it("should fetch some json data after api call", done => {
+    it('should fetch some json data after api call', done => {
       dashboard.httpClient.fetch('/some/data').then(data => {
         expect(data).toBeDefined(); // check if the data is defined.
       }, o => {
@@ -97,7 +97,7 @@ describe('the Dashboard Module', () => {
       done();
     });
 
-    it("should expect change in http status after getUser call", done => {
+    it('should expect change in http status after getUser call', done => {
       dashboard.getUser();
       expect(http.status).toBe(200);
       done();
@@ -120,33 +120,33 @@ describe('the Dashboard Module', () => {
     //     }, 5);
     // })
 
-    it("should expect change in http status after activate call", done => {
-      http = new HttpMock({name: "Iddris Elba", age: 22, userType: "Volunteer"});
+    it('should expect change in http status after activate call', done => {
+      http = new HttpMock({name: 'Iddris Elba', userType: 'Librarian'});
       auth = new AuthServiceMock();
       dashboard = new Dashboard(auth, http, null, new RouterMock);
       auth.setToken(token);
       dashboard.activate();
-      setTimeout(function () {
+      setTimeout(function() {
         expect(http.status).toBe(200);
         done();
       }, 10);
     });
 
-    // it("should confirm route by returning the currently navigated route", done => {
-    //     expect(dashboard.router.navigate(dashboard.types[0])).toBe("Charity");
-    //     expect(dashboard.router.navigate(dashboard.types[1])).toBe("Volunteer");
-    //     done();
-    // });
+    it('should confirm route by returning the currently navigated route', done => {
+      expect(dashboard.router.navigate(dashboard.types[0])).toBe('Librarian');
+      expect(dashboard.router.navigate(dashboard.types[1])).toBe('Reader');
+      done();
+    });
   });
 
-  describe("Staging Dashboard", () => {
+  describe('Staging Dashboard', () => {
     beforeEach(() => {
       dashboard = StageComponent
-      .withResources("src/dashboard")
-      .inView("<dashboard></dashboard>")
-      .boundTo({user: {name: "John Fitzgerald"}})
+      .withResources('src/dashboard')
+      .inView('<dashboard></dashboard>')
+      .boundTo({user: {name: 'John Fitzgerald', userType: 'Reader'}});
     });
-    it("staging the dashboard", done => {
+    it('staging the dashboard', done => {
       // let strap = dashboard.create(bootstrap)
       // custom element incorporated. must be pure elements.
       // dashboard.create(bootstrap).then(() => {

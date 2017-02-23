@@ -1,8 +1,8 @@
-import {CreateBookDashboard} from '../../src/dashboard-routes/librarian';
+import {LibrarianDashboard} from '../../src/dashboard-routes/librarian';
 import {HttpClient} from 'aurelia-fetch-client';
 import './setup';
 import {Router} from 'aurelia-router';
-import {csvFixture} from './createBooks.spec.fixtures';
+import {csvFixture} from './librarian.spec.fixtures';
 import csvjson from 'csvjson';
 
 class HttpMock {
@@ -47,7 +47,7 @@ class RouterMock {
   }
 }
 
-describe('the createBook module', () => {
+describe('the librarian module', () => {
   let bookdashboard;
   let http;
   let router;
@@ -57,7 +57,7 @@ describe('the createBook module', () => {
     http = new HttpMock();
     router = new RouterMock();
     fileReaderStub = {};
-    bookdashboard = new CreateBookDashboard(http, router, fileReaderStub);
+    bookdashboard = new LibrarianDashboard(http, router, fileReaderStub);
     // add the new book csv from the fixtures object and use it as main data.
     bookdashboard.CSVFilePath = {files: [csvFixture.string]};
   });
@@ -80,12 +80,19 @@ describe('the createBook module', () => {
     done();
   });
 
+  it('should default to Public access when book access is undefined', done => {
+    bookdashboard.newBook.access = 0;
+    bookdashboard.createBook();
+    expect(http.status).toBe(200);
+    done();
+  });
+  
   // trying another option for testing the createBooksFromCSV();
   it('should confirm a http status change', done => {
     window.CSVFilePath = {files: [new Blob([csvFixture.string])] };
     let reader = new FileReader();
     http = new HttpMock();
-    bookdashboard = new CreateBookDashboard(http, router, reader);
+    bookdashboard = new LibrarianDashboard(http, router, reader);
     bookdashboard.createBooksFromCSV();
     // if dashbook.createBooksFromCSV is called, it should called the makeLotaBooks that
     // places a http call and HttpMock will respond to it and also change the status.
@@ -100,7 +107,7 @@ describe('the createBook module', () => {
     let reader = new FileReader();
     http = new HttpMock();
     let error = new Event('error');
-    bookdashboard = new CreateBookDashboard(http, router, reader);
+    bookdashboard = new LibrarianDashboard(http, router, reader);
     bookdashboard.createBooksFromCSV();
     // if dashbook.createBooksFromCSV is called, it should called the makeLotaBooks that
     // places a http call and HttpMock will respond to it and also change the status.

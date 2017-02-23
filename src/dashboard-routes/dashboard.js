@@ -15,8 +15,8 @@ export class Dashboard {
   }
 
   authenticated=false;
-  firstTimeInfo = false;
-  //types=['Charity', 'Volunteer'];
+  // firstTimeInfo = false;
+  types=['Librarian', 'Reader'];
 
   getUser(){
     this.authenticated = this.auth.isAuthenticated();
@@ -26,17 +26,15 @@ export class Dashboard {
     .then(data => {
       this.user = data;
       // this.firstTimeInfo = this.configured();
-      // if (this.user.userType === 'Librarian'){
-      //   this.user.userType = 1;
-      //   this.router.navigate('librarian');
-      // }
+      if (this.user.userType === 'Librarian'){
+        this.user.userType = 1;
+        this.router.navigate('librarian');
+      } else if (this.user.userType === 'Reader'){
+        this.user.userType = 2;
+        this.router.navigate('reader');
+      }
     });
-      // else if (this.user.userType === 'Volunteer'){
-      //   this.user.userType = 2;
-      //   this.router.navigate('volunteer');
-      // }
   }
-
   // updateUser(){
   //   let uid = this.auth.getTokenPayload().sub;
   //   let tempUserType = this.user.userType;
