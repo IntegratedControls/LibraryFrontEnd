@@ -62,7 +62,7 @@ describe('the app.router.config module', () => {
     expect(sut.router.routes).toContain({ route: 'dashboard', name: 'dashboard-router', moduleId: './dashboard-router', nav: false, title: 'Dashboard', auth: true, settings: 'fa fa-tachometer' });
   });
 
-  it('should have a news route', () => {
+  it('should have a release notes route', () => {
     expect(sut.router.routes).toContain({ route: 'releasenotes', name: 'releasenotes', moduleId: './releasenotes', nav: true, title: 'Release Notes', settings: 'fa fa-file-text-o' });
   });
 });

@@ -1,6 +1,6 @@
 //import {computedFrom} from 'aurelia-framework';
 
-export class News {
+export class releaseNotes {
   // heading = 'Welcome to the Aurelia Navigation App!';
   // firstName = 'John';
   // lastName = 'Doe';

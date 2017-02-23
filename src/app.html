@@ -22,11 +22,11 @@
                 </a>
               </paper-item>
               <paper-item if.bind="authenticated">
-                <a paper-drawer-toggle style="display:block; color: white; font-size: 18px" href="#/dashboard" class="fa fa-tachometer">&nbsp;&nbsp;Dashboard</a></paper-item>
+                <a paper-drawer-toggle style="display:block; color: white; font-size: 16px" href="#/dashboard" class="fa fa-tachometer">&nbsp;&nbsp;Dashboard</a></paper-item>
                 <br>
                 <br>
                 <paper-item if.bind="!authenticated">
-                  <a paper-drawer-toggle style="display:block; color: white; font-size: 18px" href="#/login" class="fa fa-sign-in">&nbsp;&nbsp;Login</a></paper-item>
+                  <a paper-drawer-toggle style="display:block; color: white; font-size: 16px" href="#/login" class="fa fa-sign-in">&nbsp;&nbsp;Login</a></paper-item>
                   <paper-item if.bind="authenticated">
                     <a click.delegate="logout()" style="color: white; font-size: 18px" class="fa fa-sign-out">&nbsp;&nbsp;Logout</a></paper-item>
                   </div>
