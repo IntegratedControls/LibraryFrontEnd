@@ -13,29 +13,41 @@
           </paper-material>
         </div>
         <!-- <div class="fit divmargin"> -->
-          <paper-drawer-panel>
-            <div drawer class="left-drawer">
-              <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
-                  <span class="${row.settings}"></span>
-                  &nbsp;${row.title}
-                </a>
-              </paper-item>
-              <paper-item if.bind="authenticated">
-                <a paper-drawer-toggle style="display:block; color: white; font-size: 16px" href="#/dashboard" class="fa fa-tachometer">&nbsp;&nbsp;Dashboard</a></paper-item>
-                <br>
-                <br>
-                <paper-item if.bind="!authenticated">
-                  <a paper-drawer-toggle style="display:block; color: white; font-size: 16px" href="#/login" class="fa fa-sign-in">&nbsp;&nbsp;Login</a></paper-item>
-                  <paper-item if.bind="authenticated">
-                    <a click.delegate="logout()" style="color: white; font-size: 18px" class="fa fa-sign-out">&nbsp;&nbsp;Logout</a></paper-item>
-                  </div>
-                  <div main class="main-content">
-                    <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
-                    <router-view></router-view>
-                  </div>
-                </paper-drawer-panel>
-              <!-- </div> -->
-            </paper-header-panel>
+        <paper-drawer-panel>
+          <div drawer class="left-drawer">
+            <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+              <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
+                <span class="${row.settings}"></span>
+                &nbsp;${row.title}
+              </a>
+            </paper-item>
+            <paper-item if.bind="authenticated">
+              <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
+                <span class="fa fa-tachometer"></span>
+                &nbsp;Dashboard
+              </a>
+            </paper-item>
+            <br>
+            <br>
+            <paper-item if.bind="!authenticated">
+              <a paper-drawer-toggle style="display:block; color: white" href="#/login">
+                <span class="fa fa-sign-in"></span>
+                &nbsp;Login
+              </a>
+            </paper-item>
+            <paper-item if.bind="authenticated">
+              <a click.delegate="logout()" style="color: white">
+                <span class="fa fa-sign-out"></span>
+                &nbsp;Logout
+              </a>
+            </paper-item>
           </div>
-        </template>
+          <div main class="main-content">
+            <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
+            <router-view></router-view>
+          </div>
+        </paper-drawer-panel>
+        <!-- </div> -->
+      </paper-header-panel>
+    </div>
+  </template>
