@@ -260,13 +260,22 @@ div.au-stagger {
   font-size: 30px;
 }
 
-.material-content-p {
-  /* max-width: 400px; */
+.material-content-release {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.material-content-heading {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 16px;
   text-align: left;
+  font-style: italic;
 }
 
 .material-content-p-bigger {

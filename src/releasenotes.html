@@ -3,29 +3,46 @@
 
     <h1 class="material-content-h1" style="margin-bottom: 10px">Release Notes</h1>
     <paper-material class="material-content" elevation="0">
-      <p class="material-content-p">Release v0.1</p>
+      <p class="material-content-release">Release v0.2</p>
+      <p class="material-content-heading">Enhancements:</p>
       <ul>
-        <li>Import a list of books from a .csv file or web form.</li>
-        <li>View a list of available books in a responsive table grid.</li>
+        <li>App accessible from Chrome, Safari, Firefox<sup>1</sup> and Edge</li>
+        <li>User types: Librarian, Reader</li>
+        <li>As Librarian, have access to librarian dashboard</li>
+        <li>As Reader, have access to reader dashboard</li>
+        <li>Attribute “access” added to books table: GE Internal, Public</li>
+        <li>Title of pdf is clickable url in bookshelf table</li>
+        <li>Log-in/log-out<sup>2</sup></li>
+        <li>Menu: repositioned, color changed, icons added, fonts matched, toggling<sup>3</sup></li>
+        <li>Release Notes moved to new page</li>
+        <li>100% statements coverage from test automation</li>
       </ul>
-      <!-- <div class="paper-card-img"><paper-card image="../styles/imgs/news.png"></paper-card></div>
-      <p class="material-content-p">This is some paragraph text here.</p>
-      <h2 class="material-content-h2">Here's Some News</h2>
-      <p class="material-content-p">This is some paragraph text here.</p>
-      <p>&nbsp;<p>
-      <h2 class="material-content-h2">Here's Even More News</h2>
-      <p class="material-content-p">This is some paragraph text here.</p>
-      <p>&nbsp;<p>
-      <h2 class="material-content-h2">Are You Tired Of News Yet?</h2>
-      <p class="material-content-p">There should be news here, not paragraph text. Eventually we will have cool news to report.</p> -->
+      <p style="font-size: 12px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>1</sup>&nbsp;User cannot log-in from Firefox<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup>&nbsp;Only Google is currently supported<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>3</sup>&nbsp;Toggle not working in Edge
+      </p>
+      <p class="material-content-heading">Known Issues:</p>
+      <ul>
+        <li>Internet Explorer not supported</li>
+        <li>Commas in CSV file not supported</li>
+        <li>Log-in from Firefox not supported</li>
+        <li>Toggle does not work in Edge, requires manual pull to the right to open</li>
+        <li>Google log-in does not work within GE network localhost (only effects development)</li>
+        <li>Interaction with cloud hosted data store (mLab) does not work within GE network localhost (only effects development)</li>
+      </ul>
+      <br>
+      <p class="material-content-release">Release v0.1</p>
+      <p class="material-content-heading">Functionality:</p>
+      <ul>
+        <li>Import a list of books from a CSV file or web form</li>
+        <li>View a list of available books in a responsive table grid</li>
+      </ul>
+      <p class="material-content-heading">Known Issues:</p>
+      <ul>
+        <li>Commas in CSV file not supported</li>
+        <li>Chrome is the only browser currently being supported</li>
+      </ul>
     </paper-material>
-    <!-- <paper-material class='material-content' elevation="2">
-    <H1 class="material-content-h1">Follow Us On Social Media</H1>
-    <div class="paper-card-img">
-    <a href="https://www.facebook.com/Our-Hands-and-Feet-350610878635036/"><i class="fa fa-facebook-square fa-5x" aria-hidden="true"></i></a>
-    <a href="https://twitter.com/OurHandsAndFee1"><i class="fa fa-twitter-square fa-5x" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/u/0/109018742744548655017"><i class="fa fa-google-plus-square fa-5x" aria-hidden="true"></i></a>
   </div>
-</paper-material> -->
-</div>
 </template>
