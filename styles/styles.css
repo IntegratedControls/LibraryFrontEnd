@@ -9,7 +9,9 @@ form {
 }
 
 table {
-  margin: auto;
+  width: auto;
+  margin-left: 5px;
+  margin-right: auto;
 }
 
 tbody tr:nth-child(odd) {
