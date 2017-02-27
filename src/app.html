@@ -4,50 +4,48 @@
     <paper-header-panel>
       <div class="paper-header">
         <paper-material class="material-header" elevation="0">
-          <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:100px">
+          <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:80px">
           </paper-card>
-          <paper-card elevation="0" style="background-color:#1b2a33;top:-35px;left:5px;">
-            <a style="display:block;color:white">
-              <h3 class="material-header-h3-call">CST Library</h3></a>
-            </paper-card >
-          </paper-material>
+          <paper-card elevation="0" style="background-color:#1b2a33;top:-30px;left:2px;">
+            <h4 class="material-header-h4" style="color: white">CST Library</h4>
+          </paper-card >
+        </paper-material>
+      </div>
+
+      <paper-drawer-panel drawer-width="219px">
+        <div drawer class="left-drawer">
+          <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+            <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
+              <span class="${row.settings}"></span>
+              &nbsp;${row.title}
+            </a>
+          </paper-item>
+          <paper-item if.bind="authenticated">
+            <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
+              <span class="fa fa-tachometer"></span>
+              &nbsp;Dashboard
+            </a>
+          </paper-item>
+          <br>
+          <br>
+          <paper-item if.bind="!authenticated">
+            <a paper-drawer-toggle style="display:block; color: white" href="#/login">
+              <span class="fa fa-sign-in"></span>
+              &nbsp;Login
+            </a>
+          </paper-item>
+          <paper-item if.bind="authenticated">
+            <a click.delegate="logout()" style="color: white">
+              <span class="fa fa-sign-out"></span>
+              &nbsp;Logout
+            </a>
+          </paper-item>
         </div>
-        <!-- <div class="fit divmargin"> -->
-        <paper-drawer-panel>
-          <div drawer class="left-drawer">
-            <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-              <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
-                <span class="${row.settings}"></span>
-                &nbsp;${row.title}
-              </a>
-            </paper-item>
-            <paper-item if.bind="authenticated">
-              <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
-                <span class="fa fa-tachometer"></span>
-                &nbsp;Dashboard
-              </a>
-            </paper-item>
-            <br>
-            <br>
-            <paper-item if.bind="!authenticated">
-              <a paper-drawer-toggle style="display:block; color: white" href="#/login">
-                <span class="fa fa-sign-in"></span>
-                &nbsp;Login
-              </a>
-            </paper-item>
-            <paper-item if.bind="authenticated">
-              <a click.delegate="logout()" style="color: white">
-                <span class="fa fa-sign-out"></span>
-                &nbsp;Logout
-              </a>
-            </paper-item>
-          </div>
-          <div main class="main-content">
-            <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
-            <router-view></router-view>
-          </div>
-        </paper-drawer-panel>
-        <!-- </div> -->
-      </paper-header-panel>
-    </div>
-  </template>
+        <div main class="main-content">
+          <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
+          <router-view></router-view>
+        </div>
+      </paper-drawer-panel>
+    </paper-header-panel>
+  </div>
+</template>
