@@ -13,22 +13,22 @@
               <th>Pages</th>
               <th>Year</th>
               <th>Site</th>
-              <th>Copies</th>
+              <!-- <th>Copies</th> -->
               <th>Comments</th>
             </tr>
           </thead>
           <tbody>
             <tr repeat.for="book of $displayData" if.bind="book.type=='hardback' || book.type=='paperback'">
-<td><paper-button style="background-color:black; color:white" raised click.trigger="checkOutBook()">
-    Checkout</paper-button>
-  <!-- if book already checked out, don't show button, but show msg -->
-              <td>${book.title}</td>
+              <td><paper-button style="background-color:black; color:white" raised click.trigger="checkOutBook()">
+                Checkout</paper-button></td>
+                <!-- if book already checked out, don't show button, but show msg -->
+                <td>${book.title}</td>
                 <td>${book.type}</td>
                 <td>${book.author}</td>
                 <td>${book.numberPages}</td>
                 <td>${book.dateOfPub}</td>
                 <td>${book.siteLocation}</td>
-                <td>${book.numberOfCopies}</td>
+                <!-- <td>${book.numberOfCopies}</td> -->
                 <td>${book.comments}</td>
               </tr>
             </tbody>

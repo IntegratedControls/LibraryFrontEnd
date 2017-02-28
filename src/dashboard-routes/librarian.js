@@ -10,14 +10,14 @@ export class LibrarianDashboard {
     this.reader = reader;
     this.newBook = {
       'title': '',
-      'type': 'book',
+      'type': 'hardback',
       'author': '',
       'numberPages': 0,
       'dateOfPub': 0,
       'url': '',
       'isbn': '',
       'siteLocation': '',
-      'numberOfCopies': 0,
+      'numberOfCopies': 1,
       'access': '',
       'comments': ''
     };
