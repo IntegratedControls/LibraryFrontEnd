@@ -19,7 +19,8 @@ export class LibrarianDashboard {
       'siteLocation': '',
       'numberOfCopies': 1,
       'access': '',
-      'comments': ''
+      'comments': '',
+      'checkedOutBy': ''
     };
   }
   types = ['hardback', 'paperback', 'pdf', 'webpage', 'audiobook', 'gdoc'];

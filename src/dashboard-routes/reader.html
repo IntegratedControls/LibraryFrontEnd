@@ -19,7 +19,7 @@
           </thead>
           <tbody>
             <tr repeat.for="book of $displayData" if.bind="book.type=='hardback' || book.type=='paperback'">
-              <td><paper-button style="background-color:black; color:white" raised click.trigger="checkOutBook()">
+              <td><paper-button style="background-color:black; color:white" raised click.delegate="checkOutBook(book)">
                 Checkout</paper-button></td>
                 <!-- if book already checked out, don't show button, but show msg -->
                 <td>${book.title}</td>
