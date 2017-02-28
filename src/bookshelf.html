@@ -6,7 +6,7 @@
         <table aurelia-table="data.bind: books; display-data.bind: $displayData" class="bookshelf">
           <thead>
             <tr>
-              <th>Title</th>
+              <th aut-sort="key: title; default: asc">Title</th>
               <th>Type</th>
               <th>Author</th>
               <th>Pages</th>
