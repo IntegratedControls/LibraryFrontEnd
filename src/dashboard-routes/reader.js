@@ -1,14 +1,31 @@
 
 import {inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-fetch-client';
+import {App} from '../app';
+import {AuthService} from 'aurelia-auth';
+import {HttpClient, json} from 'aurelia-fetch-client';
 
-const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
-
-@inject(HttpClient)
+@inject(AuthService, HttpClient, App)
 export class ReaderDashboard {
-  constructor(httpClient){
+  constructor(auth, httpClient, app){
+    this.app = app;
+    this.auth = auth;
     this.httpClient = httpClient;
+    this.book = {
+      'title': '',
+      'type': 'hardback',
+      'author': '',
+      'numberPages': 0,
+      'dateOfPub': 0,
+      'url': '',
+      'isbn': '',
+      'siteLocation': '',
+      'numberOfCopies': 1,
+      'access': '',
+      'comments': ''
+    };
   }
+
+  authenticated = false;
 
   async activate(){
     await fetch;
@@ -22,8 +39,20 @@ export class ReaderDashboard {
     const res = await this.httpClient.fetch('/book/getall');
     this.books =  await res.json();
   }
-  checkOutBook(){
-    
 
-}
+  checkOutBook(book){
+    this.authenticated = this.auth.isAuthenticated();
+    let uid = this.auth.getTokenPayload().sub;
+    this.book = book;
+    this.book.checkedOutBy = uid;
+    console.log(this.book);
+    this.httpClient.fetch(process.env.BackendUrl + '/book/update/' + this.book._id, {
+      method: 'put',
+      body: json(this.book)
+    })
+    .then(response=>response.json())
+    .then(data=> {
+      console.log(data);
+    });
+  }
 }
