@@ -339,6 +339,26 @@ div.au-stagger {
   overflow-x: auto;
 }
 
+.aut-sort::after {
+  font-family: FontAwesome;
+  padding-left: 0.5em;
+  width: 1.28571429em;
+  display: inline-block;
+  text-align: center;
+}
+
+.aut-sortable::after {
+  content: "\f0dc";
+}
+
+.aut-asc::after {
+  content: "\f160";
+}
+
+.aut-desc::after {
+  content: "\f161";
+}
+
 .whiteicon {
   color: white;
 }
