@@ -9,6 +9,7 @@ import config from '../authConfig';
 
 import * as Bluebird from 'bluebird';
 Bluebird.config({ warnings: false });
+
 export async function configure(aurelia) {
   if (process.env.NODE_ENV !== 'production'){
     aurelia.use
@@ -25,7 +26,9 @@ export async function configure(aurelia) {
     // if the css animator is enabled, add swap-order="after" to all router-view elements
     // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
     // aurelia.use.plugin('aurelia-html-import-template-loader')
-    aurelia.start().then(() => aurelia.setRoot('app'));
+    document.addEventListener('WebComponentsReady', function() {
+      aurelia.start().then(() => aurelia.setRoot('app'));
+    });
     //await aurelia.start();
     //aurelia.setRoot('app');
   } else {
@@ -38,8 +41,11 @@ export async function configure(aurelia) {
     aurelia.use.plugin('aurelia-auth', (baseConfig)=>{
       baseConfig.configure(config);
     });
-    await aurelia.start();
-    aurelia.setRoot('app');
+    document.addEventListener('WebComponentsReady', function() {
+      aurelia.start().then(() => aurelia.setRoot('app'));
+    });
+    // aurelia.start().then(() => aurelia.setRoot("app"));
+    // aurelia.setRoot('app');
   }
   // if you would like your website to work offline (Service Worker),
   // install and enable the @easy-webpack/config-offline package in webpack.config.js and uncomment the following code:
