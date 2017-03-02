@@ -29,7 +29,7 @@ export class Dashboard {
       if (this.user.userType === 'Librarian'){
         this.user.userType = 1;
         this.router.navigate('librarian');
-      } else if (this.user.userType === 'Reader'){
+      } else if (this.user.userType === 'Reader' || this.user.userType === '' || !this.user.userType){
         this.user.userType = 2;
         this.router.navigate('reader');
       }
