@@ -22,8 +22,7 @@
               <td><paper-button style="background-color:black; color:white" raised click.delegate="checkOutBook(book)"
                 if.bind = "book.checkedOutBy == ''">
                 Checkout</paper-button>
-                <span if.bind = "book.checkedOutBy==uid">Checked out by ${user.name}</span>
-                <span if.bind = "book.checkedOutBy!==uid && book.checkedOutBy!==''">Not available</span>
+                <span if.bind = "book.checkedOutBy!==''">Checked out by ${book.checkedOutByName}</span>
               </td>
               <td>${book.title}</td>
               <td>${book.type}</td>
