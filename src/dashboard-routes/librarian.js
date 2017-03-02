@@ -20,7 +20,8 @@ export class LibrarianDashboard {
       'numberOfCopies': 1,
       'access': '',
       'comments': '',
-      'checkedOutBy': ''
+      'checkedOutBy': '',
+      'checkedOutByName': ''
     };
   }
   types = ['hardback', 'paperback', 'pdf', 'webpage', 'audiobook', 'gdoc'];
