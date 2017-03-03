@@ -5,13 +5,13 @@
   "main": "dist/main.js",
   "productName": "CSTLibrary",
   "engines": {
-    "node": "7.6.0",
+    "node": "7.7.1",
     "npm": "4.1.2"
   },
   "scripts": {
     "pretest": "del-cli \"coverage/*\"",
     "installtest": "npm install && npm test",
-    "cleaninstall": "rm -rf node_modules && npm cache clean && npm install",
+    "cleaninstall": "rm -rf bower_components && rm -rf node_modules && npm cache clean && npm install",
     "postinstall": "bower install && npm run build:prod",
     "test": "cross-env BABEL_ENV=node NODE_ENV=test ./node_modules/karma/bin/karma start test/karma.conf.js",
     "test:debug": "npm test -- --single-run=false --auto-watch=true --debug",
@@ -26,7 +26,6 @@
     "clean": "npm cache clean && del-cli node_modules \"coverage/*\" dist",
     "clean:dist": "del-cli dist",
     "preclean:install": "npm run clean",
-    "clean:install": "npm install",
     "preclean:start": "npm run clean",
     "clean:start": "npm start",
     "watch": "npm run watch:dev",
