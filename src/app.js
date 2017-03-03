@@ -17,12 +17,35 @@ export class App {
     this.auth = auth;
     this.httpClient = httpClient;
     this.user = this.getUser();
+    this.fullmenu = true;
+    this.drawerWidth = '175px';
+    this.leftMargin = '0';
   }
   email='';
   password='';
   authenticated = false;
   token='';
 
+  get screenwidth(){
+    return document.documentElement.clientWidth;
+  }
+
+  get widescreen(){
+    return this.screenwidth > 766;
+  }
+
+  togglemenu(){
+    if (this.fullmenu) {
+      this.fullmenu = false;
+      this.drawerWidth = '50px';
+      this.leftMargin = '55px';
+      // if (this.screenWidth > 766)
+    } else {
+      this.fullmenu = true;
+      this.drawerWidth = '175px';
+      this.leftMargin = '165px';
+    }
+  }
 
   logout(){
     this.auth.setToken('');
@@ -44,6 +67,7 @@ export class App {
   getTokens(){
     return this.auth.getTokenPayload();
   }
+
   activate() {
     this.appRouterConfig.configure();
     this.configHttpClient();
