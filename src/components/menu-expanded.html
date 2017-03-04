@@ -1,7 +1,8 @@
 <template>
-  <paper-drawer-panel drawer-width="175px">
+
+  <paper-drawer-panel drawer-width="175px" if.bind = "!app.collapsed">
     <div drawer class="left-drawer">
-      <!-- <paper-item><i class="fa fa-bars pull-left fa-2x whiteicon" paper-drawer-toggle></i></paper-item> -->
+      <paper-item><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="collapse(router)"></i></paper-item>
       <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
         <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
           <span class="${row.settings}"></span>
@@ -34,4 +35,7 @@
       <router-view></router-view>
     </div>
   </paper-drawer-panel>
+
+
+
 </template>

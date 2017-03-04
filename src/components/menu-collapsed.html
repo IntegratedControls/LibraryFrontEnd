@@ -1,17 +1,15 @@
 <template>
-  <paper-drawer-panel drawer-width="175px">
+  <paper-drawer-panel drawer-width="50px" if.bind = "app.collapsed">
     <div drawer class="left-drawer">
-      <!-- <paper-item><i class="fa fa-bars pull-left fa-2x whiteicon" paper-drawer-toggle></i></paper-item> -->
+      <paper-item><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="expand(router)"></i></paper-item>
       <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
         <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
           <span class="${row.settings}"></span>
-          &nbsp;${row.title}
         </a>
       </paper-item>
       <paper-item if.bind="authenticated">
         <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
           <span class="fa fa-tachometer"></span>
-          &nbsp;Dashboard
         </a>
       </paper-item>
       <br>
@@ -19,13 +17,11 @@
       <paper-item if.bind="!authenticated">
         <a paper-drawer-toggle style="display:block; color: white" href="#/login">
           <span class="fa fa-sign-in"></span>
-          &nbsp;Login
         </a>
       </paper-item>
       <paper-item if.bind="authenticated">
         <a click.delegate="logout()" style="color: white">
           <span class="fa fa-sign-out"></span>
-          &nbsp;Logout
         </a>
       </paper-item>
     </div>
