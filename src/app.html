@@ -26,7 +26,7 @@
           <paper-item if.bind="authenticated">
             <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
               <span class="fa fa-tachometer"></span>
-              &nbsp;Dashboard
+              <span if.bind="fullmenu">&nbsp;Dashboard</span>
             </a>
           </paper-item>
           <br>

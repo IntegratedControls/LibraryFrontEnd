@@ -18,13 +18,17 @@ export class App {
     this.auth = auth;
     this.httpClient = httpClient;
     this.user = this.getUser();
-    this.fullmenu = true;
-
-
-    this.leftMargin = '0';
   }
   @bindable
   drawerWidth = '175px';
+
+  // TODO: don't think we need this anymore
+  // @bindable
+  // leftMargin = '0';
+
+  @bindable
+  fullmenu = true;
+
 
   email='';
   password='';
@@ -35,14 +39,14 @@ export class App {
     let currentscreenwidth = document.documentElement.clientWidth;
     if (currentscreenwidth > 766 && currentscreenwidth < 1825) {
       if (this.fullmenu) {
-        this.leftMargin = '165px';
+        // this.leftMargin = '165px';
       }
     } else if (currentscreenwidth <= 766){
       if (this.fullmenu) {
         this.leftMargin = '0';
       }
     } else {
-      this.leftMargin = '-350px';
+      // this.leftMargin = '-350px';
     }
     return currentscreenwidth;
   }
@@ -55,12 +59,12 @@ export class App {
     if (this.fullmenu) {
       this.fullmenu = false;
       this.drawerWidth = '50px';
-      this.leftMargin = '55px';
+      // this.leftMargin = '55px';
       // if (this.screenWidth > 766)
     } else {
       this.fullmenu = true;
       this.drawerWidth = '175px';
-      this.leftMargin = '165px';
+      // this.leftMargin = '165px';
     }
   }
   
