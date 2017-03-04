@@ -12,7 +12,7 @@
         </paper-material>
       </div>
 
-      <paper-drawer-panel drawer-width="drawerWidth">
+      <paper-drawer-panel drawer-width.bind="drawerWidth">
         <div drawer class="left-drawer">
           <!--TODO if.bind not cell phone mode
         use get width to determine if cel phone -->
@@ -44,7 +44,7 @@
             </a>
           </paper-item>
         </div>
-        <div main class="main-content" style="margin-left: ${leftMargin}">
+        <div main class="main-content">
           <i style="padding: 10px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
           <router-view></router-view>
         </div>

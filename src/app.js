@@ -1,11 +1,12 @@
 // import 'bootstrap';
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {AppRouterConfig} from './app.router.config';
 import {FetchConfig} from 'aurelia-auth';
 import {AuthService} from 'aurelia-auth';
 import {AuthorizeStep} from 'aurelia-router';
 import {HttpClient} from 'aurelia-fetch-client';
+
 System.import('isomorphic-fetch');
 
 @inject(Router, FetchConfig, AuthService, AppRouterConfig, HttpClient)
@@ -18,14 +19,18 @@ export class App {
     this.httpClient = httpClient;
     this.user = this.getUser();
     this.fullmenu = true;
-    this.drawerWidth = '175px';
+
+
     this.leftMargin = '0';
   }
+  @bindable
+  drawerWidth = '175px';
+
   email='';
   password='';
   authenticated = false;
   token='';
-  
+
   get screenwidth(){
     let currentscreenwidth = document.documentElement.clientWidth;
     if (currentscreenwidth > 766 && currentscreenwidth < 1825) {
