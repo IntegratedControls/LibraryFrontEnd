@@ -11,6 +11,8 @@ export class AppRouterConfig{
   configure(config, router){
     let theAppRouterConfig = function(config){
       //console.log(config);
+      config.options.root = '/';
+      config.options.pushState = true;
       config.title = 'CST Library';
       config.addPipelineStep('authorize', AuthorizeStep);//Is the actually Authorization. Prevents users from certain sites when not authorized.
       config.map([

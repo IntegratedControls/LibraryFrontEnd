@@ -24,7 +24,7 @@
             </a>
           </paper-item>
           <paper-item if.bind="authenticated">
-            <a paper-drawer-toggle style="display:block; color: white" href="#/dashboard">
+            <a paper-drawer-toggle style="display:block; color: white" href="dashboard">
               <span class="fa fa-tachometer"></span>
               <span if.bind="fullmenu">&nbsp;Dashboard</span>
             </a>
@@ -32,7 +32,7 @@
           <br>
           <br>
           <paper-item if.bind="!authenticated">
-            <a paper-drawer-toggle style="display:block; color: white" href="#/login">
+            <a paper-drawer-toggle style="display:block; color: white" href="login">
               <span class="fa fa-sign-in"></span>
               <span if.bind = "fullmenu">&nbsp;Login</span>
             </a>
