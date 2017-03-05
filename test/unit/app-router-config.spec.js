@@ -19,6 +19,10 @@ class RouterStub {
   addPipelineStep(param1, param2) {
     //do nothing
   }
+
+  options() {
+    //do nothing
+  }
 }
 
 describe('the app.router.config module', () => {
@@ -40,6 +44,14 @@ describe('the app.router.config module', () => {
 
   it('configures the router title', () => {
     expect(sut.router.title).toEqual('CST Library');
+  });
+
+  it('configures the router to use pushState', () => {
+    expect(sut.router.options.pushState).toBe(true);
+  });
+
+  it('configures the router\'s root to be /', () => {
+    expect(sut.router.options.root).toBe('/');
   });
 
   it('should have an Home route', () => {
