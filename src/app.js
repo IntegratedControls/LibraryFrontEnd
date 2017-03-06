@@ -35,26 +35,15 @@ export class App {
   authenticated = false;
   token='';
 
-  get screenwidth(){
-    let currentscreenwidth = document.documentElement.clientWidth;
-    if (currentscreenwidth > 766 && currentscreenwidth < 1825) {
-      if (this.fullmenu) {
-        // this.leftMargin = '165px';
-      }
-    } else if (currentscreenwidth <= 766){
-      if (this.fullmenu) {
-        this.leftMargin = '0';
-      }
-    } else {
-      // this.leftMargin = '-350px';
-    }
-    return currentscreenwidth;
-  }
-  
   get widescreen(){
-    return this.screenwidth > 766;
+    let iswidescreen = false;
+    let currentscreenwidth = document.documentElement.clientWidth;
+    if (currentscreenwidth > 766){
+      iswidescreen = true;
+    }
+    return iswidescreen;
   }
-  
+
   togglemenu(){
     if (this.fullmenu) {
       this.fullmenu = false;
@@ -67,13 +56,13 @@ export class App {
       // this.leftMargin = '165px';
     }
   }
-  
+
   logout(){
     this.auth.setToken('');
     this.authenticated = false;
     this.auth.logout('#/');
   }
-  
+
   getUser(){
     // console.log(this.auth);
     // return this.auth.getMe().then((response)=>{console.log("get me:" + response);return response;});
@@ -84,17 +73,17 @@ export class App {
       return '';
     }
   }
-  
+
   getTokens(){
     return this.auth.getTokenPayload();
   }
-  
+
   activate() {
     this.appRouterConfig.configure();
     this.configHttpClient();
     //this.getUser();
   }
-  
+
   configHttpClient(){
     this.httpClient.configure(httpConfig => {
       httpConfig
@@ -108,5 +97,5 @@ export class App {
       .withInterceptor(this.auth.tokenInterceptor);
     });
   }
-  
+
 }
