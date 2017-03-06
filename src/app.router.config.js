@@ -9,12 +9,12 @@ export class AppRouterConfig{
     this.router = router;
   }
 
-  configure(config, router){
+  configure(config1, router){
     let theAppRouterConfig = function(config){
       //console.log(config);
       config.title = 'CST Library';
-      config.options.pushState = true;
-      config.options.root = '/';
+      //config.options.pushState = true;
+      //config.options.root = '/';
       config.addPipelineStep('authorize', AuthorizeStep);//Is the actually Authorization. Prevents users from certain sites when not authorized.
       config.map([
         { route: ['', 'home'], name: 'home', moduleId: './home', nav: true, title: 'Home', settings: 'fa fa-home'},
