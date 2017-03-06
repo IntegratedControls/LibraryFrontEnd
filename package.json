@@ -37,12 +37,12 @@
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "cross-env NODE_ENV=development npm run webpack -- --progress --profile",
     "prebuild:prod": "npm run clean:dist",
-    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -r styles/imgs/ dist/styles/;mkdir dist/bower_components;cp -r bower_components/ dist/bower_components/",
+    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -r styles/imgs/ dist/styles/;mkdir dist/bower_components;cp -r bower_components/webcomponentsjs/ dist/bower_components/",
     "start": "npm run server:dev",
     "server": "npm run server:dev",
     "server:dev": "cross-env NODE_ENV=development npm run webpack-dev-server -- --inline --progress --profile --watch",
     "server:dev:hmr": "npm run server:dev -- --hot",
-    "server:prod": "pushstate-server ./dist",
+    "server:prod": "http-server dist --cors",
     "webpack": "cross-env BABEL_ENV=node ./node_modules/.bin/webpack",
     "webpack-dev-server": "cross-env BABEL_ENV=node ./node_modules/.bin/webpack-dev-server"
   },
@@ -178,7 +178,6 @@
     "http-server": "^0.9.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.1",
-    "pushstate-server": "^3.0.0",
     "vulcanize": "^1.15.3",
     "webpack": "2.2.0"
   },
