@@ -1,12 +1,8 @@
-// import {inject} from 'aurelia-framework';
+
 import {AppRouterConfig} from '../../src/app.router.config';
 import {AuthorizeStep} from 'aurelia-auth';
 import {Router} from 'aurelia-router';
-//
-// import {Router} from 'aurelia-router';
-// import AppRouterConfig from "../../src/app.router.config";
-// @inject(Router, AppRouterConfig)
-//import {router} from '../../src/app.router.config';
+
 class RouterStub {
   configure(handler) {
     handler(this);
@@ -20,9 +16,9 @@ class RouterStub {
     //do nothing
   }
 
-  options() {
-    //do nothing
-  }
+  // options() {
+  //   //do nothing
+  // }
 }
 
 describe('the app.router.config module', () => {
@@ -46,13 +42,13 @@ describe('the app.router.config module', () => {
     expect(sut.router.title).toEqual('CST Library');
   });
 
-  it('configures the router to use pushState', () => {
-    expect(sut.router.options.pushState).toBe(true);
-  });
-
-  it('configures the router\'s root to be /', () => {
-    expect(sut.router.options.root).toBe('/');
-  });
+  // it('configures the router to use pushState', () => {
+  //   expect(sut.router.options.pushState).toBe(true);
+  // });
+  //
+  // it('configures the router\'s root to be /', () => {
+  //   expect(sut.router.options.root).toBe('/');
+  // });
 
   it('should have an Home route', () => {
     expect(sut.router.routes).toContain({ route: ['', 'home'], name: 'home',  moduleId: './home', nav: true, title: 'Home', settings: 'fa fa-home' });
