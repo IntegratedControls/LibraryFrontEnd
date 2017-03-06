@@ -37,7 +37,7 @@
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "cross-env NODE_ENV=development npm run webpack -- --progress --profile",
     "prebuild:prod": "npm run clean:dist",
-    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -r styles/imgs/ dist/styles/;mkdir dist/bower_components;cp -r bower_components/webcomponentsjs/ dist/bower_components/",
+    "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile ; vulcanize --inline-scripts --inline-css includes.html > dist/includes.html;mkdir dist/styles;cp -a styles/imgs dist/styles;mkdir dist/bower_components;cp -a bower_components/webcomponentsjs dist/bower_components/",
     "start": "npm run server:dev",
     "server": "npm run server:dev",
     "server:dev": "cross-env NODE_ENV=development npm run webpack-dev-server -- --inline --progress --profile --watch",
