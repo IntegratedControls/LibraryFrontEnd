@@ -9,9 +9,9 @@ Contact Integrated.Controls.adm@gmail.com for the .env file. This is required to
 
 Clone this repository into a directory of your choice from the terminal using "git clone [url of this repository]
 Install and use the version of nodejs currently listing in our package.json<br>
-From the same directory, run <b>npm install</b><br>
+From the same directory, run <b>npm run cleaninstall</b><br>
 
-Run <b>npm start</b>
+Run <b>npm start</b> to run the development server.
 Install the <b>Aurelia Inspector</b> Chrome extension to allow debugging of the font end code.
 
 Now, open your browser and go to <b>localhost:9000</b>
