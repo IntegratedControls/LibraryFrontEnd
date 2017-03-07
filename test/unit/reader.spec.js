@@ -48,11 +48,31 @@ class HttpStub {
   }
 }
 
+class AuthServiceMock {
+  // basic auth functions.
+  authenticated = false;
+
+  isAuthenticated() {
+    return this.authenticated;
+  }
+  authenticate() {
+    this.authenticated = true;
+    return Promise.resolve('user is authenticated');
+  }
+  setToken(token) {
+    this.token = token;
+    this.authenticate();
+  }
+  getTokenPayload() {
+    return {sub: this.token};
+  }
+}
+
 class HttpMock {
   // this one catches the ajax and then resolves a custom json data.
   // real api calls will have more methods.
   constructor(data) {
-    this.book = data || {title: 'John Fitzgerald', author: 'Billy'};
+    this.book = data || {title: '', author: '', checkedOutBy: '', checkedOutByName: ''};
   }
   status = 500;
   headers = {accept: 'application/json', method: '', url: ''}
@@ -68,6 +88,10 @@ class HttpMock {
       json: () => Promise.resolve(this.book)
     });
   }
+  configure(fn) {
+    this.__configureCallback = fn;
+    return this.__configureReturns;
+  }
 }
 
 describe('the reader module', () => {
@@ -77,7 +101,7 @@ describe('the reader module', () => {
   beforeEach(() => {
     http = new HttpStub();
     readerdashboard = new ReaderDashboard(new AuthStub(), http, App);
-    readerdashboard2 = new ReaderDashboard(new AuthStub(), new HttpMock(), App);
+    readerdashboard2 = new ReaderDashboard(new AuthServiceMock(), new HttpMock(), App);
   });
 
   it('should activate', () =>  {
@@ -105,15 +129,87 @@ describe('the reader module', () => {
     });
   });
 
-  it('should checkout a book', () => {
-    setTimeout(function() {
-      readerdashboard2.checkOutBook();
-      expect(http.status).toBe(200);
-      done();
-    }, 5);
+  it('should checkout a book', done => {
+    readerdashboard2.uid = '12345';
+    readerdashboard2.user.name = 'John Fitzgerald';
+    let book = {
+      'title': '',
+      'type': 'hardback',
+      'author': '',
+      'numberPages': 0,
+      'dateOfPub': 0,
+      'url': '',
+      'isbn': '',
+      'siteLocation': '',
+      'numberOfCopies': 1,
+      'access': '',
+      'comments': '',
+      'checkedOutBy': '',
+      'checkedOutByName': ''
+    };
+    readerdashboard2.activate().then(() => {
+      setTimeout(function() {
+        readerdashboard2.checkOutBook(book);
+        expect(readerdashboard2.book.checkedOutBy).toBe('12345');
+        done();
+      }, 5);
+    }
+  );
   });
 
-  it('should checkin a book', () => {
+  it('should checkin a book', done => {
+    readerdashboard2.uid = '';
+    readerdashboard2.user.name = '';
+    let book = {
+      'title': '',
+      'type': 'hardback',
+      'author': '',
+      'numberPages': 0,
+      'dateOfPub': 0,
+      'url': '',
+      'isbn': '',
+      'siteLocation': '',
+      'numberOfCopies': 1,
+      'access': '',
+      'comments': '',
+      'checkedOutBy': '',
+      'checkedOutByName': ''
+    };
+    readerdashboard2.activate().then(() => {
+      setTimeout(function() {
+        readerdashboard2.checkInBook(book);
+        expect(readerdashboard2.book.checkedOutBy).toBe('');
+        done();
+      }, 5);
+    }
+  );
+  });
 
+  it('should checkout another book', done => {
+    readerdashboard2.uid = '67890';
+    readerdashboard2.user.name = 'Joan Fitz';
+    let book = {
+      'title': '',
+      'type': 'hardback',
+      'author': '',
+      'numberPages': 0,
+      'dateOfPub': 0,
+      'url': '',
+      'isbn': '',
+      'siteLocation': '',
+      'numberOfCopies': 1,
+      'access': '',
+      'comments': '',
+      'checkedOutBy': '',
+      'checkedOutByName': ''
+    };
+    readerdashboard2.activate().then(() => {
+      setTimeout(function() {
+        readerdashboard2.checkOutBook(book);
+        expect(readerdashboard2.book.checkedOutBy).toBe('67890');
+        done();
+      }, 5);
+    }
+  );
   });
 });
