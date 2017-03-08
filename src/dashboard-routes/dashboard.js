@@ -3,7 +3,7 @@ import {inject} from 'aurelia-framework';
 import {App} from '../app';
 import {Router} from 'aurelia-router';
 import {AuthService} from 'aurelia-auth';
-import {HttpClient} from 'aurelia-fetch-client';
+import {HttpClient, json} from 'aurelia-fetch-client';
 
 @inject(AuthService, HttpClient, App, Router)
 export class Dashboard {
@@ -34,7 +34,7 @@ export class Dashboard {
         this.router.navigate('reader');
       } else {
         this.user.userType = '';
-        this.httpClient.fetch(process.env.BackendUrl + '/user/' + this.user._id, {
+        this.httpClient.fetch(process.env.BackendUrl + '/user/' + uid, {
           method: 'put',
           body: json(this.user)
         })
