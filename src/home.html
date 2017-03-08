@@ -1,21 +1,29 @@
 <template>
   <div class="page-content">
 
-  <h1 class="material-content-h1">Welcome to the CST Library</h1>
-  <paper-material class="material-content" elevation="0">
-    <p class="material-content-p" style="font-style: italic">A library is the delivery room for the birth of ideas, a place where history comes to life.  --Norman Cousins</p>
-    <br>
-    <br>
-    <h1 class="material-content-h1">About the library</h1>
-    <p class="material-content-p">The CST library supports research and teaching in all aspects of Power Engineering. We have print books in Salem, Greenville, and Schenectady that are available for use and loan.</p>
-    <br>
-    <br>
-    <h1 class="material-content-h1">FAQs</h1>
-    <p>Q: How do I get a book added to the library?</p>
-    <p style="font-style: italic;">A: Contact the librarians.</p>
+    <paper-material class="material-content" elevation="0">
+      <polymer-slideshow class="home-slideshow">
+        <!-- The dimensions of the images are 950x300 -->
+        <polymer-slide>
+          <paper-card class="slideshowimage" image="../styles/imgs/books1.jpg"></paper-card>
+        </polymer-slide>
+        <polymer-slide>
+          <paper-card class="slideshowimage" image="../styles/imgs/books2.jpg"></paper-card>
+        </polymer-slide>
+        <polymer-slide>
+          <paper-card class="slideshowimage" image="../styles/imgs/books3.jpg"></paper-card>
+        </polymer-slide>
+      </polymer-slideshow>
+      <p class="material-content-p" style="font-style: italic">A library is the delivery room for the birth of ideas, a place where history comes to life.  --Norman Cousins</p>
+      <br>
+      <h1 class="material-content-h1">About the library</h1>
+      <p class="material-content-p">The CST library supports research and teaching in all aspects of Power Engineering.<br>We have print books in Salem, Greenville, and Schenectady that are available for use and loan.</p>
+      <br>
+      <h1 class="material-content-h1">FAQs</h1>
+      <p>Q: How do I get a book added to the library?</p>
+      <p style="font-style: italic;">A: Contact the librarians.</p>
       <p>Q: How do I contact the librarians?</p>
       <p style="font-style: italic;">A: Via email at <a style="text-decoration: underline;" href="mailto:CST.Library@ge.com"><strong>CST.Library@ge.com</strong></a></p>
-      <br>
       <br>
     </paper-material>
 

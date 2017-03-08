@@ -4,9 +4,10 @@ body {
 
 form {
   width: 300px;
-  margin: 0 auto;
+margin-left: 10px;
   margin-top: 0;
-}
+
+  }
 
 table {
   width: auto;
@@ -24,6 +25,12 @@ td {
   border: 1px solid #777;
   padding: 8px;
   text-align: left;
+}
+
+.home-slideshow {
+  width: 55% !important;
+  height: 0 !important;
+  padding-bottom: 32%;
 }
 
 .splash {
@@ -46,9 +53,9 @@ td {
 }
 
 /*.paper-drawer-panel {
-  --paper-drawer-panel-left-drawer-container: {
-    background-color: #1b2a33;
-  };
+--paper-drawer-panel-left-drawer-container: {
+background-color: #1b2a33;
+};
 }*/
 
 .splash .fa-spinner {
@@ -320,9 +327,10 @@ div.au-stagger {
 }
 
 .material-header-h4 {
-  text-align: center;
-  color: black;
-  margin-top: 5px;
+  text-align: left;
+  color: #005cb9;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .slideshowimage {
@@ -366,8 +374,8 @@ div.au-stagger {
 .left-drawer {
   background-color: #1b2a33;
 }
- .main-content {
-   overflow-y: auto;
- }
+.main-content {
+  overflow-y: auto;
+}
 
 /* .search-table{table-layout: fixed; margin:40px auto;} */
