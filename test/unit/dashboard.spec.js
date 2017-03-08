@@ -129,6 +129,18 @@ describe('the Dashboard Module', () => {
       }, 10);
     });
 
+    it('should expect change in http status after no userType defined activate call', done => {
+      http = new HttpMock({name: 'John Fitzgerald'});
+      auth = new AuthServiceMock();
+      dashboard = new Dashboard(auth, http, null, new RouterMock);
+      auth.setToken(token);
+      dashboard.activate();
+      setTimeout(function() {
+        expect(http.status).toBe(200);
+        done();
+      }, 10);
+    });
+
     it('should confirm route by returning the currently navigated route', done => {
       expect(dashboard.router.navigate(dashboard.types[0])).toBe('Librarian');
       expect(dashboard.router.navigate(dashboard.types[1])).toBe('Reader');
