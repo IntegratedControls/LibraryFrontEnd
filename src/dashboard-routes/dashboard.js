@@ -29,9 +29,18 @@ export class Dashboard {
       if (this.user.userType === 'Librarian'){
         this.user.userType = 1;
         this.router.navigate('librarian');
-      } else if (this.user.userType === 'Reader' || this.user.userType === '' || !this.user.userType){
+      } else if (this.user.userType === 'Reader' || this.user.userType === ''){
         this.user.userType = 2;
         this.router.navigate('reader');
+      } else {
+        this.user.userType = '';
+        this.httpClient.fetch(process.env.BackendUrl + '/user/' + this.user._id, {
+          method: 'put',
+          body: json(this.user)
+        })
+        .then(response=>response.json())
+        .then(data1=> {
+        });
       }
     });
   }
