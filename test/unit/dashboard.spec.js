@@ -65,10 +65,12 @@ describe('the Dashboard Module', () => {
   describe('Dashboard DI', () => {
     let auth;
     let http;
+    let http2;
     let token = 'mhioj23yr675843ho12yv9852vbbjeywouitryhrcyqo7t89vu';
     beforeEach(() => {
       auth = new AuthServiceMock();
       http = new HttpMock();
+      http2 = new HttpMock({name: 'John Fitzgerald', userType: 'Reader'});
       dashboard = new Dashboard(auth, http, null, new RouterMock);
       auth.setToken(token);
     });
@@ -97,31 +99,26 @@ describe('the Dashboard Module', () => {
       done();
     });
 
-    it('should expect change in http status after getUser call', done => {
+    it('should expect change in http status after Librarian getUser call', done => {
       dashboard.getUser();
       expect(http.status).toBe(200);
       done();
     });
 
-    // it ("should confirm 200 http status after updateUser call", done => {
-    //     dashboard.getUser();
-    //     setTimeout(function () {
-    //         dashboard.updateUser();
-    //         expect(http.status).toBe(200);
-    //         done();
-    //     }, 5);
-    // });
-
-    // it("should return false for configured", done => {
-    //     dashboard.getUser();
-    //     setTimeout(function () {
-    //         expect(dashboard.configured()).toBeFalsy();
-    //         done();
-    //     }, 5);
-    // })
-
-    it('should expect change in http status after activate call', done => {
+    it('should expect change in http status after Librarian activate call', done => {
       http = new HttpMock({name: 'Iddris Elba', userType: 'Librarian'});
+      auth = new AuthServiceMock();
+      dashboard = new Dashboard(auth, http, null, new RouterMock);
+      auth.setToken(token);
+      dashboard.activate();
+      setTimeout(function() {
+        expect(http.status).toBe(200);
+        done();
+      }, 10);
+    });
+
+    it('should expect change in http status after Reader activate call', done => {
+      http = new HttpMock({name: 'John Fitzgerald', userType: ''});
       auth = new AuthServiceMock();
       dashboard = new Dashboard(auth, http, null, new RouterMock);
       auth.setToken(token);
@@ -144,7 +141,7 @@ describe('the Dashboard Module', () => {
       dashboard = StageComponent
       .withResources('src/dashboard')
       .inView('<dashboard></dashboard>')
-      .boundTo({user: {name: 'John Fitzgerald', userType: 'Reader'}});
+      .boundTo({user: {name: 'Iddris Elba', userType: 'Librarian'}});
     });
     it('staging the dashboard', done => {
       // let strap = dashboard.create(bootstrap)
