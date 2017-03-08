@@ -41,6 +41,9 @@ export class App {
     if (currentscreenwidth > 766){
       iswidescreen = true;
     }
+    // else {
+    //   iswidescreen = false;
+    // }
     return iswidescreen;
   }
 

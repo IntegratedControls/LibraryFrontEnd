@@ -119,6 +119,12 @@ describe('the App module', () => {
     expect(app3.widescreen).toBe(true);
   });
 
+  // it('should get smallscreen', () => {
+  //   const app4 = new App(null, null, new AuthStub(), new RouterStub(), new HttpStub());
+  //   app4.intElemClientWidth = 50;
+  //   expect(app4.widescreen).toBe(false);
+  // });
+
   it('should toggle menu to be icons only', () => {
     app1.fullmenu = true;
     //console.log(app1);
