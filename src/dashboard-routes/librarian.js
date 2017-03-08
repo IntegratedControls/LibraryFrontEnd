@@ -63,10 +63,11 @@ export class LibrarianDashboard {
       makeLotaBooks(jsonObj);
     }
     function errorHandler(evt) {
-      if (evt.type === 'error') {
-        alert('The file could not be read');
-      }
+      //TODO no file attached
+      //TODO wrong file type attached
+      alert('The file could not be read');
     }
+
     function makeLotaBooks (jsonObject) {
       httpClient.fetch(process.env.BackendUrl + '/book/', {
         method: 'post',
@@ -77,12 +78,12 @@ export class LibrarianDashboard {
         router.navigate('/bookshelf');
       });
     }
-    if (CSVFilePath.files[0] !== ''){
-      // TODO: Parse all csv files
-      // TODO: add check for browser support of FileReader
-      this.reader.onload = loaded;
-      this.reader.onerror = errorHandler;
-      this.reader.readAsText(CSVFilePath.files[0]);
-    }
+    // if (CSVFilePath.files[0] !== null){
+    // TODO: Parse all csv files
+    // TODO: add check for browser support of FileReader
+    //TODO: do not run file reader if no csv file in the form
+    this.reader.onload = loaded;
+    this.reader.onerror = errorHandler;
+    this.reader.readAsText(CSVFilePath.files[0]);
   }
 }
