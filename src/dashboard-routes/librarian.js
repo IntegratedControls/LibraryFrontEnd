@@ -24,7 +24,7 @@ export class LibrarianDashboard {
       'checkedOutByName': ''
     };
   }
-  types = ['hardback', 'paperback', 'pdf', 'webpage', 'audiobook', 'gdoc'];
+  types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'gdoc'];
   accessArray = ['GE Internal', 'Public'];
   newBook = null;
   CSVFilePath = {files: ['']};
