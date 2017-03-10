@@ -22,7 +22,9 @@ export class ReaderDashboard {
       'siteLocation': '',
       'numberOfCopies': 1,
       'access': '',
-      'comments': ''
+      'comments': '',
+      'checkedOutBy': '',
+      'checkedOutByName': ''
     };
     this.uid = this.auth.getTokenPayload().sub;
     this.user = {

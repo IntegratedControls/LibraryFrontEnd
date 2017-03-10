@@ -3,33 +3,48 @@
 
     <h1 class="material-content-h1" style="margin-bottom: 10px">${title}</h1>
     <paper-material class="material-content" elevation="0">
+      <p class="material-content-release">Release v0.3</p>
+      <p class="material-content-heading">Enhancements:</p>
+      <ul>
+        <li>Reader dashboard allows book checkout/checkin</li>
+        <li>Reader dashboard displays user name beside books that are checked out</li>
+        <li>Toggle menu for widescreen (icons only or icons with page titles)</li>
+        <li>App log-in works from Firefox</li>
+        <li>Polymer slideshow with temporary pictures</li>
+        <li>Branches coverage from test automation by Istanbul reporter: back-end 100%, front-end: 83%</li>
+        <li>Sort by Type added to bookshelf</li>
+      </ul>
+      <p class="material-content-heading">Known Issues:</p>
+      <ul>
+        <li>Internet Explorer not supported</li>
+        <li>Commas and special chars (i.e. ®, ™) in the CSV file not supported</li>
+        <li>Menu toggle does not work in Edge browser (mobile devices only), requires manual pull to the right to open</li>
+      </ul>
+      <br>
       <p class="material-content-release">Release v0.2</p>
       <p class="material-content-heading">Enhancements:</p>
       <ul>
-        <li>App accessible from Chrome, Safari, Firefox<sup>1</sup> and Edge</li>
+        <li>App accessible from Chrome, Safari, Firefox<sup>1</sup> and Edge browsers</li>
         <li>User types: Librarian, Reader</li>
         <li>As Librarian, have access to librarian dashboard</li>
         <li>As Reader, have access to reader dashboard</li>
         <li>Attribute “access” added to books table: GE Internal, Public</li>
         <li>Title of pdf is clickable url in bookshelf table</li>
         <li>Log-in/log-out<sup>2</sup></li>
-        <li>Menu: repositioned, color changed, icons added, fonts matched, toggling<sup>3</sup></li>
+        <li>Menu: repositioned, color changed, icons added, fonts matched</li>
         <li>Release Notes moved to new page</li>
         <li>100% statements coverage from test automation</li>
       </ul>
       <p style="font-size: 12px">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>1</sup>&nbsp;User cannot log-in from Firefox<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup>&nbsp;Only Google is currently supported<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>3</sup>&nbsp;Toggle not working in Edge
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup>&nbsp;Only Google OAuth2 is currently supported<br>
       </p>
       <p class="material-content-heading">Known Issues:</p>
       <ul>
         <li>Internet Explorer not supported</li>
         <li>Commas in CSV file not supported</li>
-        <li>Log-in from Firefox not supported</li>
-        <li>Toggle does not work in Edge, requires manual pull to the right to open</li>
-        <li>Google log-in does not work within GE network localhost (only effects development)</li>
-        <li>Interaction with cloud hosted data store (mLab) does not work within GE network localhost (only effects development)</li>
+        <li>App log-in from Firefox not supported</li>
+        <li>Menu toggle does not work in Edge browser (mobile devices only), requires manual pull to the right to open</li>
       </ul>
       <br>
       <p class="material-content-release">Release v0.1</p>

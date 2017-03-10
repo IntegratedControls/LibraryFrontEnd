@@ -49,8 +49,6 @@ test/coverage
 
 coverage
 
-yarn.lock
-
 .bowerrc
 
 .idea
