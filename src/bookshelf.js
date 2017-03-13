@@ -24,4 +24,7 @@ export class Bookshelf {
     const res = await this.httpClient.fetch('/book/getall');
     this.books =  await res.json();
   }
+  filters = [
+    {value: '', keys: ['title', 'type', 'author', 'numberPages', 'dateOfPub', 'siteLocation', 'access']}
+  ];
 }
