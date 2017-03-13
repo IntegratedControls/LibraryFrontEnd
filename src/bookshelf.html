@@ -23,7 +23,7 @@
               <th>Author</th>
               <th>Pages</th>
               <th>Year</th>
-              <th>Site</th>
+              <th aut-sort="key: siteLocation">Site</th>
               <!-- <th>Copies</th> -->
               <th>Access</th>
               <!-- <th>Comments</th> -->
@@ -32,7 +32,7 @@
           <tbody>
             <tr repeat.for="book of $displayData">
               <td><a show.bind="book.url" href="${book.url}">
-                ${book.title}</a><span if.bind="!book.url">${book.title}</span></td>
+                ${book.title}</a><a if.bind="!book.url" href="/#/dashboard/reader">${book.title}</a></td>
                 <td>${book.type}</td>
                 <td>${book.author}</td>
                 <td>${book.numberPages}</td>
