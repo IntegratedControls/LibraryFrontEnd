@@ -21,20 +21,25 @@ export class Dashboard {
   getUser(){
     this.authenticated = this.auth.isAuthenticated();
     let uid = this.auth.getTokenPayload().sub;
-    this.httpClient.fetch(process.env.BackendUrl + '/user/' + uid)
+    this.httpClient.configure(config => {
+      config
+      .useStandardConfiguration()
+      .withBaseUrl(process.env.BackendUrl);
+    });
+    this.httpClient.fetch('/user/' + uid)
     .then(response => response.json())
     .then(data => {
       this.user = data;
       // this.firstTimeInfo = this.configured();
       if (this.user.userType === 'Librarian'){
-        this.user.userType = 1;
+        //this.user.userType = 1;
         this.router.navigate('librarian');
       } else if (this.user.userType === 'Reader' || this.user.userType === ''){
-        this.user.userType = 2;
+        //this.user.userType = 2;
         this.router.navigate('reader');
       } else {
         this.user.userType = '';
-        this.httpClient.fetch(process.env.BackendUrl + '/user/' + uid, {
+        this.httpClient.fetch('/user/' + uid, {
           method: 'put',
           body: json(this.user)
         })

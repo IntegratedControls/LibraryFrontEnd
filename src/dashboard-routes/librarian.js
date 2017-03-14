@@ -41,7 +41,12 @@ export class LibrarianDashboard {
     } else {
       this.newBook.access = 'Public';
     }
-    this.httpClient.fetch(process.env.BackendUrl + '/book/', {
+    this.httpClient.configure(config => {
+      config
+      .useStandardConfiguration()
+      .withBaseUrl(process.env.BackendUrl);
+    });
+    this.httpClient.fetch('/book/', {
       method: 'post',
       body: json(this.newBook)
     })
@@ -69,7 +74,12 @@ export class LibrarianDashboard {
     }
 
     function makeLotaBooks (jsonObject) {
-      httpClient.fetch(process.env.BackendUrl + '/book/', {
+      httpClient.configure(config => {
+        config
+        .useStandardConfiguration()
+        .withBaseUrl(process.env.BackendUrl);
+      });
+      httpClient.fetch('/book/', {
         method: 'post',
         body: json(jsonObject)
       })
