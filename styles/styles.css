@@ -27,10 +27,11 @@ td {
 }
 
 .home-slideshow {
-  width: 85% !important;
+  width: 82% !important;
   height: 0 !important;
   padding-bottom: 46%;
-  padding-left: 0.57in;
+  display: block;
+  margin: auto;
 }
 
 .splash {
