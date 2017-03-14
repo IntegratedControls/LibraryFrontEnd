@@ -4,10 +4,9 @@ body {
 
 form {
   width: 300px;
-margin-left: 10px;
+  margin-left: 10px;
   margin-top: 0;
-
-  }
+}
 
 table {
   width: auto;
@@ -28,14 +27,15 @@ td {
 }
 
 .home-slideshow {
-  width: 55% !important;
+  width: 85% !important;
   height: 0 !important;
-  padding-bottom: 32%;
+  padding-bottom: 46%;
+  padding-left: 0.57in;
 }
 
 .splash {
   text-align: center;
-  margin: 10% 0 0 0;
+  margin: 10% 0 0;
   box-sizing: border-box;
 }
 
@@ -51,12 +51,6 @@ td {
   /* top:165px;
   border-left:1px solid black; */
 }
-
-/*.paper-drawer-panel {
---paper-drawer-panel-left-drawer-container: {
-background-color: #1b2a33;
-};
-}*/
 
 .splash .fa-spinner {
   text-align: center;
@@ -304,11 +298,6 @@ div.au-stagger {
   margin-right: -256px;
   background-color: #1b2a33;
   margin-bottom: auto;
-  /* position: absolute;
-  overflow-x: hidden;
-  overflow-y: auto;
-  min-height:120px;
-  width: 1000px; */
 }
 
 .material-header-content {
