@@ -51,7 +51,7 @@ export class ReaderDashboard {
     this.book = book;
     this.book.checkedOutBy = this.uid;
     this.book.checkedOutByName = this.user.name;
-    this.httpClient.fetch(process.env.BackendUrl + '/book/update/' + this.book._id, {
+    this.httpClient.fetch('/book/update/' + this.book._id, {
       method: 'put',
       body: json(this.book)
     })
@@ -64,7 +64,7 @@ export class ReaderDashboard {
     this.book = book;
     this.book.checkedOutBy = '';
     this.book.checkedOutByName = '';
-    this.httpClient.fetch(process.env.BackendUrl + '/book/update/' + this.book._id, {
+    this.httpClient.fetch('/book/update/' + this.book._id, {
       method: 'put',
       body: json(this.book)
     })
