@@ -37,6 +37,10 @@ class HttpMock {
       data: 'PLEASE SPECIFY A URL'
     });
   }
+  configure(fn) {
+    this.__configureCallback = fn;
+    return this.__configureReturns;
+  }
 }
 
 class RouterMock {
@@ -86,7 +90,7 @@ describe('the librarian module', () => {
     expect(http.status).toBe(200);
     done();
   });
-  
+
   // trying another option for testing the createBooksFromCSV();
   it('should confirm a http status change', done => {
     window.CSVFilePath = {files: [new Blob([csvFixture.string])] };
