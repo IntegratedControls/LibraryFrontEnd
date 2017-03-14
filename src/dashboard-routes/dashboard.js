@@ -14,28 +14,30 @@ export class Dashboard {
     this.router = router;
   }
 
-  authenticated=false;
-  // firstTimeInfo = false;
-  types=['Librarian', 'Reader'];
+  async activate(){
+    await fetch;
 
-  getUser(){
-    this.authenticated = this.auth.isAuthenticated();
-    let uid = this.auth.getTokenPayload().sub;
     this.httpClient.configure(config => {
       config
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
     });
+    this.getUser();
+  }
+
+  authenticated=false;
+  types=['Librarian', 'Reader'];
+
+  getUser(){
+    this.authenticated = this.auth.isAuthenticated();
+    let uid = this.auth.getTokenPayload().sub;
     this.httpClient.fetch('/user/' + uid)
     .then(response => response.json())
     .then(data => {
       this.user = data;
-      // this.firstTimeInfo = this.configured();
       if (this.user.userType === 'Librarian'){
-        //this.user.userType = 1;
         this.router.navigate('librarian');
       } else if (this.user.userType === 'Reader' || this.user.userType === ''){
-        //this.user.userType = 2;
         this.router.navigate('reader');
       } else {
         this.user.userType = '';
@@ -48,32 +50,5 @@ export class Dashboard {
         });
       }
     });
-  }
-  // updateUser(){
-  //   let uid = this.auth.getTokenPayload().sub;
-  //   let tempUserType = this.user.userType;
-  //   this.user.userType = this.types[this.user.userType - 1];
-  //   this.httpClient.fetch(process.env.BackendUrl + '/user/' + uid, {
-  //     method: 'put',
-  //     body: json(this.user)
-  //   })
-  //   .then(response=>response.json())
-  //   .then(data=> {
-  //     this.user.userType = tempUserType;
-  //     this.getUser();
-  //   });
-  // }
-
-  // configured() {
-  //   let returnVal = false;
-  //   if (!('userType' in this.user)){
-  //     returnVal = true;
-  //     return returnVal;
-  //   }
-  //   return returnVal;
-  // }
-
-  activate() {
-    this.getUser();
   }
 }

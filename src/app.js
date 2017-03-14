@@ -38,12 +38,10 @@ export class App {
   get widescreen(){
     let iswidescreen = false;
     let currentscreenwidth = document.documentElement.clientWidth;
+    /* istanbul ignore else */
     if (currentscreenwidth > 766){
       iswidescreen = true;
     }
-    // else {
-    //   iswidescreen = false;
-    // }
     return iswidescreen;
   }
 
