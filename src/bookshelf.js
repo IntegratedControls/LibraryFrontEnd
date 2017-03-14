@@ -11,6 +11,7 @@ export class Bookshelf {
   constructor(httpClient){
     this.httpClient = httpClient;
   }
+  mediaTypes = [];
 
   async activate(){
     await fetch;
@@ -23,5 +24,22 @@ export class Bookshelf {
 
     const res = await this.httpClient.fetch('/book/getall');
     this.books =  await res.json();
+    this.populateTypes();
+  }
+
+  filters = [
+    {value: '', keys: ['title', 'type', 'author', 'numberPages', 'dateOfPub', 'siteLocation', 'access']},
+    {value: '', keys: ['type']}
+  ];
+
+  populateTypes(){
+    this.mediaTypes.push('');
+    for (let next of this.books){
+      let nextType = next.type;
+
+      if (this.mediaTypes.indexOf(nextType) === -1){
+        this.mediaTypes.push(nextType);
+      }
+    }
   }
 }
