@@ -1,9 +1,8 @@
 machine:
   node:
-    version: 7.7.2
+    version: 7.7.3
 dependencies:
   override:
-    - npm install -g npm@next
     - npm install -g yarn
     - yarn install
 general:

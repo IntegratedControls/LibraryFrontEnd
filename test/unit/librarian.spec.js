@@ -4,6 +4,21 @@ import './setup';
 import {Router} from 'aurelia-router';
 import {csvFixture} from './librarian.spec.fixtures';
 import csvjson from 'csvjson';
+const Counter = require('assertions-counter');
+
+class HttpStub {
+  fetch(fn) {
+    var response = this.itemStub;
+    this.__fetchCallback = fn;
+    return new Promise((resolve) => {
+      resolve({ json: () => response });
+    });
+  }
+  configure(fn) {
+    this.__configureCallback = fn;
+    return this.__configureReturns;
+  }
+}
 
 class HttpMock {
   status = 500;
@@ -53,6 +68,7 @@ class RouterMock {
 
 describe('the librarian module', () => {
   let bookdashboard;
+  let bookdashboard5;
   let http;
   let router;
   let fileReaderStub;
@@ -62,6 +78,7 @@ describe('the librarian module', () => {
     router = new RouterMock();
     fileReaderStub = {};
     bookdashboard = new LibrarianDashboard(http, router, fileReaderStub);
+    bookdashboard5 = new LibrarianDashboard(new HttpStub(), router, fileReaderStub);
     // add the new book csv from the fixtures object and use it as main data.
     bookdashboard.CSVFilePath = {files: [csvFixture.string]};
   });
@@ -136,5 +153,22 @@ describe('the librarian module', () => {
       return new Promise(()=>{}); // don't resolve
     };
     fileReaderStub.onload({ target: { result: csvFixture.string } });
+  });
+
+  it('tests configHttpClient', (done) => {
+    const { add: ok } = new Counter(2, done);
+    bookdashboard5.activate().then(() => {
+      bookdashboard5.httpClient.__configureCallback(new(class {
+        withBaseUrl(opts) {
+          expect(opts).toBe(process.env.BackendUrl);
+          ok();
+          return this;
+        }
+        useStandardConfiguration() {
+          ok();
+          return this;
+        }
+      })());
+    });
   });
 });

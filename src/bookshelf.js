@@ -36,7 +36,7 @@ export class Bookshelf {
     this.mediaTypes.push('');
     for (let next of this.books){
       let nextType = next.type;
-
+      /* istanbul ignore else */
       if (this.mediaTypes.indexOf(nextType) === -1){
         this.mediaTypes.push(nextType);
       }

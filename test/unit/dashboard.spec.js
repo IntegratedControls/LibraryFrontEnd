@@ -3,6 +3,21 @@ import {Container} from 'aurelia-dependency-injection';
 import {json} from 'aurelia-fetch-client';
 import {StageComponent} from 'aurelia-testing';
 import {bootstrap} from 'aurelia-bootstrapper';
+const Counter = require('assertions-counter');
+
+class HttpStub {
+  fetch(fn) {
+    var response = this.itemStub;
+    this.__fetchCallback = fn;
+    return new Promise((resolve) => {
+      resolve({ json: () => response });
+    });
+  }
+  configure(fn) {
+    this.__configureCallback = fn;
+    return this.__configureReturns;
+  }
+}
 
 class HttpMock {
   // this one catches the ajax and then resolves a custom json data.
@@ -61,6 +76,7 @@ class RouterMock {
 
 describe('the Dashboard Module', () => {
   let dashboard;
+  let dashboard5;
 
   describe('Dashboard DI', () => {
     let auth;
@@ -72,6 +88,7 @@ describe('the Dashboard Module', () => {
       http = new HttpMock();
       http2 = new HttpMock({name: 'John Fitzgerald', userType: 'Reader'});
       dashboard = new Dashboard(auth, http, null, new RouterMock);
+      dashboard5 = new Dashboard(auth, new HttpStub(), null, new RouterMock);
       auth.setToken(token);
     });
 
@@ -145,6 +162,23 @@ describe('the Dashboard Module', () => {
       expect(dashboard.router.navigate(dashboard.types[0])).toBe('Librarian');
       expect(dashboard.router.navigate(dashboard.types[1])).toBe('Reader');
       done();
+    });
+  });
+
+  it('tests configHttpClient', (done) => {
+    const { add: ok } = new Counter(2, done);
+    dashboard5.activate().then(() => {
+      dashboard5.httpClient.__configureCallback(new(class {
+        withBaseUrl(opts) {
+          expect(opts).toBe(process.env.BackendUrl);
+          ok();
+          return this;
+        }
+        useStandardConfiguration() {
+          ok();
+          return this;
+        }
+      })());
     });
   });
 

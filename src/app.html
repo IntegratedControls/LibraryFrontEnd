@@ -16,7 +16,7 @@
         <div drawer class="left-drawer">
           <!--TODO if.bind not cell phone mode
         use get width to determine if cel phone -->
-          <paper-item if.bind = "widescreen"><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
+          <paper-item if.bind = "widescreen" ><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
           <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
             <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
               <span class="${row.settings}"></span>
@@ -47,7 +47,7 @@
           </paper-item>
         </div>
         <div main class="main-content">
-          <i style="padding-left: 6px; padding-top:4px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
+          <i style="z-index:10000000;position:relative;padding-left: 6px; padding-top:4px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
           <router-view></router-view>
         </div>
       </paper-drawer-panel>

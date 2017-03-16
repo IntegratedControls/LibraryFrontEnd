@@ -5,14 +5,14 @@
   "main": "dist/main.js",
   "productName": "CSTLibrary",
   "engines": {
-    "node": "7.7.2",
+    "node": "7.7.3",
     "npm": "4.1.2"
   },
   "scripts": {
     "pretest": "del-cli \"coverage/*\"",
     "installtest": "yarn install && npm test",
-    "cleaninstall": "rm -rf bower_components && rm -rf node_modules && npm i -g yarn && yarn cache clean && yarn install",
-    "postinstall": "yarn global add bower && bower install && npm run build:prod",
+    "cleaninstall": "rm -rf bower_components && rm -rf node_modules && rm -rf yarn.lock && npm i -g yarn && yarn cache clean && yarn install",
+    "postinstall": "npm install -g bower && bower install && npm run build:prod",
     "test": "cross-env BABEL_ENV=node NODE_ENV=test ./node_modules/karma/bin/karma start test/karma.conf.js",
     "test:debug": "npm test -- --single-run=false --auto-watch=true --debug",
     "test:bs": "cd coverage && browser-sync start --server -f ./**/*.html",
