@@ -8,6 +8,10 @@ form {
   margin-top: 0;
 }
 
+p {
+  margin-left: 10px;
+}
+
 table {
   width: auto;
   margin-left: 5px;
@@ -27,11 +31,11 @@ td {
 }
 
 .home-slideshow {
-  width: 82% !important;
+  width: 60% !important;
   height: 0 !important;
-  padding-bottom: 46%;
+  padding-bottom: 35%;
   display: block;
-  margin: auto;
+  margin-left: 30px;
 }
 
 .splash {
@@ -256,6 +260,7 @@ div.au-stagger {
   color: #005cb9;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .material-content-h2 {
