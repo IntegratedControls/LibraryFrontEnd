@@ -52,7 +52,7 @@ export class LibrarianDashboard {
     } else {
       this.newBook.access = 'Public';
     }
-    this.httpClient.fetch('/book/', {
+    this.httpClient.fetch('/book/create', {
       method: 'post',
       body: json(this.newBook)
     })
@@ -80,7 +80,7 @@ export class LibrarianDashboard {
     }
 
     function makeLotaBooks (jsonObject) {
-      httpClient.fetch('/book/', {
+      httpClient.fetch('/book/create', {
         method: 'post',
         body: json(jsonObject)
       })
