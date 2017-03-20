@@ -1,12 +1,12 @@
 <template>
   <div class="page-content">
-    <h1 class="material-content-h1" style="margin-bottom: 10px;">Book Checkout</h1>
+    <h1 class="material-content-h1" style="margin-bottom: 10px;">Book Checkout / Checkin</h1>
     <paper-material elevation="0">
       <div class="search-table-outer">
         <table aurelia-table="data.bind: books; display-data.bind: $displayData" class="bookshelf">
           <thead>
             <tr>
-              <th>Checkout</th>
+              <th aut-sort="key: checkedOutByName">Action</th>
               <th aut-sort="key: title; default: asc">Title</th>
               <th>Type</th>
               <th>Author</th>
@@ -22,38 +22,20 @@
               <td><paper-button style="background-color:black; color:white" raised click.delegate="checkOutBook(book)"
                 if.bind = "book.checkedOutBy == ''">
                 Checkout</paper-button>
-                <span if.bind = "book.checkedOutBy!==''">Checked out by ${book.checkedOutByName}</span>
-              </td>
-              <td>${book.title}</td>
-              <td>${book.type}</td>
-              <td>${book.author}</td>
-              <td>${book.numberPages}</td>
-              <td>${book.dateOfPub}</td>
-              <td>${book.siteLocation}</td>
-              <!-- <td>${book.numberOfCopies}</td> -->
-              <td>${book.comments}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </paper-material>
-
-    <h1 class="material-content-h1" style="margin-bottom: 10px;">Book Checkin</h1>
-    <paper-material elevation="0">
-      <div class="search-table-outer">
-        <table aurelia-table="data.bind: books; display-data.bind: $displayData" class="bookshelf">
-          <thead>
-            <tr>
-              <th>Checkin</th>
-              <th aut-sort="key: title; default: asc">Title</th>
-              <th>Comments</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr repeat.for="book of $displayData" if.bind="uid==book.checkedOutBy">
-              <td><paper-button style="background-color:black; color:white" raised click.delegate="checkInBook(book)">
-                Checkin</paper-button></td>
+                <paper-button style="background-color:#88bde6; color:black" raised click.delegate="checkInBook(book)"
+                if.bind = "uid==book.checkedOutBy">
+                Checkin</paper-button>
+                <span if.bind = "uid!==book.checkedOutBy">
+                  <span if.bind = "book.checkedOutBy!==''">Checked out by ${book.checkedOutByName}
+                  </span></span>
+                </td>
                 <td>${book.title}</td>
+                <td>${book.type}</td>
+                <td>${book.author}</td>
+                <td>${book.numberPages}</td>
+                <td>${book.dateOfPub}</td>
+                <td>${book.siteLocation}</td>
+                <!-- <td>${book.numberOfCopies}</td> -->
                 <td>${book.comments}</td>
               </tr>
             </tbody>
