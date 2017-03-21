@@ -1,7 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
-
+const csvjson = require('csvjson');
+  
 @inject(HttpClient, Router, FileReader)
 export class LibrarianDashboard {
   constructor(httpClient, router, reader){
@@ -23,24 +24,25 @@ export class LibrarianDashboard {
       'checkedOutBy': '',
       'checkedOutByName': ''
     };
+    this.books = {};
   }
-
+  
   async activate(){
     await fetch;
-
+    
     this.httpClient.configure(config => {
       config
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
     });
   }
-
+  
   types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'gdoc'];
   accessArray = ['GE Internal', 'Public'];
   newBook = null;
   CSVFilePath = {files: ['']};
   fileList = '';
-
+  
   createBook(){
     if (this.newBook.type !== 0){
       this.newBook.type = this.types[this.newBook.type - 1];
@@ -62,14 +64,13 @@ export class LibrarianDashboard {
       this.router.navigate('/bookshelf');
     });
   }
-
+  
   createBooksFromCSV(){
     let jsonObj;
     const httpClient = this.httpClient;
     const router = this.router;
     function loaded (evt) {
       const fileString = evt.target.result;
-      const csvjson = require('csvjson');
       jsonObj = csvjson.toObject(fileString);
       makeLotaBooks(jsonObj);
     }
@@ -78,7 +79,7 @@ export class LibrarianDashboard {
       //TODO wrong file type attached
       alert('The file could not be read');
     }
-
+    
     function makeLotaBooks (jsonObject) {
       httpClient.fetch('/book/create', {
         method: 'post',
@@ -96,5 +97,20 @@ export class LibrarianDashboard {
     this.reader.onload = loaded;
     this.reader.onerror = errorHandler;
     this.reader.readAsText(CSVFilePath.files[0]);
+  }
+  
+  makeCSVfile(){
+    this.httpClient.fetch('/book/getall')
+    .then(response=>response.json())
+    .then(data=>{
+      // const options = {
+      //   headers: 'none'
+      // };
+      //this.books = JSON.stringify(data);
+      this.books = csvjson.toCSV(data);
+      console.log(this.books);
+      let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
+      window.open(uriContent, 'books.csv');
+    });
   }
 }
