@@ -42,13 +42,17 @@ export class ReaderDashboard {
 
     const res = await this.httpClient.fetch('/book/getall');
     this.books =  await res.json();
-
+//TODO get the user elsewhere
     const res1 = await this.httpClient.fetch('/user/' + this.uid);
     this.user =  await res1.json();
   }
 
   checkOutBook(book){
     this.book = book;
+    //TODO fetch this.book by book ID from the database, and if this.book
+    //still has either a '' or a bull for .checkoutOutBy then assign it to
+    //this.uid and this.user.name, else just run activate to refresh the book
+    //table so that this.user can see that someone else has checked out the book
     this.book.checkedOutBy = this.uid;
     this.book.checkedOutByName = this.user.name;
     this.httpClient.fetch('/book/update/' + this.book._id, {
@@ -57,6 +61,8 @@ export class ReaderDashboard {
     })
     .then(response=>response.json())
     .then(data=> {
+      //fetch a new list of all books
+      this.activate();
     });
   }
 
@@ -70,6 +76,8 @@ export class ReaderDashboard {
     })
     .then(response=>response.json())
     .then(data=> {
+      //fetch a fresh new list of all books
+      this.activate();
     });
   }
 }
