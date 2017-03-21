@@ -36,8 +36,9 @@ export class LibrarianDashboard {
       .withBaseUrl(process.env.BackendUrl);
     });
   }
-  
-  types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'gdoc'];
+
+  types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
+
   accessArray = ['GE Internal', 'Public'];
   newBook = null;
   CSVFilePath = {files: ['']};
