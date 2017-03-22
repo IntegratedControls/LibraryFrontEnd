@@ -71,11 +71,13 @@ export class LibrarianDashboard {
     let jsonObj;
     const httpClient = this.httpClient;
     const router = this.router;
+
     function loaded (evt) {
       const fileString = evt.target.result;
       jsonObj = csvjson.toObject(fileString);
       makeLotaBooks(jsonObj);
     }
+
     function errorHandler(evt) {
       //TODO no file attached
       //TODO wrong file type attached
@@ -89,9 +91,14 @@ export class LibrarianDashboard {
       })
       .then(response=>response.json())
       .then(data=>{
+        setTimeout(function () {
+          if (newState === -1) {
+          }
+        }, 2000);
         router.navigate('/bookshelf');
       });
     }
+
     // if (CSVFilePath.files[0] !== null){
     // TODO: Parse all csv files
     // TODO: add check for browser support of FileReader
@@ -110,11 +117,12 @@ export class LibrarianDashboard {
       };
       this.books = JSON.stringify(data);
       this.books = csvjson.toCSV(data, options);
-      console.log(this.books);
       const file = new File([this.books], 'books_export.csv', {type: 'text/plain;charset=utf-8'});
       filesaver.saveAs(file);
       // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
       // window.open(uriContent, 'books.csv');
     });
   }
+
+
 }
