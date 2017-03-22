@@ -378,6 +378,10 @@ div.au-stagger {
   border-collapse: collapse;
   border: none;
   text-align: left, top;
+  padding: 0
 }
 
+.table-filter{
+  margin: 0;
+}
 /* .search-table{table-layout: fixed; margin:40px auto;} */
