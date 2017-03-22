@@ -4,15 +4,19 @@
   <tr style="background-color: white; text-align: top"><td class="td-filter"><h1 class="material-content-h1" style="margin-bottom: 10px;">Bookshelf</h1></td>
   <td class="td-filter">
     <form>
-      <paper-dropdown-menu label="Filter By">
-          <!-- <paper-listbox required class="dropdown-content" selected.two-way="filterType" change.delegate="setFilter()"> -->
-        <paper-listbox required class="dropdown-content" selected.two-way="filterType">
+      <!-- <paper-dropdown-menu label="Filter By">
+        
+        <paper-listbox required class="dropdown-content" selected.two-way="filterType" value.bind="filterby" change.delegate="setFilter(filterby)">
           <paper-item value=""></paper-item>
           <template is="dom-repeat" items.two-way="filterby">
-            <paper-item model="{{item}}">{{item}}</paper-item>
+            <paper-item value="{{item}}" model="{{item}}">{{item}}</paper-item>
           </template>
         </paper-listbox>
-      </paper-dropdown-menu>
+
+      </paper-dropdown-menu> -->
+      <select value.bind="filterType">
+        <option repeat.for="filter of filterby" value.bind="filter">${filter}</option>
+      </select>
       <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="setFilter()">
         Set Filter</paper-button>
     </form></td></tr></tbody></table>

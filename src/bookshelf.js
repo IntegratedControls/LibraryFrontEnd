@@ -1,17 +1,18 @@
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+
 
 //import { bindable } from 'aurelia-framework';
 
 // const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(self.fetch);
 //const booksUrl = process.env.BackendUrl + '/book/getall';
-
 @inject(HttpClient)
 export class Bookshelf {
   constructor(httpClient){
     this.httpClient = httpClient;
     this.filterType = '';
   }
+  @bindable
   mediaTypes = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
   selectedMediaTypes = [];
   siteLocations = [];
@@ -73,7 +74,8 @@ export class Bookshelf {
   //   }
   // }
 
-  setFilter(){
+  setFilter(filterType){
+    console.log(filterType);
     this.filterType = this.filterby[this.filterType - 1];
     console.log(this.filterType);
   }

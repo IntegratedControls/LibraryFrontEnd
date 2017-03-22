@@ -22,7 +22,10 @@ export class Dashboard {
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
     });
-    this.getUser();
+  
+    if (process.env.AuthIsON !== 'false'){
+      this.getUser();
+    }
   }
 
   authenticated=false;
