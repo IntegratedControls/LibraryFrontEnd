@@ -2,7 +2,8 @@ import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
 const csvjson = require('csvjson');
-  
+const filesaver = require('file-saver');
+
 @inject(HttpClient, Router, FileReader)
 export class LibrarianDashboard {
   constructor(httpClient, router, reader){
@@ -26,10 +27,10 @@ export class LibrarianDashboard {
     };
     this.books = {};
   }
-  
+
   async activate(){
     await fetch;
-    
+
     this.httpClient.configure(config => {
       config
       .useStandardConfiguration()
@@ -43,7 +44,7 @@ export class LibrarianDashboard {
   newBook = null;
   CSVFilePath = {files: ['']};
   fileList = '';
-  
+
   createBook(){
     if (this.newBook.type !== 0){
       this.newBook.type = this.types[this.newBook.type - 1];
@@ -65,7 +66,7 @@ export class LibrarianDashboard {
       this.router.navigate('/bookshelf');
     });
   }
-  
+
   createBooksFromCSV(){
     let jsonObj;
     const httpClient = this.httpClient;
@@ -80,7 +81,7 @@ export class LibrarianDashboard {
       //TODO wrong file type attached
       alert('The file could not be read');
     }
-    
+
     function makeLotaBooks (jsonObject) {
       httpClient.fetch('/book/create', {
         method: 'post',
@@ -99,19 +100,21 @@ export class LibrarianDashboard {
     this.reader.onerror = errorHandler;
     this.reader.readAsText(CSVFilePath.files[0]);
   }
-  
+
   makeCSVfile(){
     this.httpClient.fetch('/book/getall')
     .then(response=>response.json())
     .then(data=>{
-      // const options = {
-      //   headers: 'none'
-      // };
-      //this.books = JSON.stringify(data);
-      this.books = csvjson.toCSV(data);
+      const options = {
+        headers: 'key'
+      };
+      this.books = JSON.stringify(data);
+      this.books = csvjson.toCSV(data, options);
       console.log(this.books);
-      let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
-      window.open(uriContent, 'books.csv');
+      const file = new File([this.books], 'books_export.csv', {type: 'text/plain;charset=utf-8'});
+      filesaver.saveAs(file);
+      // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
+      // window.open(uriContent, 'books.csv');
     });
   }
 }
