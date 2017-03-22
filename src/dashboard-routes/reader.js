@@ -26,27 +26,33 @@ export class ReaderDashboard {
       'checkedOutBy': '',
       'checkedOutByName': ''
     };
-    this.uid = this.auth.getTokenPayload().sub;
+    
+    if (process.env.AuthIsON !== 'false'){
+      this.uid = this.auth.getTokenPayload().sub;
+    }
+    
     this.user = {
     };
   }
-
+  
   async activate(){
     await fetch;
-
+    
     this.httpClient.configure(config => {
       config
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
     });
-
+    
     const res = await this.httpClient.fetch('/book/getall');
     this.books =  await res.json();
-//TODO get the user elsewhere
-    const res1 = await this.httpClient.fetch('/user/' + this.uid);
-    this.user =  await res1.json();
+    //TODO get the user elsewhere
+    if (process.env.AuthIsON !== 'false'){
+      const res1 = await this.httpClient.fetch('/user/' + this.uid);
+      this.user =  await res1.json();
+    }
   }
-
+  
   checkOutBook(book){
     this.book = book;
     //TODO fetch this.book by book ID from the database, and if this.book
@@ -65,7 +71,7 @@ export class ReaderDashboard {
       this.activate();
     });
   }
-
+  
   checkInBook(book){
     this.book = book;
     this.book.checkedOutBy = '';
