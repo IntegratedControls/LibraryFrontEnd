@@ -14,18 +14,16 @@
 
       <paper-drawer-panel drawer-width.bind="drawerWidth">
         <div drawer class="left-drawer">
-          <!--TODO if.bind not cell phone mode
-        use get width to determine if cel phone -->
           <paper-item if.bind = "widescreen" ><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
           <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
             <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
-              <span class="${row.settings}"></span>
+<!-- TODO hamburger icon covers house in cell mode -->
+              <span style="z-index:2; position:relative" class="${row.settings}"></span>
               <span if.bind = "fullmenu">&nbsp;${row.title}</span>
             </a>
           </paper-item>
           <paper-item if.bind="authenticated">
-            <!-- <a paper-drawer-toggle style="display:block; color: white" href="dashboard"> -->
-              <a paper-drawer-toggle style="display:block; color: white" href="/#/dashboard">
+            <a paper-drawer-toggle style="display:block; color: white" href="/#/dashboard">
               <span class="fa fa-tachometer"></span>
               <span if.bind="fullmenu">&nbsp;Dashboard</span>
             </a>
@@ -33,8 +31,7 @@
           <br>
           <br>
           <paper-item if.bind="!authenticated">
-            <!-- <a paper-drawer-toggle style="display:block; color: white" href="login"> -->
-              <a paper-drawer-toggle style="display:block; color: white" href="/#/login">
+            <a paper-drawer-toggle style="display:block; color: white" href="/#/login">
               <span class="fa fa-sign-in"></span>
               <span if.bind = "fullmenu">&nbsp;Login</span>
             </a>
