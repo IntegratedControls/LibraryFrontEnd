@@ -1,7 +1,7 @@
 <template>
   <div class="page-content">
 
-    <h4 class="material-header-h4">Add Books from CSV File</h4>
+    <h4 class="material-header-h4">Create Books from a CSV File</h4>
     <paper-material class="material-content" elevation="3">
       <form>
         <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
@@ -10,8 +10,18 @@
         </form>
       </paper-material>
       <p>&nbsp;</p>
+      
+      <h4 class="material-header-h4">Download the Books to a CSV File</h4>
+      <paper-material class="material-content" elevation="3">
+        <form>
+          
+          <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeCSVfile()">
+            Download</paper-button>
+          </form>
+        </paper-material>
+        <p>&nbsp;</p>
 
-      <h4 class="material-header-h4">Add a Book</h4>
+      <h4 class="material-header-h4">Create a Book</h4>
       <paper-material class="material-content" elevation="3">
         <form>
           <!-- input validation, must be 10 digits -->

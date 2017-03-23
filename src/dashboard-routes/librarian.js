@@ -1,6 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
+const csvjson = require('csvjson');
+const filesaver = require('file-saver');
 
 @inject(HttpClient, Router, FileReader)
 export class LibrarianDashboard {
@@ -23,6 +25,7 @@ export class LibrarianDashboard {
       'checkedOutBy': '',
       'checkedOutByName': ''
     };
+    this.books = {};
   }
 
   async activate(){
@@ -35,7 +38,8 @@ export class LibrarianDashboard {
     });
   }
 
-  types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'gdoc'];
+  types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
+
   accessArray = ['GE Internal', 'Public'];
   newBook = null;
   CSVFilePath = {files: ['']};
@@ -52,7 +56,7 @@ export class LibrarianDashboard {
     } else {
       this.newBook.access = 'Public';
     }
-    this.httpClient.fetch('/book/', {
+    this.httpClient.fetch('/book/create', {
       method: 'post',
       body: json(this.newBook)
     })
@@ -67,12 +71,13 @@ export class LibrarianDashboard {
     let jsonObj;
     const httpClient = this.httpClient;
     const router = this.router;
+
     function loaded (evt) {
       const fileString = evt.target.result;
-      const csvjson = require('csvjson');
       jsonObj = csvjson.toObject(fileString);
       makeLotaBooks(jsonObj);
     }
+
     function errorHandler(evt) {
       //TODO no file attached
       //TODO wrong file type attached
@@ -80,15 +85,20 @@ export class LibrarianDashboard {
     }
 
     function makeLotaBooks (jsonObject) {
-      httpClient.fetch('/book/', {
+      httpClient.fetch('/book/create', {
         method: 'post',
         body: json(jsonObject)
       })
       .then(response=>response.json())
       .then(data=>{
+        setTimeout(function () {
+          if (newState === -1) {
+          }
+        }, 2000);
         router.navigate('/bookshelf');
       });
     }
+
     // if (CSVFilePath.files[0] !== null){
     // TODO: Parse all csv files
     // TODO: add check for browser support of FileReader
@@ -97,4 +107,22 @@ export class LibrarianDashboard {
     this.reader.onerror = errorHandler;
     this.reader.readAsText(CSVFilePath.files[0]);
   }
+
+  makeCSVfile(){
+    this.httpClient.fetch('/book/getall')
+    .then(response=>response.json())
+    .then(data=>{
+      const options = {
+        headers: 'key'
+      };
+      this.books = JSON.stringify(data);
+      this.books = csvjson.toCSV(data, options);
+      const file = new File([this.books], 'books_export.csv', {type: 'text/plain;charset=utf-8'});
+      filesaver.saveAs(file);
+      // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
+      // window.open(uriContent, 'books.csv');
+    });
+  }
+
+
 }

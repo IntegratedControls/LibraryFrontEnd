@@ -54,8 +54,8 @@ describe('the app.router.config module', () => {
     expect(sut.router.routes).toContain({ route: ['', 'home'], name: 'home',  moduleId: './home', nav: true, title: 'Home', settings: 'fa fa-home' });
   });
 
-  it('should have a Book Shelf route', () => {
-    expect(sut.router.routes).toContain({ route: 'bookshelf', name: 'bookshelf', moduleId: './bookshelf', nav: true, title: 'Book Shelf', settings: 'fa fa-book'});
+  it('should have a Bookshelf route', () => {
+    expect(sut.router.routes).toContain({ route: 'bookshelf', name: 'bookshelf', moduleId: './bookshelf', nav: true, title: 'Bookshelf', settings: 'fa fa-book'});
   });
 
   // it('should have a Create Books route', () => {

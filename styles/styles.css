@@ -258,7 +258,7 @@ div.au-stagger {
   text-align: left;
   font-size: 34px;
   color: #005cb9;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
   margin-left: 10px;
 }
@@ -369,8 +369,19 @@ div.au-stagger {
 .left-drawer {
   background-color: #1b2a33;
 }
+
 .main-content {
   overflow-y: auto;
 }
 
+.td-filter {
+  border-collapse: collapse;
+  border: none;
+  text-align: left, top;
+  padding: 0
+}
+
+.table-filter{
+  margin: 0;
+}
 /* .search-table{table-layout: fixed; margin:40px auto;} */
