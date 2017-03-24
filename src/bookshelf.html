@@ -63,7 +63,7 @@ Multiselect drop down.
     <tbody>
       <tr repeat.for="book of $displayData">
         <td><a show.bind="book.url" href="${book.url}">
-          ${book.title}</a><a if.bind="!book.url" href="/#/dashboard/reader">${book.title}</a></td>
+          ${book.title}</a><a if.bind="!book.url" href="/#/dashboard/">${book.title}</a></td>
           <td>${book.type}</td>
           <td>${book.author}</td>
           <td>${book.numberPages}</td>
