@@ -17,6 +17,11 @@ export class Bookshelf {
   selectedMediaTypes = [];
   siteLocations = [];
   filterby = ['keyword', 'media type', 'site location'];
+  selectedFilter = [];
+  expanded = false;
+  keyword = false;
+  mediaType = false;
+  siteLocation = false;
 
   async activate(){
     await fetch;
@@ -32,6 +37,23 @@ export class Bookshelf {
     this.populateTypes();
     this.populateSites();
     // this.getMediaTypes();
+  }
+
+  filterPicked(){
+    let arrayLength = this.selectedFilter.length;
+    this.keyword = false;
+    this.mediaType = false;
+    this.siteLocation = false;
+    for (let i = 0; i < arrayLength; i++) {
+      /* look in array, if filter type is contained then set the selected filtertype to be true  this.keyword = true; this.mediaType=true; this.siteLocation=true*/
+      if (this.selectedFilter.includes('keyword')) {
+        this.keyword = true;
+      } if (this.selectedFilter.includes('media type')) {
+        this.mediaType = true;
+      } if (this.selectedFilter.includes('site location')) {
+        this.siteLocation = true;
+      }
+    }
   }
 
   filters = [
@@ -75,8 +97,18 @@ export class Bookshelf {
   // }
 
   setFilter(filterType){
-    console.log(filterType);
     this.filterType = this.filterby[this.filterType - 1];
-    console.log(this.filterType);
   }
+
+  showCheckboxes(){
+    const checkboxes = document.getElementById('checkboxes');
+    if (!this.expanded) {
+      checkboxes.style.display = 'block';
+      this.expanded = true;
+    } else {
+      checkboxes.style.display = 'none';
+      this.expanded = false;
+    }
+  }
+
 }
