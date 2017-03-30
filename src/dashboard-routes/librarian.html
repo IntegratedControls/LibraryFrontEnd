@@ -14,49 +14,58 @@
       <h4 class="material-header-h4">Download the Books to a CSV File</h4>
       <paper-material class="material-content" elevation="3">
         <form>
-
           <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeCSVfile()">
             Download</paper-button>
           </form>
         </paper-material>
         <p>&nbsp;</p>
 
-      <h4 class="material-header-h4">Create a Book</h4>
-      <paper-material class="material-content" elevation="3">
-        <form>
-          <!-- input validation, must be 10 digits -->
-          <paper-input  label="Title" value.two-way="newBook.title" required></paper-input>
+        <!-- TODO Download Users to CSV
+        <h4 class="material-header-h4">Download the Users to a CSV File</h4>
+        <paper-material class="material-content" elevation="3">
+          <form>
+            <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeUsersCSVfile()">
+              Download</paper-button>
+            </form>
+          </paper-material>
+          <p>&nbsp;</p> -->
 
-          <!-- <paper-dropdown-menu style="margin-left: 0.5cm; width:180px" label="Account Type" (iron-select)="genreChange($event.detail.item.value, 0)"> -->
-          <paper-dropdown-menu  label="Book Type">
-            <paper-listbox  required  selected.two-way="newBook.type" class="dropdown-content">
-              <paper-item value=""></paper-item>
-              <template is="dom-repeat" items.two-way="types">
-                <paper-item model="{{item}}">{{item}}</paper-item>
-              </template>
-            </paper-listbox>
-          </paper-dropdown-menu>
-          <!-- <br>
-          selected product: ${user.type} -->
-          <paper-input  value.two-way="newBook.author" label="Author" ></paper-input>
-          <paper-input type="number" label="Number of Pages" value.two-way="newBook.numberPages"></paper-input>
-          <paper-input type="number" label="Year of Publication"  value.two-way="newBook.dateOfPub"></paper-input>
-          <paper-input value.two-way="newBook.url" label="URL (if pdf or webpage)" ></paper-input>
-          <paper-input  value.two-way="newBook.isbn" label="Catalog Number" ></paper-input>
-          <paper-input  value.two-way="newBook.siteLocation" label="Site Location (if physical book)" ></paper-input>
-          <!-- <paper-input  value.two-way="newBook.numberOfCopies" label="# of Copies (if physical book)" ></paper-input> -->
-          <paper-dropdown-menu  label="Access">
-            <paper-listbox  required  selected.two-way="newBook.access" class="dropdown-content">
-              <paper-item value=""></paper-item>
-              <template is="dom-repeat" items.two-way="accessArray">
-                <paper-item model="{{item}}">{{item}}</paper-item>
-              </template>
-            </paper-listbox>
-          </paper-dropdown-menu>
-          <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
-          <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="createBook()">
-            Create</paper-button>
-          </form>
-        </paper-material>
-      </div>
-    </template>
+          <h4 class="material-header-h4">Create a Book</h4>
+          <paper-material class="material-content" elevation="3">
+            <form>
+              <!-- input validation, must be 10 digits -->
+              <paper-input  label="Title" value.two-way="newBook.title" required></paper-input>
+
+              <!-- <paper-dropdown-menu style="margin-left: 0.5cm; width:180px" label="Account Type" (iron-select)="genreChange($event.detail.item.value, 0)"> -->
+              <paper-dropdown-menu  label="Book Type">
+                <paper-listbox  required  selected.two-way="newBook.type" class="dropdown-content">
+                  <paper-item value=""></paper-item>
+                  <template is="dom-repeat" items.two-way="types">
+                    <paper-item model="{{item}}">{{item}}</paper-item>
+                  </template>
+                </paper-listbox>
+              </paper-dropdown-menu>
+              <!-- <br>
+              selected product: ${user.type} -->
+              <paper-input  value.two-way="newBook.author" label="Author" ></paper-input>
+              <paper-input type="number" label="Number of Pages" value.two-way="newBook.numberPages"></paper-input>
+              <paper-input type="number" label="Year of Publication"  value.two-way="newBook.dateOfPub"></paper-input>
+              <paper-input value.two-way="newBook.url" label="URL (if pdf or webpage)" ></paper-input>
+              <paper-input  value.two-way="newBook.isbn" label="Catalog Number" ></paper-input>
+              <paper-input  value.two-way="newBook.siteLocation" label="Site Location (if physical book)" ></paper-input>
+              <!-- <paper-input  value.two-way="newBook.numberOfCopies" label="# of Copies (if physical book)" ></paper-input> -->
+              <paper-dropdown-menu  label="Access">
+                <paper-listbox  required  selected.two-way="newBook.access" class="dropdown-content">
+                  <paper-item value=""></paper-item>
+                  <template is="dom-repeat" items.two-way="accessArray">
+                    <paper-item model="{{item}}">{{item}}</paper-item>
+                  </template>
+                </paper-listbox>
+              </paper-dropdown-menu>
+              <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
+              <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="createBook()">
+                Create</paper-button>
+              </form>
+            </paper-material>
+          </div>
+        </template>

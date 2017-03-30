@@ -26,6 +26,7 @@ export class LibrarianDashboard {
       'checkedOutByName': ''
     };
     this.books = {};
+    this.users = {};
   }
 
   async activate(){
@@ -124,5 +125,19 @@ export class LibrarianDashboard {
     });
   }
 
+  // TODO Download Users to CSV
+  // makeUsersCSVfile(){
+  //   this.httpClient.fetch('/user')
+  //   .then(response=>response.json())
+  //   .then(data=>{
+  //     const options = {
+  //       headers: 'key'
+  //     };
+  //     this.users = JSON.stringify(data);
+  //     this.users = csvjson.toCSV(data, options);
+  //     const file = new File([this.users], 'users_export.csv', {type: 'text/plain;charset=utf-8'});
+  //     filesaver.saveAs(file);
+  //   });
+  // }
 
 }
