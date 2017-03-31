@@ -230,6 +230,7 @@ div.au-stagger {
 
 .left-drawer {
   background-color: #1b2a33;
+  z-index: 2147483647;
 }
 
 .main-content {
@@ -268,4 +269,8 @@ div.au-stagger {
 
 #checkboxes label:hover {
   background-color: #1e90ff;
+}
+
+div#drawer.style-scope.paper-drawer-panel.iron-selected {
+  z-index: 2147483647;
 }
