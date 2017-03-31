@@ -5,27 +5,27 @@
     <option value="">Filter by...</option>
     <option repeat.for="filter of filterby" value.bind="filter">${filter}</option>
   </select> -->
-
-  <div style="width: 4.5in">
-    <h1 class="material-content-h1" style="margin-bottom: 10px;">Bookshelf
-      <span style="font-size: 14px; float:right; margin-right: 132px; margin-top: 8px">
-        <div class="multiselect">
-          <div class="selectBox" click.trigger="showCheckboxes()">
-            <select>
-              <option>Filter by</option>
-            </select>
-            <div class="overSelect"></div>
-          </div>
-          <div id="checkboxes">
-            <label repeat.for="filter of filterby" for="filter">
-              <input type="checkbox" value.bind="filter" checked.bind="selectedFilter" change.delegate="filterPicked()"> ${filter}</label>
+  <paper-material elevation="0" style="z-index:10; position:relative">
+    <div style="width: 4.5in">
+      <h1 class="material-content-h1" style="margin-bottom: 10px">Bookshelf
+        <span style="font-size: 14px; float:right; margin-right: 132px; margin-top: 8px">
+          <div class="multiselect">
+            <div class="selectBox" click.trigger="showCheckboxes()">
+              <select>
+                <option>Filter by</option>
+              </select>
+              <div class="overSelect"></div>
             </div>
-          </div>
-        </span></h1>
-      </div>
+            <div id="checkboxes">
+              <label repeat.for="filter of filterby" for="filter">
+                <input type="checkbox" value.bind="filter" checked.bind="selectedFilter" change.delegate="filterPicked()"> ${filter}</label>
+              </div>
+            </div>
+          </span></h1>
+        </div>
+      </paper-material>
 
       <paper-material elevation="0">
-
         <div class="form-group" if.bind="keyword">
           <input type="text" value.bind="filters[0].value" placeholder="Enter keyword" class="form-control"/>
         </div>

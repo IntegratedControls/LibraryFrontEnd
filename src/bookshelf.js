@@ -43,23 +43,25 @@ export class Bookshelf {
     this.keyword = false;
     this.mediaType = false;
     this.siteLocation = false;
-
     for (let i = 0; i < arrayLength; i++) {
       /* look in array, if filter type is contained then set the selected filtertype to be true  this.keyword = true; this.mediaType=true; this.siteLocation=true*/
       if (this.selectedFilter.includes('keyword')) {
         this.keyword = true;
       } else {
         this.filters[0].value = '';
+        this.keyword = false;
       }
       if (this.selectedFilter.includes('media type')) {
         this.mediaType = true;
       } else {
         this.filters[1].value = '';
+        this.mediaType = false;
       }
       if (this.selectedFilter.includes('site location')) {
         this.siteLocation = true;
       } else {
         this.filters[2].value = '';
+        this.siteLocation = false;
       }
     }
   }
