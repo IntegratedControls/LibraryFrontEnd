@@ -14,7 +14,6 @@ export class Bookshelf {
   }
   @bindable
   mediaTypes = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
-  selectedMediaTypes = [];
   siteLocations = [];
   filterby = ['keyword', 'media type', 'site location'];
   selectedFilter = [];
@@ -44,14 +43,23 @@ export class Bookshelf {
     this.keyword = false;
     this.mediaType = false;
     this.siteLocation = false;
+
     for (let i = 0; i < arrayLength; i++) {
       /* look in array, if filter type is contained then set the selected filtertype to be true  this.keyword = true; this.mediaType=true; this.siteLocation=true*/
       if (this.selectedFilter.includes('keyword')) {
         this.keyword = true;
-      } if (this.selectedFilter.includes('media type')) {
+      } else {
+        this.filters[0].value = '';
+      }
+      if (this.selectedFilter.includes('media type')) {
         this.mediaType = true;
-      } if (this.selectedFilter.includes('site location')) {
+      } else {
+        this.filters[1].value = '';
+      }
+      if (this.selectedFilter.includes('site location')) {
         this.siteLocation = true;
+      } else {
+        this.filters[2].value = '';
       }
     }
   }
@@ -83,18 +91,6 @@ export class Bookshelf {
       }
     }
   }
-
-  // getMediaTypes(){
-  //   this.selectedMediaTypes.push('');
-  //   for (let next of this.books){
-  //     let nextType = next.type;
-  //     /* istanbul ignore else */
-  //     if (this.selectedMediaTypes.indexOf(nextType) === -1){
-  //       this.selectedMediaTypes.push(nextType);
-  //       return this.selectedMediaTypes;
-  //     }
-  //   }
-  // }
 
   setFilter(filterType){
     this.filterType = this.filterby[this.filterType - 1];
