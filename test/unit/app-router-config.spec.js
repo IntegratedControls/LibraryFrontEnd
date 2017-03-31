@@ -1,9 +1,10 @@
 
 import {AppRouterConfig} from '../../src/app.router.config';
-import {AuthorizeStep} from 'aurelia-auth';
+// import {AuthorizeStep} from 'aurelia-auth';
 import {Router} from 'aurelia-router';
+// const mockEnv = require('mock-env');
 
-class RouterStub {
+class RouterStub extends Router {
   configure(handler) {
     handler(this);
   }
@@ -72,5 +73,12 @@ describe('the app.router.config module', () => {
 
   it('should have a release notes route', () => {
     expect(sut.router.routes).toContain({ route: 'releasenotes', name: 'releasenotes', moduleId: './releasenotes', nav: true, title: 'Release Notes', settings: 'fa fa-file-text-o' });
+  });
+
+  it('should allow access if AuthIsON=false', () => {
+    // const env = {AuthIsON: 'false'};
+    // const result = mockEnv(() => process.env.AuthIsON, env);
+    // expect(result).toBe(!null);
+    // expect(sut.router.routes).toContain({ route: 'dashboard', name: 'dashboard-router', moduleId: './dashboard-router', nav: false, title: 'Dashboard', auth: false, settings: 'fa fa-tachometer' });
   });
 });

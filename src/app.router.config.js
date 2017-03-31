@@ -4,17 +4,18 @@ import {Router} from 'aurelia-router';
 
 @inject(Router)
 export class AppRouterConfig{
-  
+
   constructor(router){
     this.router = router;
   }
-  
+
   configure(config1, router){
     let theAppRouterConfig = function(config){
       let doAuth = true;
       if (process.env.AuthIsON === 'false'){
         doAuth = false;
       }
+      
       config.title = 'CST Library';
       //config.options.pushState = true;
       //config.options.root = '/';
@@ -28,8 +29,8 @@ export class AppRouterConfig{
         { route: 'releasenotes', name: 'releasenotes', moduleId: './releasenotes', nav: true, title: 'Release Notes', settings: 'fa fa-file-text-o'}
       ]);
     };
-    
+
     this.router.configure(theAppRouterConfig);
   }
-  
+
 }
