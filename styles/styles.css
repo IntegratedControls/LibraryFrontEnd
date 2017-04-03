@@ -214,6 +214,17 @@ div.au-stagger {
   margin-bottom: 10px;
 }
 
+.button1 {
+  height: 0.35in;
+  width: 0.95in;
+  text-transform: none;
+  margin:20px 6.0cm 0;
+  background-color:#c0c0c0;
+  border-width: thin;
+  border-style: outset;
+  border-color: #8c8c8c;
+}
+
 .slideshowimage {
   width: 100%;
   height: 0;
@@ -224,8 +235,39 @@ div.au-stagger {
   overflow-x: auto;
 }
 
+.aut-sort::after {
+  font-family: FontAwesome;
+  padding-left: 0.5em;
+  width: 1.28571429em;
+  display: inline-block;
+  text-align: center;
+}
+
+.aut-sortable::after {
+  content: "\f0dc";
+}
+
+.aut-asc::after {
+  content: "\f160";
+}
+
+.aut-desc::after {
+  content: "\f161";
+}
+
 .whiteicon {
   color: white;
+}
+
+.td-filter {
+  border-collapse: collapse;
+  border: none;
+  text-align: left, top;
+  padding: 0;
+}
+
+.table-filter {
+  margin: 0;
 }
 
 .left-drawer {
