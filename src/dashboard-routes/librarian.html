@@ -1,104 +1,87 @@
 <template>
   <div class="page-content">
-    <div>
-      <h4 class="material-header-h4">Import Books from CSV</h4>
+<div class="books">
+    <h4 class="material-header-h4">Import Books from CSV</h4>
+    <paper-material class="material-content" elevation="3">
+      <form>
+        <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
+        <paper-button style="margin:20px 6.0cm 0; background-color:#88bde6" raised click.trigger="createBooksFromCSV()">
+          Import</paper-button>
+        </form>
+      </paper-material>
+      <p>&nbsp;</p>
+
+      <h4 class="material-header-h4">Export Books to CSV</h4>
       <paper-material class="material-content" elevation="3">
         <form>
-          <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
-          <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="createBooksFromCSV()">
-            Import</paper-button>
+          <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeCSVfile()">
+            Export</paper-button>
           </form>
         </paper-material>
         <p>&nbsp;</p>
 
-        <h4 class="material-header-h4">Export Books to CSV</h4>
-        <paper-material class="material-content" elevation="3">
-          <form>
-            <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="makeCSVfile()">
-              Export</paper-button>
-            </form>
-          </paper-material>
-          <p>&nbsp;</p>
-
-          <h4 class="material-header-h4">Add a Book</h4>
-          <paper-material class="material-content" elevation="3">
-            <form>
-              <!-- input validation, must be 10 digits -->
-              <paper-input  label="Title (required)" value.two-way="newBook.title" required></paper-input>
-
-              <!-- <paper-dropdown-menu style="margin-left: 0.5cm; width:180px" label="Account Type" (iron-select)="genreChange($event.detail.item.value, 0)"> -->
-              <paper-dropdown-menu  label="Book Type (required)">
-                <paper-listbox  required  selected.two-way="newBook.type" class="dropdown-content">
-                  <paper-item value=""></paper-item>
-                  <template is="dom-repeat" items.two-way="types">
-                    <paper-item model="{{item}}">{{item}}</paper-item>
-                  </template>
-                </paper-listbox>
-              </paper-dropdown-menu>
-              <paper-input  value.two-way="newBook.author" label="Author" ></paper-input>
-              <paper-input type="number" label="Number of Pages" value.two-way="newBook.numberPages"></paper-input>
-              <paper-input type="number" label="Year of Publication"  value.two-way="newBook.dateOfPub"></paper-input>
-              <paper-input value.two-way="newBook.url" label="URL (if pdf or webpage)" ></paper-input>
-              <paper-input  value.two-way="newBook.isbn" label="Catalog Number" ></paper-input>
-              <paper-input  value.two-way="newBook.siteLocation" label="Site Location (if physical book)" ></paper-input>
-              <!-- <paper-input  value.two-way="newBook.numberOfCopies" label="# of Copies (if physical book)" ></paper-input> -->
-              <paper-dropdown-menu  label="Access">
-                <paper-listbox  required  selected.two-way="newBook.access" class="dropdown-content">
-                  <paper-item value=""></paper-item>
-                  <template is="dom-repeat" items.two-way="accessArray">
-                    <paper-item model="{{item}}">{{item}}</paper-item>
-                  </template>
-                </paper-listbox>
-              </paper-dropdown-menu>
-              <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
-              <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="createBook()">
-                Submit</paper-button>
-              </form>
-            </paper-material>
+      <h4 class="material-header-h4">Add a Book</h4>
+      <paper-material class="material-content" elevation="3">
+        <form>
+          <!-- input validation, must be 10 digits -->
+          <paper-input  label="Title" value.two-way="newBook.title" required></paper-input>
+          <!-- <paper-dropdown-menu style="margin-left: 0.5cm; width:180px" label="Account Type" (iron-select)="genreChange($event.detail.item.value, 0)"> -->
+          <paper-dropdown-menu  label="Book Type">
+            <paper-listbox  required  selected.two-way="newBook.type" class="dropdown-content">
+              <paper-item value=""></paper-item>
+              <template is="dom-repeat" items.two-way="types">
+                <paper-item model="{{item}}">{{item}}</paper-item>
+              </template>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <!-- <br>
+          selected product: ${user.type} -->
+          <paper-input  value.two-way="newBook.author" label="Author" ></paper-input>
+          <paper-input type="number" label="Number of Pages" value.two-way="newBook.numberPages"></paper-input>
+          <paper-input type="number" label="Year of Publication"  value.two-way="newBook.dateOfPub"></paper-input>
+          <paper-input value.two-way="newBook.url" label="URL (if pdf or webpage)" ></paper-input>
+          <paper-input  value.two-way="newBook.isbn" label="Catalog Number" ></paper-input>
+          <paper-input  value.two-way="newBook.siteLocation" label="Site Location (if physical book)" ></paper-input>
+          <!-- <paper-input  value.two-way="newBook.numberOfCopies" label="# of Copies (if physical book)" ></paper-input> -->
+          <paper-dropdown-menu  label="Access">
+            <paper-listbox  required  selected.two-way="newBook.access" class="dropdown-content">
+              <paper-item value=""></paper-item>
+              <template is="dom-repeat" items.two-way="accessArray">
+                <paper-item model="{{item}}">{{item}}</paper-item>
+              </template>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
+          <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="createBook()">
+            Submit</paper-button>
+          </form>
+        </paper-material>
+      </div>
             <p>&nbsp;</p>
-          </div>
+            
+<div class="users">
+  <!-- <h4 class="material-header-h4">Import Users from CSV</h4>
+  <paper-material class="material-content" elevation="3">
+    <form>
+      <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
+      <paper-button style="margin:20px 6.0cm 0; background-color:#88bde6" raised click.trigger="createUsersFromCSV()">
+        Import</paper-button>
+      </form>
+    </paper-material>
+    <p>&nbsp;</p> -->
 
-          <div>
-            <h4 class="material-header-h4">Import Users from CSV</h4>
-            <paper-material class="material-content" elevation="3">
-              <form>
-                <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
-                <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="createUsersFromCSV()">
-                  Import</paper-button>
-                </form>
-              </paper-material>
-              <p>&nbsp;</p>
+    <h4 class="material-header-h4">Export Users to CSV</h4>
+    <paper-material class="material-content" elevation="3">
+      <form>
+        <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeUsersCSVfile()">
+          Export</paper-button>
+        </form>
+      </paper-material>
+      <p>&nbsp;</p>
 
-              <h4 class="material-header-h4">Export Users to CSV</h4>
-              <paper-material class="material-content" elevation="3">
-                <form>
-                  <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="makeUsersCSVfile()">
-                    Export</paper-button>
-                  </form>
-                </paper-material>
-                <p>&nbsp;</p>
 
-                <h4 class="material-header-h4">Add a User</h4>
-                <paper-material class="material-content" elevation="3">
-                  <form>
-                    <paper-input  label="Name (required)" value.two-way="newUser.name" required></paper-input>
-                    <paper-input  label="Email (required)" value.two-way="newUser.email" required></paper-input>
-                    <paper-dropdown-menu  label="User Type">
-                      <paper-listbox  required  selected.two-way="newUser.userType" class="dropdown-content">
-                        <paper-item value=""></paper-item>
-                        <template is="dom-repeat" items.two-way="utypeArray">
-                          <paper-item model="{{item}}">{{item}}</paper-item>
-                        </template>
-                      </paper-listbox>
-                    </paper-dropdown-menu>
-                    <paper-input type="number" label="Phone Number" value.two-way="newUser.userPhone"></paper-input>
-                    <paper-input value.two-way="newUser.userCity" label="City" ></paper-input>
-                    <paper-input type="number" label="Zip Code" value.two-way="newUser.userZip"></paper-input>
-                    <paper-input  value.two-way="newUser.userDetails" label="Details" ></paper-input>
-                    <paper-button style="margin:20px 6.0cm 0; background-color:#c0c0c0" raised click.trigger="createUser()">
-                      Submit</paper-button>
-                    </form>
-                  </paper-material>
-                </div>
-              </div>
-            </template>
+</div>
+
+
+      </div>
+    </template>
