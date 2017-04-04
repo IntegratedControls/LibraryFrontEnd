@@ -1,4 +1,4 @@
-import {inject, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
 
@@ -12,7 +12,7 @@ export class Bookshelf {
     this.httpClient = httpClient;
     this.filterType = '';
   }
-  @bindable
+  // @bindable
   mediaTypes = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
   siteLocations = [];
   filterby = ['keyword', 'media type', 'site location'];

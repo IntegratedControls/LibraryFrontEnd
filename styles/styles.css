@@ -316,3 +316,14 @@ div.au-stagger {
 div#drawer.style-scope.paper-drawer-panel.iron-selected {
   z-index: 2147483647;
 }
+
+.button1 {
+  height: 0.35in;
+  width: 0.95in;
+  text-transform: none;
+  margin: 20px 6.0cm 0;
+  background-color: #c0c0c0;
+  border-width: thin;
+  border-style: outset;
+  border-color: #8c8c8c;
+}
