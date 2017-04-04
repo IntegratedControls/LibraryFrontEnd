@@ -26,16 +26,6 @@ export class LibrarianDashboard {
       'checkedOutByName': ''
     };
     this.books = {};
-    this.newUser = {
-      'name': '',
-      'email': '',
-      'userPhone': '',
-      'userType': 'reader',
-      'userCity': '',
-      'userZip': '',
-      'userDetails': ''
-    };
-    this.users = {};
   }
 
   async activate(){
@@ -51,26 +41,29 @@ export class LibrarianDashboard {
   types = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
 
   accessArray = ['GE Internal', 'Public'];
-  utypeArray = ['librarian', 'reader'];
   newBook = null;
-  newUser = null;
   CSVFilePath = {files: ['']};
   fileList = '';
 
   createBook(){
-    if (this.newUser.userType !== 0){
-      this.newUser.userType = this.utypeArray[this.newUser.userType - 1];
+    if (this.newBook.type !== 0){
+      this.newBook.type = this.types[this.newBook.type - 1];
     } else {
-      this.newUser.userType = 'reader';
+      this.newBook.type = 'book';
     }
-    this.httpClient.fetch('/user/create', {
+    if (this.newBook.access !== 0){
+      this.newBook.access = this.accessArray[this.newBook.access - 1];
+    } else {
+      this.newBook.access = 'Public';
+    }
+    this.httpClient.fetch('/book/create', {
       method: 'post',
-      body: json(this.newUser)
+      body: json(this.newBook)
     })
     //.then(response=>response.json())
     //.then(savedRecord => record = savedRecord)
     .then(data=>{
-      this.router.navigate('/userlist');
+      this.router.navigate('/bookshelf');
     });
   }
 
@@ -129,69 +122,6 @@ export class LibrarianDashboard {
       // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
       // window.open(uriContent, 'books.csv');
     });
-  }
-
-  // createUser(){
-  //   if (this.newBook.type !== 0){
-  //     this.newBook.type = this.types[this.newBook.type - 1];
-  //   } else {
-  //     this.newBook.type = 'book';
-  //   }
-  //   if (this.newBook.access !== 0){
-  //     this.newBook.access = this.accessArray[this.newBook.access - 1];
-  //   } else {
-  //     this.newBook.access = 'Public';
-  //   }
-  //   this.httpClient.fetch('/book/create', {
-  //     method: 'post',
-  //     body: json(this.newBook)
-  //   })
-  //   //.then(response=>response.json())
-  //   //.then(savedRecord => record = savedRecord)
-  //   .then(data=>{
-  //     this.router.navigate('/bookshelf');
-  //   });
-  // }
-
-  createUsersFromCSV(){
-    let jsonObj;
-    const httpClient = this.httpClient;
-    const router = this.router;
-
-    function loaded (evt) {
-      const fileString = evt.target.result;
-      jsonObj = csvjson.toObject(fileString);
-      makeLotaUsers(jsonObj);
-    }
-
-    function errorHandler(evt) {
-      //TODO no file attached
-      //TODO wrong file type attached
-      alert('The file could not be read');
-    }
-
-    function makeLotaUsers (jsonObject) {
-      httpClient.fetch('/user/create', {
-        method: 'post',
-        body: json(jsonObject)
-      })
-      .then(response=>response.json())
-      .then(data=>{
-        setTimeout(function () {
-          if (newState === -1) {
-          }
-        }, 2000);
-        router.navigate('/userlist');
-      });
-    }
-
-    // if (CSVFilePath.files[0] !== null){
-    // TODO: Parse all csv files
-    // TODO: add check for browser support of FileReader
-    //TODO: do not run file reader if no csv file in the form
-    this.reader.onload = loaded;
-    this.reader.onerror = errorHandler;
-    this.reader.readAsText(CSVFilePath.files[0]);
   }
 
   makeUsersCSVfile(){
