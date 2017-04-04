@@ -1,12 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {Router} from 'aurelia-router';
+import {AuthService} from 'aurelia-auth';
 const csvjson = require('csvjson');
 const filesaver = require('file-saver');
 
-@inject(HttpClient, Router, FileReader)
+@inject(AuthService, HttpClient, Router, FileReader)
+
 export class LibrarianDashboard {
-  constructor(httpClient, router, reader){
+  constructor(auth, httpClient, router, reader){
+    this.auth = auth;
     this.httpClient = httpClient;
     this.router = router;
     this.reader = reader;
@@ -35,6 +38,7 @@ export class LibrarianDashboard {
       config
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
+      // .withInterceptor(this.auth.tokenInterceptor);
     });
   }
 
@@ -124,20 +128,20 @@ export class LibrarianDashboard {
     });
   }
 
-  makeUsersCSVfile(){
-    this.httpClient.fetch('/user/getall')
-    .then(response=>response.json())
-    .then(data=>{
-      const options = {
-        headers: 'key'
-      };
-      this.users = JSON.stringify(data);
-      this.users = csvjson.toCSV(data, options);
-      const file = new File([this.users], 'users_export.csv', {type: 'text/plain;charset=utf-8'});
-      filesaver.saveAs(file);
-      // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
-      // window.open(uriContent, 'books.csv');
-    });
-  }
+  // makeUsersCSVfile(){
+  //   this.httpClient.fetch('/user/getall')
+  //   .then(response=>response.json())
+  //   .then(data=>{
+  //     const options = {
+  //       headers: 'key'
+  //     };
+  //     this.users = JSON.stringify(data);
+  //     this.users = csvjson.toCSV(data, options);
+  //     const file = new File([this.users], 'users_export.csv', {type: 'text/plain;charset=utf-8'});
+  //     filesaver.saveAs(file);
+  //     // let uriContent = 'data:application/octet-stream,' + encodeURIComponent(this.books);
+  //     // window.open(uriContent, 'books.csv');
+  //   });
+  // }
 
 }
