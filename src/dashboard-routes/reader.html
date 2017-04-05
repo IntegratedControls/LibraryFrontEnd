@@ -19,10 +19,10 @@
           </thead>
           <tbody>
             <tr repeat.for="book of $displayData" if.bind="book.type=='hardback' || book.type=='paperback'">
-              <td><paper-button style="background-color:black; color:white" raised click.delegate="checkOutBook(book)"
+              <td><paper-button class="button-checkout" raised click.delegate="checkOutBook(book)"
                 if.bind = "book.checkedOutBy == ''">
                 Checkout</paper-button>
-                <paper-button style="background-color:#88bde6; color:black" raised click.delegate="checkInBook(book)"
+                <paper-button class="button-checkin" raised click.delegate="checkInBook(book)"
                 if.bind = "uid==book.checkedOutBy">
                 Checkin</paper-button>
                 <span if.bind = "uid!==book.checkedOutBy">

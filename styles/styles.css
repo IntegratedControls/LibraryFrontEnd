@@ -214,17 +214,6 @@ div.au-stagger {
   margin-bottom: 10px;
 }
 
-.button1 {
-  height: 0.35in;
-  width: 0.95in;
-  text-transform: none;
-  margin:20px 6.0cm 0;
-  background-color:#c0c0c0;
-  border-width: thin;
-  border-style: outset;
-  border-color: #8c8c8c;
-}
-
 .slideshowimage {
   width: 100%;
   height: 0;
@@ -317,7 +306,7 @@ div#drawer.style-scope.paper-drawer-panel.iron-selected {
   z-index: 2147483647;
 }
 
-.button1 {
+.button-lib {
   height: 0.35in;
   width: 0.95in;
   text-transform: none;
@@ -326,4 +315,26 @@ div#drawer.style-scope.paper-drawer-panel.iron-selected {
   border-width: thin;
   border-style: outset;
   border-color: #8c8c8c;
+}
+
+.button-checkout {
+  height: 0.35in;
+  width: 0.95in;
+  text-transform: none;
+  background-color: black;
+  border-width: thin;
+  border-style: outset;
+  border-color: #737373;
+  color: white;
+}
+
+.button-checkin {
+  height: 0.35in;
+  width: 0.95in;
+  text-transform: none;
+  background-color: #88bde6;
+  border-width: thin;
+  border-style: outset;
+  border-color: #2d8bd2;
+  color: black;
 }
