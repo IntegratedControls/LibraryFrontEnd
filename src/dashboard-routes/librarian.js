@@ -5,6 +5,7 @@ const csvjson = require('csvjson');
 const filesaver = require('file-saver');
 
 @inject(HttpClient, Router, FileReader)
+
 export class LibrarianDashboard {
   constructor(httpClient, router, reader){
     this.httpClient = httpClient;
@@ -35,6 +36,7 @@ export class LibrarianDashboard {
       config
       .useStandardConfiguration()
       .withBaseUrl(process.env.BackendUrl);
+      // .withInterceptor(this.auth.tokenInterceptor);
     });
   }
 
@@ -124,5 +126,4 @@ export class LibrarianDashboard {
     });
   }
 
-
-}
+  }

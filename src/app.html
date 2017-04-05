@@ -17,7 +17,6 @@
           <paper-item if.bind = "widescreen" ><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
           <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
             <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
-<!-- TODO hamburger icon covers house in cell mode -->
               <span style="z-index:2; position:relative" class="${row.settings}"></span>
               <span if.bind = "fullmenu">&nbsp;${row.title}</span>
             </a>

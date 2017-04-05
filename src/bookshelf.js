@@ -1,4 +1,4 @@
-import {inject, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
 
@@ -12,11 +12,15 @@ export class Bookshelf {
     this.httpClient = httpClient;
     this.filterType = '';
   }
-  @bindable
+  // @bindable
   mediaTypes = ['hardback', 'paperback', 'pdf', 'webpage', 'video', 'audiobook', 'template'];
-  selectedMediaTypes = [];
   siteLocations = [];
   filterby = ['keyword', 'media type', 'site location'];
+  selectedFilter = [];
+  expanded = false;
+  keyword = false;
+  mediaType = false;
+  siteLocation = false;
 
   async activate(){
     await fetch;
@@ -32,6 +36,34 @@ export class Bookshelf {
     this.populateTypes();
     this.populateSites();
     // this.getMediaTypes();
+  }
+
+  filterPicked(){
+    let arrayLength = this.selectedFilter.length;
+    this.keyword = false;
+    this.mediaType = false;
+    this.siteLocation = false;
+    for (let i = 0; i < arrayLength; i++) {
+      /* look in array, if filter type is contained then set the selected filtertype to be true  this.keyword = true; this.mediaType=true; this.siteLocation=true*/
+      if (this.selectedFilter.includes('keyword')) {
+        this.keyword = true;
+      } else {
+        this.filters[0].value = '';
+        this.keyword = false;
+      }
+      if (this.selectedFilter.includes('media type')) {
+        this.mediaType = true;
+      } else {
+        this.filters[1].value = '';
+        this.mediaType = false;
+      }
+      if (this.selectedFilter.includes('site location')) {
+        this.siteLocation = true;
+      } else {
+        this.filters[2].value = '';
+        this.siteLocation = false;
+      }
+    }
   }
 
   filters = [
@@ -62,21 +94,19 @@ export class Bookshelf {
     }
   }
 
-  // getMediaTypes(){
-  //   this.selectedMediaTypes.push('');
-  //   for (let next of this.books){
-  //     let nextType = next.type;
-  //     /* istanbul ignore else */
-  //     if (this.selectedMediaTypes.indexOf(nextType) === -1){
-  //       this.selectedMediaTypes.push(nextType);
-  //       return this.selectedMediaTypes;
-  //     }
-  //   }
-  // }
-
   setFilter(filterType){
-    console.log(filterType);
     this.filterType = this.filterby[this.filterType - 1];
-    console.log(this.filterType);
   }
+
+  showCheckboxes(){
+    const checkboxes = document.getElementById('checkboxes');
+    if (!this.expanded) {
+      checkboxes.style.display = 'block';
+      this.expanded = true;
+    } else {
+      checkboxes.style.display = 'none';
+      this.expanded = false;
+    }
+  }
+
 }

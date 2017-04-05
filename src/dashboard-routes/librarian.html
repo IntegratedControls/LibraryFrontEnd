@@ -1,32 +1,30 @@
 <template>
   <div class="page-content">
-
-    <h4 class="material-header-h4">Create Books from a CSV File</h4>
+<div class="books">
+    <h4 class="material-header-h4">Import Books from CSV</h4>
     <paper-material class="material-content" elevation="3">
       <form>
         <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
-        <paper-button style="margin:20px 6.0cm 0; background-color:#88bde6" raised click.trigger="createBooksFromCSV()">
-          Create</paper-button>
+        <paper-button class="button-lib" raised click.trigger="createBooksFromCSV()">
+          Import</paper-button>
         </form>
       </paper-material>
       <p>&nbsp;</p>
-      
-      <h4 class="material-header-h4">Download the Books to a CSV File</h4>
+
+      <h4 class="material-header-h4">Export Books to CSV</h4>
       <paper-material class="material-content" elevation="3">
         <form>
-          
-          <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeCSVfile()">
-            Download</paper-button>
+          <paper-button class="button-lib" raised click.trigger="makeCSVfile()">
+            Export</paper-button>
           </form>
         </paper-material>
         <p>&nbsp;</p>
 
-      <h4 class="material-header-h4">Create a Book</h4>
+      <h4 class="material-header-h4">Add a Book</h4>
       <paper-material class="material-content" elevation="3">
         <form>
           <!-- input validation, must be 10 digits -->
           <paper-input  label="Title" value.two-way="newBook.title" required></paper-input>
-
           <!-- <paper-dropdown-menu style="margin-left: 0.5cm; width:180px" label="Account Type" (iron-select)="genreChange($event.detail.item.value, 0)"> -->
           <paper-dropdown-menu  label="Book Type">
             <paper-listbox  required  selected.two-way="newBook.type" class="dropdown-content">
@@ -54,9 +52,12 @@
             </paper-listbox>
           </paper-dropdown-menu>
           <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
-          <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="createBook()">
-            Create</paper-button>
+          <paper-button class="button-lib" raised click.trigger="createBook()">
+            Submit</paper-button>
           </form>
         </paper-material>
+      </div>
+            <p>&nbsp;</p>
+
       </div>
     </template>
