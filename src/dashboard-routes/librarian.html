@@ -5,7 +5,7 @@
     <paper-material class="material-content" elevation="3">
       <form>
         <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
-        <paper-button style="margin:20px 6.0cm 0; background-color:#88bde6" raised click.trigger="createBooksFromCSV()">
+        <paper-button class="button-lib" raised click.trigger="createBooksFromCSV()">
           Import</paper-button>
         </form>
       </paper-material>
@@ -14,7 +14,7 @@
       <h4 class="material-header-h4">Export Books to CSV</h4>
       <paper-material class="material-content" elevation="3">
         <form>
-          <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeCSVfile()">
+          <paper-button class="button-lib" raised click.trigger="makeCSVfile()">
             Export</paper-button>
           </form>
         </paper-material>
@@ -52,36 +52,12 @@
             </paper-listbox>
           </paper-dropdown-menu>
           <paper-input  value.two-way="newBook.comments" label="Comments" ></paper-input>
-          <paper-button style="margin:20px 6.0cm 0; background-color:#0a9ec1" raised click.trigger="createBook()">
+          <paper-button class="button-lib" raised click.trigger="createBook()">
             Submit</paper-button>
           </form>
         </paper-material>
       </div>
             <p>&nbsp;</p>
-
-<div class="users">
-  <!-- <h4 class="material-header-h4">Import Users from CSV</h4>
-  <paper-material class="material-content" elevation="3">
-    <form>
-      <input id="CSVFilePath" type="file" accept=".csv" files.bind="selectedFiles" style="padding-left:100px"></input>
-      <paper-button style="margin:20px 6.0cm 0; background-color:#88bde6" raised click.trigger="createUsersFromCSV()">
-        Import</paper-button>
-      </form>
-    </paper-material>
-    <p>&nbsp;</p> -->
-
-    <!-- <h4 class="material-header-h4">Export Users to CSV</h4>
-    <paper-material class="material-content" elevation="3">
-      <form>
-        <paper-button style="margin:20px 6.0cm 0; background-color:#00cc99" raised click.trigger="makeUsersCSVfile()">
-          Export</paper-button>
-        </form>
-      </paper-material>
-      <p>&nbsp;</p> -->
-
-
-</div>
-
 
       </div>
     </template>
