@@ -1,54 +1,58 @@
 <template>
   <div class="page-host">
+  <style>
+  paper-item:hover {
+    background-color: #4f7b96;
+  }
+  </style>
+  <paper-header-panel>
+    <div class="paper-header">
+      <paper-material class="material-header" elevation="0">
+        <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:80px">
+        </paper-card>
+        <paper-card elevation="0" style="background-color:#1b2a33;top:-30px;left:2px;">
+          <h4 class="material-header-h4" style="color: white">CST Library</h4>
+        </paper-card >
+      </paper-material>
+    </div>
 
-    <paper-header-panel>
-      <div class="paper-header">
-        <paper-material class="material-header" elevation="0">
-          <paper-card elevation="0" alt="GE Logo" image="../styles/imgs/ge_monogram_primary_white_RGB.png" style="margin-top:10px;background-color: #1b2a33;width:80px">
-          </paper-card>
-          <paper-card elevation="0" style="background-color:#1b2a33;top:-30px;left:2px;">
-            <h4 class="material-header-h4" style="color: white">CST Library</h4>
-          </paper-card >
-        </paper-material>
+    <paper-drawer-panel drawer-width.bind="drawerWidth">
+      <div drawer class="left-drawer">
+        <paper-item if.bind = "widescreen" ><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
+        <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
+            <span style="z-index:2; position:relative" class="${row.settings}"></span>
+            <span if.bind = "fullmenu">&nbsp;${row.title}</span>
+          </a>
+        </paper-item>
+        <paper-item if.bind="authenticated">
+          <a paper-drawer-toggle style="display:block; color: white" href="/#/dashboard">
+            <span class="fa fa-tachometer"></span>
+            <span if.bind="fullmenu">&nbsp;Dashboard</span>
+          </a>
+        </paper-item>
+        <br>
+        <br>
+        <paper-item if.bind="!authenticated">
+          <a paper-drawer-toggle style="display:block; color: white" href="/#/login">
+            <span class="fa fa-sign-in"></span>
+            <span if.bind = "fullmenu">&nbsp;Login</span>
+          </a>
+        </paper-item>
+        <paper-item if.bind="authenticated">
+          <a click.delegate="logout()" style="color: white">
+            <span class="fa fa-sign-out"></span>
+            <span if.bind = "fullmenu">&nbsp;Logout</span>
+          </a>
+        </paper-item>
       </div>
-
-      <paper-drawer-panel drawer-width.bind="drawerWidth">
-        <div drawer class="left-drawer">
-          <paper-item if.bind = "widescreen" ><i class="fa fa-bars pull-left fa-1x whiteicon" click.delegate="togglemenu()"></i></paper-item>
-          <paper-item  repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-            <a  paper-drawer-toggle style="display:block; color: white" href.bind="row.href">
-              <span style="z-index:2; position:relative" class="${row.settings}"></span>
-              <span if.bind = "fullmenu">&nbsp;${row.title}</span>
-            </a>
-          </paper-item>
-          <paper-item if.bind="authenticated">
-            <a paper-drawer-toggle style="display:block; color: white" href="/#/dashboard">
-              <span class="fa fa-tachometer"></span>
-              <span if.bind="fullmenu">&nbsp;Dashboard</span>
-            </a>
-          </paper-item>
-          <br>
-          <br>
-          <paper-item if.bind="!authenticated">
-            <a paper-drawer-toggle style="display:block; color: white" href="/#/login">
-              <span class="fa fa-sign-in"></span>
-              <span if.bind = "fullmenu">&nbsp;Login</span>
-            </a>
-          </paper-item>
-          <paper-item if.bind="authenticated">
-            <a click.delegate="logout()" style="color: white">
-              <span class="fa fa-sign-out"></span>
-              <span if.bind = "fullmenu">&nbsp;Logout</span>
-            </a>
-          </paper-item>
-        </div>
-        <div main class="main-content">
-          <i style="z-index:10000000;position:relative;padding-left: 6px; padding-top:4px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
-          <router-view></router-view>
-        </div>
-      </paper-drawer-panel>
+      <div main class="main-content">
+        <i style="z-index:10000000;position:relative;padding-left: 6px; padding-top:4px" class="fa fa-bars pull-left fa-2x" paper-drawer-toggle aria-hidden="true"></i>
+        <router-view></router-view>
+      </div>
+    </paper-drawer-panel>
 
 
-    </paper-header-panel>
-  </div>
+  </paper-header-panel>
+</div>
 </template>
