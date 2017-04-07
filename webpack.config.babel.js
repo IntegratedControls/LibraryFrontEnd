@@ -19,7 +19,7 @@ import globalRegenerator from '@easy-webpack/config-global-regenerator';
 import generateIndexHtml from '@easy-webpack/config-generate-index-html';
 import commonChunksOptimize from '@easy-webpack/config-common-chunks-simple';
 import copyFiles from '@easy-webpack/config-copy-files';
-// import uglify from '@easy-webpack/config-uglify';
+import uglify from '@easy-webpack/config-uglify';
 //import generateCoverage from '@easy-webpack/config-test-coverage-istanbul';
 import webpack from 'webpack';
 import dotenv from 'dotenv';
@@ -145,8 +145,7 @@ let config = generateConfig(
 
   ENV === 'production' ?
 // TODO find solution to replace uglify
-  // uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
-  {} : {}
+    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
   , {plugins: [new webpack.EnvironmentPlugin(['NODE_ENV', 'AuthProductionBaseURL', 'PORT', 'BackendUrl', 'GoogleClientId'])]}
   , {plugins: [new webpack.DefinePlugin({'process.env': Object.keys(process.env).reduce((o, k) => {
     o[k] = JSON.stringify(process.env[k]);
