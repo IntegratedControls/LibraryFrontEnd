@@ -4,12 +4,16 @@
 <head>
   <title><%- htmlWebpackPlugin.options.metadata.title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <!-- <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>"> -->
 
-  <link rel="import" href="includes.html">
+<base href="/">
 
-  <meta name="google-site-verification" content="glnLW-a7pRCcz0PfXRYsNFyMgX9vgr0Mb5WjWby3iC0" />
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- <meta name="google-site-verification" content="glnLW-a7pRCcz0PfXRYsNFyMgX9vgr0Mb5WjWby3iC0" /> -->
+  <!-- <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script> -->
+  <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  
+    <link rel="import" href="includes.html">
+  
 </head>
 <body aurelia-app="main">
   <div class="splash">
