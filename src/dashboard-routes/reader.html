@@ -19,26 +19,24 @@
           </thead>
           <tbody>
             <tr repeat.for="book of $displayData">
-              <template if.bind="book.type=='hardback' || book.type=='paperback'">
-                <td><paper-button class="button-checkout" raised click.delegate="checkOutBook(book)"
-                  if.bind = "book.checkedOutBy == ''">
-                  Checkout</paper-button>
-                  <paper-button class="button-checkin" raised click.delegate="checkInBook(book)"
-                  if.bind = "uid==book.checkedOutBy">
-                  Checkin</paper-button>
-                  <span if.bind = "uid!==book.checkedOutBy">
-                    <span if.bind = "book.checkedOutBy!==''">Checked out by ${book.checkedOutByName}
-                    </span></span>
-                  </td>
-                  <td>${book.title}</td>
-                  <td>${book.type}</td>
-                  <td>${book.author}</td>
-                  <td>${book.numberPages}</td>
-                  <td>${book.dateOfPub}</td>
-                  <td>${book.siteLocation}</td>
-                  <!-- <td>${book.numberOfCopies}</td> -->
-                  <td>${book.comments}</td>
-                </template>
+              <td if.bind="book.type=='hardback' || book.type=='paperback'"><paper-button class="button-checkout" raised click.delegate="checkOutBook(book)"
+                if.bind = "book.checkedOutBy == ''">
+                Checkout</paper-button>
+                <paper-button class="button-checkin" raised click.delegate="checkInBook(book)"
+                if.bind = "uid==book.checkedOutBy">
+                Checkin</paper-button>
+                <span if.bind = "uid!==book.checkedOutBy">
+                  <span if.bind = "book.checkedOutBy!==''">Checked out by ${book.checkedOutByName}
+                  </span></span>
+                </td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.title}</td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.type}</td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.author}</td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.numberPages}</td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.dateOfPub}</td>
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.siteLocation}</td>
+                <!-- <td>${book.numberOfCopies}</td> -->
+                <td if.bind="book.type=='hardback' || book.type=='paperback'">${book.comments}</td>
               </tr>
             </tbody>
           </table>
