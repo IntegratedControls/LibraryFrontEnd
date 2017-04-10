@@ -11,7 +11,7 @@ var configForDevelopment = {
   // loginRoute: '/login',
   // signupRoute: '/signup',
   tokenRoot: false,
-  tokenName: 'token',
+  // tokenName: 'token',
   tokenPrefix: 'aurelia',
   responseTokenProp: 'access_token',
   unlinkUrl: '/auth/unlink/',
